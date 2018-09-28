@@ -1,0 +1,33 @@
+body{
+	background-color: black;
+}
+.now{
+	width: 412px;
+	height: 400px;
+	background-image: url(img/masti.jpg);
+	background-size: 1689px 746px;
+	background-repeat: no-repeat;
+	background-position: -52px -122px;;
+
+}
+.mast {
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+	background-image: url(img/masti.jpg);
+	background-size: 435px 197px;
+	margin-top: 5px;
+	cursor: pointer;
+}
+.piki{
+	background-position: -18px -35px;
+}
+.cherv{
+	background-position: -118px -35px;
+}
+.krest{
+	background-position: -218px -35px;
+}
+.bubi{
+	background-position: -318px -35px;
+}

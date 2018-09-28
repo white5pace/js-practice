@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>generatorCss</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+		<style>
+			body{
+				font: 24px sans-serif;
+			}
+			#block {
+					width: 200px;
+					height: 200px;
+					background: indigo;
+				}
+			</style>
+    <div class="block1">
+    <p>Верхний левый угол
+      <input type="range" id="rtl" min="0" max="200" value="0" oninput="fun1()">
+      <input type="text" id="ttl" value="0" oninput = "fun2()">
+    </p>
+    <p>Верхний правый угол
+      <input type="range" id="rtr" min="0" max="200" value="0" oninput="fun1()">
+      <input type="text" id="ttr" value="0" oninput = "fun2()">
+    </p>
+    <p>Нижний правый угол
+      <input type="range" id="rbr" min="0" max="200" value="0" oninput="fun1()">
+      <input type="text" id="tbr" value="0" oninput = "fun2()">
+    </p>
+    <p>Нижний левый угол
+      <input type="range" id="rbl" min="0" max="200" value="0" oninput="fun1()">
+      <input type="text" id="tbl" value="0" oninput = "fun2()">
+    </p>
+    </div>
+    <div id="block"></div>
+    <script>
+				var rtl = document.getElementById('rtl'),
+				 		rtr = document.getElementById('rtr'),
+				 		rbr = document.getElementById('rbr'),
+				 		rbl = document.getElementById('rbl'),
+				 		ttl = document.getElementById('ttl'),
+				 		ttr  = document.getElementById('ttr'),
+				 		tbr = document.getElementById('tbr'),
+				 		tbl = document.getElementById('tbl'),
+						block = document.getElementById('block');
+			function fun1() {			
+				ttl.value = rtl.value
+				ttr.value = rtr.value;
+				tbr.value = rbr.value;
+				rbl.value = rbl.value;
+			
+				block.style.borderRadius= rtl.value+'px ' +rtr.value +'px ' +rbr.value+'px ' +rbl.value+'px ';
+			}
+			function fun2(){
+					rtl.value = ttl.value;
+					rtr.value = ttr.value;
+					rbr.value = tbr.value;
+					rbl.value = rbl.value;
+
+					
+				block.style.borderRadius= ttl.value+'px ' +ttr.value +'px ' +tbr.value+'px ' +tbl.value+'px ';
+			
+		}
+		</script>
+  </body>
+</html>

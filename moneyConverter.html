@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Selector</title>
+  </head>
+  <body>
+		<h1>Money converter</h1>
+		<p>
+			<label>$</label>
+			<input type="number" name="iputdol" id="$" oninput="moneyConverter(this.value)" onchange="moneyConverter(this.value)">
+
+		</p>
+		<p>RUB: <span id="outputrub"></span></p>
+		<script>
+			function moneyConverter(valNum){
+				document.getElementById('outputrub').innerHTML = valNum * 60;
+			}		
+		</script>
+  </body>
+</html>

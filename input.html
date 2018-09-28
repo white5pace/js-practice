@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Input</title>
+  </head>
+  <body>
+    <label><input type="checkbox" id = 'one' onchange="fun1()">CheckBox</label>
+    <hr>
+    <input type="radio" name="r1"  value="5" > 0
+    <input type="radio" name="r1" value="53"> 1
+    <input type="radio" name="r1" value="535"> 2
+    <br>
+    <button onclick="fun2()">What have elemnt selected </button>
+		<script>
+			function fun1() {
+				var chbox;
+				chbox = document.getElementById('one');
+
+				if(chbox.checked){
+					alert('Vibran');
+				}
+				else {
+					alert('Ne vybran');
+				}
+			}
+
+			function fun2() {
+				var radi = document.getElementsByName('r1');
+				for (var i = 0; i < radi.length; i++) {
+					if (radi[i].checked) {
+						alert ('Selected elemnt number ' + i );
+					}
+				}
+			}		
+		</script>
+  </body>
+</html>
