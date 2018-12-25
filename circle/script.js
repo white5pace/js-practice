@@ -57,7 +57,7 @@
 
 	document.querySelector('.objects').addEventListener('click', function(e) {
 		var	click = document.elementFromPoint(e.clientX, e.clientY).className;
-		console.log(click);
+		
 		if(click == 'circle'){
 			dotState.innerHTML = 'Точка принадлежит кругу';
 		}else{
