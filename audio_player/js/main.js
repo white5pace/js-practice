@@ -1,8 +1,10 @@
+'use strict';
 var mytrack = document.getElementById('mytrack'),
     playButton = document.getElementById('playButton'),
     muteButton = document.getElementById('muteButton'),
     duration = document.getElementById('fullDuration'),
     currentTime = document.getElementById('currentTime');
+
 
 var barSize = 640;
 var bar = document.getElementById('defaultBar');
@@ -11,7 +13,6 @@ var progressBar = document.getElementById('progressBar');
 var audioBarSize = 100;
 var audioBar = document.getElementById('audioBar');
 var audioProgressBar = document.getElementById('currentVolume');
-
 
 playButton.addEventListener('click', playOrPause, false);
 muteButton.addEventListener('click', muteOrUnmute, false);
@@ -29,7 +30,8 @@ function playOrPause() {
 function playTrack() {
     mytrack.play();
     playButton.style.backgroundImage = 'url(img/pause.svg)';
-    updateTime = setInterval(update, 500);
+    var updateTime = setInterval(update, 500);
+    
 }
 function pauseTrack() {
     mytrack.pause();
