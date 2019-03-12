@@ -13,30 +13,43 @@
 </head>
 <body>
 
-    <div class="wrapper">
+    <div class="container">
         <div class="sample">
             <button class="btn btn-primary" 
                     v-on:click="showRes = !showRes"
-                >
+                    >
                 {{ btnText }}
             </button>
             <hr>
+            <app-progress v-bind:val="sum" 
+                          v-bind:max="maxNumbers * 5">
+            </app-progress>
+            <hr>
             <transition name="slide">
-                <h2 v-show="showRes" class="alert alert-success">Your profit: {{ sum }} </h2>
+                <h2 v-show="showRes" class="alert alert-success">Your profit: {{ sum }}</h2>
             </transition>
             <hr>
-            <h2 v-show="showH2">Your profit: {{ sum }} </h2>
+            <app-progress v-bind:val="numbers.length" 
+                          v-bind:max="maxNumbers">
+            </app-progress>
             <hr>
             <button class="btn btn-success" 
-                v-on:click="addNumber"
-                >
-                Turn
+                    v-on:click="addNumber"
+                    v-bind:disabled="done"
+                    >
+                Add number
+            </button>
+            <button class="btn btn-success" 
+                    v-if="done"
+                    v-on:click="Restart"
+                    >
+                Restart
             </button>
             <hr>
             <ul class="list-group">
                 <li class="list-group-item"
                     v-for="number in numbers"
-                    >
+                >
                     {{ number }}
                 </li>
             </ul>
