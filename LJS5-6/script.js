@@ -581,21 +581,7 @@ var users = [{
 }];
 
 function byField(field){
-  // console.log(field);
-
-  function sho() {
-    // var a = {
-    //   age: 1
-    // };
-    return a.field;
-  }
-  return sho;
-  // retutn function() {
-
-  // }
-  // return function(a, b) {
-  //   return a.field > b.field ? 1 : -1;
-  // }
+  
 }
 
 // byField('хуй');
