@@ -82,6 +82,7 @@ function three() {
   // });
 }
 
+
 // 4 Фильтрация через функцию
 function four() {
   function filter(arr, func) {
@@ -113,36 +114,7 @@ function four() {
     }
   }
 
-
   var arr = [1, 2, 3, 4, 5, 6, 7];
-
-  // function inArray(a){
-  //     var newmas = [];
-  //     arr.forEach(function(i){
-  //       function check() {
-  //         return a.some(function(c){
-  //           return c == i;
-  //         });
-  //       }
-  //       if(check(i)){
-  //         newmas.push(i);
-  //       }
-  //     });
-  //     return newmas;
-  // }
-  // function inArray(a){
-  //   return function(i){
-  //     return a.some(function(c){
-  //       return c == i;
-  //     });
-  //   }
-  // }
-    // arr.forEach(function(i){
-    //   return i;
-    //   // a.some(function(c){
-    //   //   return i == c; 
-    //   // });
-    // });
 
   console.log(filter(arr, function(a){
     return a == 1;
@@ -158,118 +130,29 @@ function four() {
   console.log( filter(arr, inArray([1, 2, 10])) ); // 1,2
   // console.log(inArray([1, 2, 3, 10]));
 }
-four();
 
+// 5 Армия функций 
+function five(){
+  function makeArmy() {
+
+    var shooters = [];
+  
+    for (var i = 0; i < 10; i++) {
+      var shooter = function me() { // функция-стрелок]
+        console.log(me.i);
+      };
+      shooter.i = i;
+      shooters.push(shooter);
+    }
+    return shooters;
+
+  }
+  
+  var army = makeArmy();
+  
+  army[0](); // стрелок выводит 10, а должен 0
+  army[5](); // стрелок выводит 10...
+}
+five();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// 4 Фильтрация через функцию 
-
-// var arr = [1, 2, 3, 4, 5, 6, 7];
-
-// function filter(arr, func){
-// 	var result = [];
-// 	for(var i = 0; i < arr.length; i++){
-// 		var val = arr[i];
-// 		if(func(val)){
-// 			result.push(val);
-// 		}
-// 	}
-// 	return result;
-// }
-// function inBetween(a,b){
-// 	return function(x){
-// 		return x >= a && x <= b;
-// 	};
-// }
-
-// function inArray(filterArr){
-// 		return function(x){
-// 			return filterArr.indexOf(x) != -1;
-// 		};
-// 	}
-
-
-// console.log(filter(arr, function(a) {
-//   return a % 2 == 0;
-// })); 
-
-// console.log( filter(arr, inBetween(3, 6)) ); 
-// console.log( filter(arr, inArray([1, 2, 10])) ); 
-
-//5 Армия функций
-
-// function makeArmy() {
-
-//   var shooters = [];
-
-// 	for (var i = 0; i < 10; i++)(function(i) {
-
-//     var shooter = function() {
-//       alert( i );
-//     };
-
-//     shooters.push(shooter);
-
-//   })(i);
-
-//   return shooters;
-// }
-
-// var army = makeArmy();
-// army[0]();
-// army[5](); 
 

@@ -1,8 +1,122 @@
 'use strict';
 
-// 1 Методы объектов и контекст вызова 
+// Методы объектов и контекст вызова 
 
-// Создайте калькулятор 
+// 1 Создайте калькулятор 
+
+function htmlOut(hOne, pOne, output) {
+  document.getElementById('hOne').innerHTML = hOne;
+  document.getElementById('pOne').innerHTML = pOne;
+  document.getElementById('Output').innerHTML =  output;
+};
+
+function exOne(){
+
+  var calculator = {
+    read: function() {
+      this.a = +prompt('a?', 0);
+      this.b = +prompt('b?', 0);
+    }, 
+    sum: function() {
+      return (this.a + this.b);
+    },
+    mul: function() {
+      return (this.a * this.b);
+    }
+  }
+  
+  calculator.read();
+  console.log( calculator.sum() );
+  console.log( calculator.mul() );
+
+  htmlOut('Создайте калькулятор', exOne.toString(), calculator.sum() + ' ' + calculator.mul());
+
+}
+exOne();
+
+
+// 2 Цепочка вызова 
+
+function exTwo(){
+  var ladder = {
+    step: 0,
+    up: function() { // вверх по лестнице\
+      this.step++;
+      return this;
+    },
+    down: function() { // вниз по лестнице]
+  
+      this.step--;
+      return this;
+    },
+    showStep: function() { // вывести текущую ступеньку
+      alert( this.step );
+      return this;
+    }
+  };
+  ladder.up().up().down().up().down().showStep();
+  
+}
+// exTwo();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // var calculator = {
 // 	a: 0,
@@ -444,38 +558,38 @@
 
 // 38 
 
-var users = [{
-  name: "Вася",
-  surname: 'Иванов',
-  age: 20
-}, {
-  name: "Петя",
-  surname: 'Чапаев',
-  age: 25
-}, {
-  name: "Маша",
-  surname: 'Медведева',
-  age: 18
-}];
+// var users = [{
+//   name: "Вася",
+//   surname: 'Иванов',
+//   age: 20
+// }, {
+//   name: "Петя",
+//   surname: 'Чапаев',
+//   age: 25
+// }, {
+//   name: "Маша",
+//   surname: 'Медведева',
+//   age: 18
+// }];
 
-function byField(field){
-  var g = field;
-  return function(a, b){
-    return a[g] > b[g] ? 1 : -1;
-  }
-}
-users.sort(byField('name'));
+// function byField(field){
+//   var g = field;
+//   return function(a, b){
+//     return a[g] > b[g] ? 1 : -1;
+//   }
+// }
+// users.sort(byField('name'));
 
-byField('age');
-users.forEach(function(user) {
-  console.log( user.name );
-}); // Вася, Маша, Петя
+// byField('age');
+// users.forEach(function(user) {
+//   console.log( user.name );
+// }); // Вася, Маша, Петя
 
-// Пример порядка вызова 
-users.sort(function byField(field){
-  var g = field;
-  return function(a, b) {
-    return a[g] > b[g] ? 1 : -1;
-  }
-});
+// // Пример порядка вызова 
+// users.sort(function byField(field){
+//   var g = field;
+//   return function(a, b) {
+//     return a[g] > b[g] ? 1 : -1;
+//   }
+// });
 
