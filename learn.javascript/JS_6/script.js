@@ -32,7 +32,7 @@ function exOne(){
   htmlOut('Создайте калькулятор', exOne.toString(), calculator.sum() + ' ' + calculator.mul());
 
 }
-exOne();
+// exOne();
 
 
 // 2 Цепочка вызова 
@@ -55,9 +55,42 @@ function exTwo(){
     }
   };
   ladder.up().up().down().up().down().showStep();
+
+  htmlOut('Цепочка вызова ', exTwo.toString(), ladder.step);
   
 }
 // exTwo();
+
+
+// 3 Сумма произвольного количества скобок
+
+function exThree() {
+  function sum(a) {
+    var currentSum = a;
+
+    function f(b) {
+      currentSum += b;
+      return f;
+    };
+
+    f.toString = function(){
+      return currentSum;
+    };
+    return f;
+  }
+  console.log(sum(1)(2) == 3 );
+  console.log(sum(1)(2)(3) == 6);
+  console.log(sum(5)(-1)(2) == 6);
+  console.log(sum(6)(-1)(-2)(-3) == 0);
+  console.log(sum(0)(1)(2)(3)(4)(5) == 15);
+
+  htmlOut('Сумма произвольного количества скобок', exThree.toString(), sum(1)(2) == 3);
+}
+exThree();
+
+
+
+
 
 
 
