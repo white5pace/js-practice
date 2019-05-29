@@ -86,10 +86,131 @@ function exThree() {
 
   htmlOut('Сумма произвольного количества скобок', exThree.toString(), sum(1)(2) == 3);
 }
-exThree();
+// exThree();
+
+// 4 Создать Calculator при помощи конструктора
+
+function exFour() {
+  var calculator = {
+    read: function() {
+      this.a = +prompt('a?', 0);
+      this.b = +prompt('b?', 0);
+    }, 
+    sum: function() {
+      return (this.a + this.b);
+    },
+    mul: function() {
+      return (this.a * this.b);
+    }
+  }
+
+  function Calculator() {
+    this.read = function() {
+      this.a = +prompt('a?', 0);
+      this.b = +prompt('b?', 0);
+    };
+    this.sum = function() {
+      return (this.a + this.b);
+    };
+    this.mul = function() {
+      return (this.a * this.b);;
+    };
+
+  }
+
+  var calculator = new Calculator();
+  calculator.read();
+
+  console.log( "Сумма = " + calculator.sum() );
+  console.log( "Произведение = " + calculator.mul() );
+
+  htmlOut('Создать Calculator при помощи конструктора', exFour.toString(), ("Сумма = " + calculator.sum() + " " + "Произведение = " + calculator.mul()));
+
+}
+// exFour();
+
+// 5 Создать Accumulator при помощи конструктора
+
+function exFive() {
+  function Accumulator(startingValue) {
+    this.value = startingValue;
+
+    this.read = function(){
+      this.value += +prompt('Прибавить', 0);
+    }
+  }
+  var accumulator = new Accumulator(1); // начальное значение 1
+  accumulator.read(); // прибавит ввод prompt к текущему значению
+  accumulator.read(); // прибавит ввод prompt к текущему значению
+  console.log( accumulator.value ); // выведет текущее значение
+  htmlOut('Создать Accumulator при помощи конструктора', exFive.toString(), accumulator.value );
+
+}
+// exFive();
+
+// 6 Создайте калькулятор
+
+function exSix() {
+  function Calculator() {
+    var operation = {
+      '+': function(a, b){
+        return a + b;
+      }, 
+      '-': function(a, b) {
+        return a - b;
+      }
+    }
+
+    this.addMethod = function(name, func){
+      operation[name] = func;
+    };
+
+    this.calculate = function(str) {
+      this.spaces = [];
+      for(var i = 0; i < str.length; i++) {
+        if(str[i] == ' '){
+          this.spaces.push(i);
+        }
+      }
+      this.a = +str.slice(0, this.spaces[0]);
+      var op = str.slice(this.spaces[0] + 1, this.spaces[1] );
+      this.b = +str.slice(this.spaces[1] + 1, str.length);
+
+      if (!operation[op] || isNaN(a) || isNaN(b)) {
+        return NaN;
+      }
+
+      return operation[op](this.a, this.b);
+    };
+    
+  }
+  var calc = new Calculator;
+
+  console.log( calc.calculate("1 + 1"));
+  console.log( calc.calculate("1 + 2"));
+  console.log( calc.calculate("8 - 4"));
 
 
+  var powerCalc = new Calculator;
+  powerCalc.addMethod("*", function(a, b) {
+    return a * b;
+  });
 
+  powerCalc.addMethod("/", function(a, b) {
+    return a / b;
+  });
+
+  powerCalc.addMethod("**", function(a, b) {
+    return Math.pow(a, b);
+  });
+  
+  var result = powerCalc.calculate("2 ** 3");
+  console.log(result)
+
+  htmlOut('Создайте калькулятор', exSix.toString(), result );
+
+}
+exSix();
 
 
 
