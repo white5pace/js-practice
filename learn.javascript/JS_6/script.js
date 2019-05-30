@@ -6,8 +6,8 @@
 
 function htmlOut(hOne, pOne, output) {
   document.getElementById('hOne').innerHTML = hOne;
-  document.getElementById('pOne').innerHTML = pOne;
-  document.getElementById('Output').innerHTML =  output;
+  document.getElementById('pOne').innerHTML = "<b>Код решения:</b> <br><br>" + pOne;
+  document.getElementById('Output').innerHTML =  "Выходящее значение: " + output;
 };
 
 function exOne(){
@@ -50,7 +50,7 @@ function exTwo(){
       return this;
     },
     showStep: function() { // вывести текущую ступеньку
-      alert( this.step );
+      console.log( this.step );
       return this;
     }
   };
@@ -210,8 +210,84 @@ function exSix() {
   htmlOut('Создайте калькулятор', exSix.toString(), result );
 
 }
-exSix();
+// exSix();
 
+// 7 Добавить get/set-свойства
+
+function exSeven() {
+  function User(fullName) {
+    this.fullName = fullName;
+
+    Object.defineProperty(this, "firstName", {
+      get: function() {
+        var spl = this.fullName.split(' ');
+        return spl[0];
+      },
+      set: function(value) {
+        var spl = this.fullName.split(' ');
+        this.fullName =  value + ' ' + spl[1] ;
+      }
+    });
+    Object.defineProperty(this, "lastName", {
+      get: function() {
+        var spl = this.fullName.split(' ');
+        return spl[1];
+      },
+      set: function(value) {
+        var spl = this.fullName.split(' ');
+        this.fullName = spl[0] + ' ' + value;
+      }
+    });
+  }
+  
+  var vasya = new User("Василий Попкин");
+  console.log( vasya.firstName ); // Василий
+  console.log( vasya.lastName ); // Попкин
+  vasya.lastName = 'Сидоров';
+
+  console.log( vasya.fullName ); // Василий Сидоров
+
+  vasya.firstName = 'Алексей';
+  console.log( vasya.fullName ); 
+
+  htmlOut('Добавить get/set-свойства', exSeven.toString(), vasya.fullName);
+
+}
+// exSeven();
+
+
+// 8 Счетчик объектов 
+
+function exEight() {
+  function Article() {
+    this.created = new Date();
+    Article.count++;
+    Article.last = this.created;
+  }
+  
+  Article.count = 0;
+  Article.showStats = function(){
+    console.log(this.count + ', ' + this.last);
+    return this.count + ', ' + this.last;
+    
+  };
+  
+  new Article();
+  new Article();
+  
+  
+  Article.showStats(); // Всего: 2, Последняя: (дата)
+  
+  for(var i = 0; i < 1000; i++){
+    var c = 0;
+    c++;
+  }
+  new Article();
+  
+  Article.showStats(); // Всего: 3, Последняя: (дата)
+  htmlOut('Счетчик объектов ', exEight.toString(), Article.showStats());
+
+}
 
 
 
