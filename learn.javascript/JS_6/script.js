@@ -32,7 +32,6 @@ function exOne(){
   htmlOut('Создайте калькулятор', exOne.toString(), calculator.sum() + ' ' + calculator.mul());
 
 }
-// exOne();
 
 
 // 2 Цепочка вызова 
@@ -59,7 +58,6 @@ function exTwo(){
   htmlOut('Цепочка вызова ', exTwo.toString(), ladder.step);
   
 }
-// exTwo();
 
 
 // 3 Сумма произвольного количества скобок
@@ -86,7 +84,6 @@ function exThree() {
 
   htmlOut('Сумма произвольного количества скобок', exThree.toString(), sum(1)(2) == 3);
 }
-// exThree();
 
 // 4 Создать Calculator при помощи конструктора
 
@@ -127,7 +124,6 @@ function exFour() {
   htmlOut('Создать Calculator при помощи конструктора', exFour.toString(), ("Сумма = " + calculator.sum() + " " + "Произведение = " + calculator.mul()));
 
 }
-// exFour();
 
 // 5 Создать Accumulator при помощи конструктора
 
@@ -146,7 +142,6 @@ function exFive() {
   htmlOut('Создать Accumulator при помощи конструктора', exFive.toString(), accumulator.value );
 
 }
-// exFive();
 
 // 6 Создайте калькулятор
 
@@ -210,7 +205,6 @@ function exSix() {
   htmlOut('Создайте калькулятор', exSix.toString(), result );
 
 }
-// exSix();
 
 // 7 Добавить get/set-свойства
 
@@ -253,8 +247,6 @@ function exSeven() {
   htmlOut('Добавить get/set-свойства', exSeven.toString(), vasya.fullName);
 
 }
-// exSeven();
-
 
 // 8 Счетчик объектов 
 
@@ -286,6 +278,26 @@ function exEight() {
   
   Article.showStats(); // Всего: 3, Последняя: (дата)
   htmlOut('Счетчик объектов ', exEight.toString(), Article.showStats());
+
+}
+
+// 9 Перепишите суммирование аргументов
+
+function exNine() {
+  function sumArgs() {
+    // arguments.reduce = [].reduce;
+    // return arguments.reduce(function(a, b){
+    //   return a + b;
+    // });
+    var arg = [].reduce.call(arguments, function(a, b){
+      return a + b;
+    });
+    return arg;
+  }
+  
+  console.log( sumArgs(1, 2, 3) ); // 6, аргументы переданы через запятую, без массива
+  htmlOut('Перепишите суммирование аргументов ', exNine.toString(), sumArgs(1, 2, 3));
+
 
 }
 
