@@ -295,12 +295,43 @@ function exNine() {
     return arg;
   }
   
-  console.log( sumArgs(1, 2, 3) ); // 6, аргументы переданы через запятую, без массива
+  console.log( sumArgs(1, 2, 3) ); 
+
   htmlOut('Перепишите суммирование аргументов ', exNine.toString(), sumArgs(1, 2, 3));
 
 
 }
 
+// 10 Примените функцию к аргументам
+
+function exTen() {
+
+  function applyAll() {
+    var args = [];
+    var func = arguments[0];
+    for(var i = 1; i < arguments.length; i++){
+      args.push(arguments[i]);
+    }
+    return func.apply(null, args);
+  }
+  
+  function sum() { // суммирует аргументы: sum(1,2,3) = 6
+    return [].reduce.call(arguments, function(a, b) {
+      return a + b;
+    });
+  }
+  function mul() { // перемножает аргументы: mul(2,3,4) = 24
+    return [].reduce.call(arguments, function(a, b) {
+      return a * b;
+    });
+  }  
+  console.log( applyAll(Math.max, 2, -2, 3, 6, 10, 5, 20, 26) ); 
+  console.log( applyAll(Math.min, 2, -2, 3) ); 
+  console.log( applyAll(sum, 1, 2, 3) ); 
+  console.log( applyAll(mul, 2, 3, 4) );
+  htmlOut('Примените функцию к аргументам ', exTen.toString(), applyAll(mul, 2, 3, 4));
+
+}
 
 
 
