@@ -314,7 +314,7 @@ function exTen() {
     }
     return func.apply(null, args);
   }
-  
+
   function sum() { // суммирует аргументы: sum(1,2,3) = 6
     return [].reduce.call(arguments, function(a, b) {
       return a + b;
@@ -332,6 +332,15 @@ function exTen() {
   htmlOut('Примените функцию к аргументам ', exTen.toString(), applyAll(mul, 2, 3, 4));
 
 }
+
+
+// 10 Примените функцию к аргументам
+
+function exTen() {
+
+
+}
+exTen()
 
 
 
