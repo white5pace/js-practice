@@ -20,6 +20,9 @@
         justify-content: space-around;
         flex-wrap: wrap;
       }
+      #linkTo{
+        display: none;
+      }
       button {
         background-color: #4CAF50; /* Green */
         border: none;
@@ -66,11 +69,15 @@
       <button onclick="exEleven()" class="gradient">11. Кросс-браузерная эмуляция bind</button>
       <button onclick="exTwelve()" class="gradient">12. Использование функции вопросов</button>
       <button onclick="exThirteen()" class="gradient">13. Использование функции вопросов с каррингом</button>
+      <button onclick="exFourteen()" class="gradient">14. Логирующий декоратор (1 аргумент)</button>
+      <button onclick="exFifteen()" class="gradient">15. Логирующий декоратор (много аргументов)</button>
+      <button onclick="exSixteen()" class="gradient">16. Кеширующий декоратор</button>
 
 
     </div>
     <div class="window-out">
         <h2 id="hOne"></h2>
+        <a href="" id="linkTo" target="_blank">Link to exercise</a>
         <p id="pOne"></p>
         <h3 id="Output"></h3>
     </div>
