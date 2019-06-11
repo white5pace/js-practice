@@ -334,13 +334,107 @@ function exTen() {
 }
 
 
-// 10 Примените функцию к аргументам
+// 11 Кросс-браузерная эмуляция bind
 
-function exTen() {
+function exEleven() {
+  function bind(func, context /*, args*/) {
+    var bindArgs = [].slice.call(arguments, 2); // (1)
+    console.log(bindArgs);
+    function wrapper() {                        // (2)
+      var args = [].slice.call(arguments);
+      console.log(args);
+      var unshiftArgs = bindArgs.concat(args);  // (3)
+      console.log(unshiftArgs);
 
+      return func.apply(context, unshiftArgs);  // (4)
 
+    }
+    return wrapper;
+  }
+  function mul(a, b) {
+    return a * b;
+  };
+  var double = mul.bind(null, 2);
+  var sDouble = bind(mul, null, 2);
+  console.log(sDouble(12));
+
+  console.log(double(2));
+
+  htmlOut(' Кросс-браузерная эмуляция bind ', exEleven.toString(), sDouble(12));
 }
-exTen()
+
+// 12 Использование функции вопросов
+
+function exTwelve() {
+  var localOutput = '';
+
+  function ask(question, answer, ok, fail) {
+    var result = prompt(question, '');
+    if (result.toLowerCase() == answer.toLowerCase()) ok();
+    else fail();
+  }
+  
+  var user = {
+    login: 'Василий',
+    password: '12345',
+  
+    loginOk: function() {
+      alert( this.login + ' вошёл в сайт' );
+      localOutput = 'вошёл в сайт';
+    },
+  
+    loginFail: function() {
+      alert( this.login + ': ошибка входа' );
+      localOutput = 'ошибка входа';
+    },
+  
+    checkPassword: function() {
+      ask("Ваш пароль?", this.password, this.loginOk.bind(this), this.loginFail.bind(this));
+    }
+  };
+  // var a = user.loginOk.bind(user);
+  // console.log(a());
+  user.checkPassword();
+  htmlOut('Использование функции вопросов', exTwelve.toString(), localOutput);
+}
+
+// 13 Использование функции вопросов с каррингом
+
+function exThirteen() {
+  var localOutput = '';
+
+  function ask(question, answer, ok, fail) {
+    var result = prompt(question, '');
+    if (result.toLowerCase() == answer.toLowerCase()) ok();
+    else fail();
+  }
+
+  var user = {
+    login: 'Василий',
+    password: '12345',
+
+    // метод для вызова из ask
+    loginDone: function(result) {
+      alert( this.login + (result ? ' вошёл в сайт' : ' ошибка входа') );
+      if(result){
+        localOutput = 'вошёл в сайт';
+      }else {
+        localOutput = 'ошибка входа';
+      }
+    },
+
+    checkPassword: function() {
+      ask("Ваш пароль?", this.password,
+        this.loginDone.bind(this, true),
+        this.loginDone.bind(this, false),
+      );
+    }
+  };
+  var vasya = user;
+  user = null;
+  vasya.checkPassword();
+  htmlOut('Использование функции вопросов с каррингом', exThirteen.toString(), localOutput);
+}
 
 
 
