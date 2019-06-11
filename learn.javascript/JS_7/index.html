@@ -1,39 +1,73 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html lang="en" dir="ltr">
+  <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Некоторые другие возможности</title>
-</head>
-<style>
-    .navigation {
+    <title>js_7</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Inconsolata&display=swap');
+      p{
+        display: block;
+        width: 100%;
+        overflow: scroll;
+        font-family: 'Inconsolata', monospace;
+        white-space: pre;
+      }
+      .buttons { 
         display: flex;
-    }
-    a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100px;
-        width: 100px;
-        background-color: rgb(94, 189, 173);
-        margin: 10px;
-        box-shadow: 6px 6px 6px rgba(38, 70, 70, .3);
-        border-radius: 6px;
-        color: black;
-        font-size: 24px;
+        justify-content: space-around;
+        flex-wrap: wrap;
+      }
+      #linkTo{
+        display: none;
+      }
+      button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
         text-decoration: none;
-    }
-    a:hover {
-        opacity: .8;
-    }
-</style>
-<body>
-    <div class="navigation">
-        <a href="1/index.html">1</a>
-        <a href="2/index.html">2</a>
-        <a href="3/index.html">3</a>
-        <a href="4/index.html">4</a>
+        display: inline-block;
+        font-size: 12px;
+        width: 200px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        height: 50px;
+        }
+        .gradient {
+          background-color: #5b4e99;
+          /* IE9, iOS 3.2+ */
+          background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxyYWRpYWxHcmFkaWVudCBpZD0idnNnZyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIGN4PSIwJSIgY3k9IjEwMCUiIHI9IjE0MS40MjEzNTYyMzczMDk1JSI+PHN0b3Agc3RvcC1jb2xvcj0iIzAwODM5YiIgc3RvcC1vcGFjaXR5PSIxIiBvZmZzZXQ9IjAiLz48c3RvcCBzdG9wLWNvbG9yPSIjYjUxODk3IiBzdG9wLW9wYWNpdHk9IjEiIG9mZnNldD0iMSIvPjwvcmFkaWFsR3JhZGllbnQ+PHJlY3QgeD0iLTUwIiB5PSItNTAiIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAxIiBmaWxsPSJ1cmwoI3ZzZ2cpIiAvPjwvc3ZnPg==);
+          /* Android 2.3- hack (needed for the actual radial gradient) */
+          background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxyYWRpYWxHcmFkaWVudCBpZD0idnNnZyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIGN4PSIwJSIgY3k9IjEwMCUiIHI9IjE0MS40MjEzNTYyMzczMDk1JSI+PHN0b3Agc3RvcC1jb2xvcj0iIzAwODM5YiIgc3RvcC1vcGFjaXR5PSIxIiBvZmZzZXQ9IjAiLz48c3RvcCBzdG9wLWNvbG9yPSIjYjUxODk3IiBzdG9wLW9wYWNpdHk9IjEiIG9mZnNldD0iMSIvPjwvcmFkaWFsR3JhZGllbnQ+PHJlY3QgeD0iLTUwIiB5PSItNTAiIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAxIiBmaWxsPSJ1cmwoI3ZzZ2cpIiAvPjwvc3ZnPg==),
+              -webkit-gradient(radial, left bottom, 0, left bottom, 723,color-stop(0, rgb(0, 131, 155)),color-stop(1, rgb(181, 24, 151)));
+          /* Android 2.3 */
+          background-image: -webkit-repeating-radial-gradient(left bottom, ellipse farthest-corner,rgb(0, 131, 155) 0%,rgb(181, 24, 151) 100%);
+          /* IE10+ */
+          background-image: repeating-radial-gradient(ellipse farthest-corner at left bottom,rgb(0, 131, 155) 0%,rgb(181, 24, 151) 100%);
+          background-image: -ms-repeating-radial-gradient(left bottom, ellipse farthest-corner,rgb(0, 131, 155) 0%,rgb(181, 24, 151) 100%);
+        }
+
+    </style>
+  </head>
+  <body>
+    <h1> Некоторые другие возможности</h1>
+    <div class="buttons">
+      <button onclick="exOne()" class="gradient">1. Полиморфная функция formatDate </button>
+
+
     </div>
-    
-</body>
+    <div class="window-out">
+        <h2 id="hOne"></h2>
+        <a href="" id="linkTo" target="_blank">Link to exercise</a>
+        <p id="pOne"></p>
+        <h3 id="Output"></h3>
+    </div>
+
+
+    <script src="script.js"></script>
+  </body>
 </html>
