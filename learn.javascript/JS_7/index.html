@@ -7,62 +7,125 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <style>
-      @import url('https://fonts.googleapis.com/css?family=Inconsolata&display=swap');
-      p{
+      @import url('https://fonts.googleapis.com/css?family=Inconsolata|Roboto:400,700&display=swap');
+      body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+      }
+      h1 {
+        background: linear-gradient(0deg,#414141 0,#373636);
+        color: #fff;
+        margin-top: 0;
+        padding: 0.67em;
+        width: 100%;
+        font-size: 36px;
+      }
+      .container {
+        padding: 3%;
+      }
+      .list-title {
+        font-size: 16px;  
+        font-weight: 700;
+        border-bottom: 1px solid #ebebeb;
+        padding-bottom: 8px;
+        margin-bottom: 16px;
+      }
+      .list-sub {
+        list-style: none;
+        margin-bottom: 24px;
+        padding-left: 0;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .list-sub__item {
+        margin: 0;
+        padding-right: 20px;
+
+      }
+      .number {
+        font-size: 12px;
+        line-height: 16px;
+        padding-right: 5px;
+      }
+      .button {
+        display: inline;
+        color: #0059b2;
+
+      }
+      .button:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+      .task-title {
+        display: flex;
+        margin: 0.67em 0;
+      }
+      .task-title svg{
+        width: 16px;
+        height: 18px;
+        fill: #0059b2;
+        padding-left: 20px;
+
+      }
+      h2 {
+        font-size: 20px;
+        margin: 0;
+      }
+      #linkTo{
+        display: none;
+      }
+      #pOne {
         display: block;
         width: 100%;
         overflow: scroll;
         font-family: 'Inconsolata', monospace;
         white-space: pre;
+        padding: 1em;
+        background: #f5f2f0;
+        color: #333;
+        font-size: 14px;
       }
-      .buttons { 
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
+      #hOne {
+        font-size: 20px;
       }
-      #linkTo{
-        display: none;
+      .keyword {
+        color: #07a;
       }
-      button {
-        background-color: #4CAF50; /* Green */
-        border: none;
-        color: white;
-        padding: 10px 20px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 12px;
-        width: 200px;
-        margin-bottom: 10px;
-        border-radius: 10px;
-        height: 50px;
-        }
-        .gradient {
-          background-color: #5b4e99;
-          /* IE9, iOS 3.2+ */
-          background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxyYWRpYWxHcmFkaWVudCBpZD0idnNnZyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIGN4PSIwJSIgY3k9IjEwMCUiIHI9IjE0MS40MjEzNTYyMzczMDk1JSI+PHN0b3Agc3RvcC1jb2xvcj0iIzAwODM5YiIgc3RvcC1vcGFjaXR5PSIxIiBvZmZzZXQ9IjAiLz48c3RvcCBzdG9wLWNvbG9yPSIjYjUxODk3IiBzdG9wLW9wYWNpdHk9IjEiIG9mZnNldD0iMSIvPjwvcmFkaWFsR3JhZGllbnQ+PHJlY3QgeD0iLTUwIiB5PSItNTAiIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAxIiBmaWxsPSJ1cmwoI3ZzZ2cpIiAvPjwvc3ZnPg==);
-          /* Android 2.3- hack (needed for the actual radial gradient) */
-          background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxyYWRpYWxHcmFkaWVudCBpZD0idnNnZyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIGN4PSIwJSIgY3k9IjEwMCUiIHI9IjE0MS40MjEzNTYyMzczMDk1JSI+PHN0b3Agc3RvcC1jb2xvcj0iIzAwODM5YiIgc3RvcC1vcGFjaXR5PSIxIiBvZmZzZXQ9IjAiLz48c3RvcCBzdG9wLWNvbG9yPSIjYjUxODk3IiBzdG9wLW9wYWNpdHk9IjEiIG9mZnNldD0iMSIvPjwvcmFkaWFsR3JhZGllbnQ+PHJlY3QgeD0iLTUwIiB5PSItNTAiIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAxIiBmaWxsPSJ1cmwoI3ZzZ2cpIiAvPjwvc3ZnPg==),
-              -webkit-gradient(radial, left bottom, 0, left bottom, 723,color-stop(0, rgb(0, 131, 155)),color-stop(1, rgb(181, 24, 151)));
-          /* Android 2.3 */
-          background-image: -webkit-repeating-radial-gradient(left bottom, ellipse farthest-corner,rgb(0, 131, 155) 0%,rgb(181, 24, 151) 100%);
-          /* IE10+ */
-          background-image: repeating-radial-gradient(ellipse farthest-corner at left bottom,rgb(0, 131, 155) 0%,rgb(181, 24, 151) 100%);
-          background-image: -ms-repeating-radial-gradient(left bottom, ellipse farthest-corner,rgb(0, 131, 155) 0%,rgb(181, 24, 151) 100%);
-        }
-
     </style>
   </head>
   <body>
     <h1> Некоторые другие возможности</h1>
-    <div class="buttons">
-      <button onclick="exOne()" class="gradient">1. Полиморфная функция formatDate </button>
-
-
-    </div>
-    <div class="window-out">
-        <h2 id="hOne"></h2>
-        <a href="" id="linkTo" target="_blank">Link to exercise</a>
+    <div class="container">
+      <div class="chapters">
+        <div class="list-item">
+          <div class="list-title">Типы данных: [[Class]], instanceof и утки</div>
+          <ul class="list-sub">
+            <li class="list-sub__item"><span class="number">7.1.1</span> <div onclick="exOne()" class="button">Полиморфная функция formatDate</div></li>
+          </ul>
+        </div>
+        <div class="list-item">
+          <div class="list-title">Формат JSON, метод toJSON</div>
+          <ul class="list-sub">
+            <li class="list-sub__item"><span class="number">7.2.1</span> <div onclick="exTwo()" class="button">Превратите объект в JSON</div></li>
+            <li class="list-sub__item"><span class="number">7.2.2</span> <div onclick="exThree()" class="button">Превратите объекты со ссылками в JSON</div></li>
+          </ul>
+        </div>
+        <div class="list-item">
+            <div class="list-title">setTimeout и setInterval</div>
+            <ul class="list-sub">
+              <li class="list-sub__item"><span class="number">7.3.1</span> <div onclick="exFour()" class="button">Вывод чисел каждые 100 мс</div></li>
+              <li class="list-sub__item"><span class="number">7.3.2</span> <div onclick="exFive()" class="button">Вывод чисел каждые 100 мс, через setTimeout</div></li>
+              <li class="list-sub__item"><span class="number">7.3.3</span> <div onclick="exSix()" class="button">Функция-задержка</div></li>
+            </ul>
+          </div>
+      </div>
+        <div class="task-title">
+          <h2 id="hOne"></h2>
+          <a href="" id="linkTo" target="_blank">
+            <svg viewBox="0 -28 453.99791 453" xmlns="http://www.w3.org/2000/svg"><path d="m345.375 3.410156c-2.863281-2.847656-7.160156-3.695312-10.890625-2.144531s-6.164063 5.191406-6.164063 9.234375v53.359375c-54.003906 2.152344-81.054687 24.535156-85.191406 28.261719-27.25 22.363281-45.855468 53.527344-52.613281 88.121094-3.378906 16.714843-3.984375 33.871093-1.785156 50.78125l.007812.058593c.019531.148438.042969.300781.066407.449219l2.125 12.214844c.714843 4.113281 3.914062 7.351562 8.019531 8.117187 4.109375.765625 8.257812-1.105469 10.40625-4.683593l6.367187-10.613282c19.5625-32.53125 43.941406-54.09375 72.46875-64.089844 12.867188-4.546874 26.5-6.546874 40.128906-5.882812v55.265625c0 4.046875 2.441407 7.699219 6.183594 9.242187 3.746094 1.546876 8.050782.679688 10.90625-2.191406l105.675782-106.210937c3.894531-3.914063 3.878906-10.246094-.035157-14.140625zm0 0"/><path d="m417.351562 294.953125c-5.519531 0-10 4.476563-10 10v42.265625c-.015624 16.558594-13.4375 29.980469-30 30h-327.351562c-16.5625-.019531-29.980469-13.441406-30-30v-238.246094c.019531-16.5625 13.4375-29.980468 30-30h69.160156c5.523438 0 10-4.476562 10-10 0-5.523437-4.476562-10-10-10h-69.160156c-27.601562.03125-49.96875 22.398438-50 50v238.246094c.03125 27.597656 22.398438 49.964844 50 50h327.351562c27.601563-.035156 49.96875-22.402344 50-50v-42.265625c0-5.523437-4.476562-10-10-10zm0 0"/></svg>
+          </a>
+        </div>
+        <span class="pOne__desc">Код решения:</span>
         <p id="pOne"></p>
         <h3 id="Output"></h3>
     </div>
