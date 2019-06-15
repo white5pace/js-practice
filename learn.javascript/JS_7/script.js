@@ -12,51 +12,17 @@ function htmlOut(hOne, pOne, output, link) {
     document.getElementById('linkTo').style.display = "none";
   }
   document.getElementById('Output').innerHTML = "Выходящее значение: " + output;
-  function syntaxHiglights() {
-    var codeArr = pOne.split(' ');
-    console.log(codeArr);
-
-    // for (var i = 0; i < joined.length; i++){
-    //   if(joined[i] == 'function' || joined[i] == 'var' || joined[i] == 'for' || joined[i] == 'let' || joined[i] == 'if' || joined[i] == 'else' ) {
-    //     joined[i] = '<span class="keyword">' + joined[i] + '</span>';
-    //   }else if(typeof joined[i] == Number){
-    //     joined[i] = '<span class="number">' + joined[i] + '</span>';
-    //   }
-    // }
-    // console.log(codeArr.indexOf('function'));
-    // codeArr.indexOf('function');
-    var stored = [];
-    var position = codeArr.indexOf('var');
-    while(position != -1){
-      codeArr[position] = '<span class="keyword">' + codeArr[position] + '</span>';
-      position++;
-      position = codeArr.indexOf('var', position);
-    }
-    // for(var i = 0; i < codeArr.length; i++){
-    //   if(position != -1){
-    //     stored.push(codeArr[position]);
-    //     position++;
-    //     i = position;
-    //     position = codeArr.indexOf('function', position );
-    //   }else {
-    //     i = codeArr.length;
-    //   }
-    // }
-    console.log(stored);
-    // var position = codeArr.indexOf('function');
-    // console.log(position);
-    // position++;
-    // var position = codeArr.indexOf('function', position );
-    // console.log(position);
-
-
-    var str = "Widget with if(24)";
-
-    console.log(str.indexOf("if", 2)) // 12, поиск начат с позиции 2
-    return codeArr.join(' ');
+  var codeOut = document.getElementById('pOne');
+  
+  if (pOne) {
+    codeOut.style.display = 'block';
+    document.getElementsByClassName('pOne__desc')[0].style.display = 'block';
+    codeOut.innerHTML = pOne;
+    Prism.highlightElement(codeOut);
+  } else {
+    document.getElementById('pOne__desc').style.display = 'none';
+    codeOut.style.display = "none";
   }
-  document.getElementById('pOne').innerHTML = syntaxHiglights();;
-
 };
 
 // 1 Полиморфная функция formatDate
