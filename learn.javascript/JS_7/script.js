@@ -13,7 +13,7 @@ function htmlOut(hOne, pOne, output, link) {
   }
   document.getElementById('Output').innerHTML = "Выходящее значение: " + output;
   var codeOut = document.getElementById('pOne');
-  
+
   if (pOne) {
     codeOut.style.display = 'block';
     document.getElementsByClassName('pOne__desc')[0].style.display = 'block';
@@ -137,17 +137,13 @@ function exSix() {
     return function(){
       var arg = [].slice.call(arguments);
       var g = f.bind(this);
-
       // better solution
       // var savedArg = arguments;
       // var savedThis = this;
-
       setTimeout(function(){
         g.apply(null, arg);
-
         // better solution
         // f.apply(savedThis, savedArg);
-
       },ms)
     }
   }
@@ -168,6 +164,42 @@ function exSix() {
   f1000("тест"); 
   f1500("тест2"); 
 
-
   htmlOut('Функция-задержка', exSix.toString(), true , 'https://learn.javascript.ru/settimeout-setinterval#funktsiya-zaderzhka' );
+}
+
+// 7 Вызов не чаще чем в N миллисекунд
+
+function exSeven() { 
+  function debounce(f, ms) { 
+    var timer;
+
+    return function(){
+      var saveThis = this;
+      var savedArg = arguments;
+      if(timer){
+        clearTimeout(timer);
+      }
+      timer = setTimeout(function(){
+        f.apply(saveThis, savedArg);
+        timer = false;
+      }, ms);
+    }
+
+  }
+  let log = "";
+  function f(a) {
+    log += a;
+  }
+  setTimeout(function(){
+    console.log(log);
+  }, 3600);
+
+  f = debounce(f, 1000);
+  f(1)
+  f(2); 
+  setTimeout( function() { f(3) }, 1100); 
+  setTimeout( function() { f(4) }, 1200);
+  setTimeout(function() { f(5) }, 2500); 
+  
+  htmlOut('Вызов не чаще чем в N миллисекунд', exSeven.toString(), 245, 'https://learn.javascript.ru/task/debounce' );
 }
