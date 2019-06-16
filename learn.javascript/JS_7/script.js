@@ -184,7 +184,6 @@ function exSeven() {
         timer = false;
       }, ms);
     }
-
   }
   let log = "";
   function f(a) {
@@ -203,3 +202,45 @@ function exSeven() {
   
   htmlOut('Вызов не чаще чем в N миллисекунд', exSeven.toString(), 245, 'https://learn.javascript.ru/task/debounce' );
 }
+
+// 8 Тормозилка
+
+function exEight() { 
+  function throttle(f,ms){
+    var lastValue, 
+        Interval, 
+        started, 
+        lastCalled;
+    return function(a){
+      var savedThis = this;
+      if(!started){
+        f(a);
+        started = true;
+      }
+      if(!Interval){
+        Interval = setInterval(function(){
+          if(lastCalled != lastValue){
+            f.call(savedThis, lastValue);
+            lastCalled = lastValue;
+          }
+        }, ms);
+      }
+      lastValue = a;
+    }
+  }
+  var f = function(a) {
+    console.log(a);
+  };
+
+  var f1000 = throttle(f, 1000);
+  
+  f1000(1); 
+  f1000(2); 
+  f1000(3); 
+  setTimeout( function() { f1000(4); }, 1100);
+  setTimeout( function() { f1000(5); }, 1200);
+  setTimeout( function() { f1000(6); }, 1900);
+  
+  htmlOut('Тормозилка', exEight.toString(), 136, 'https://learn.javascript.ru/task/throttle' );
+}
+
