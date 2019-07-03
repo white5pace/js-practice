@@ -244,3 +244,15 @@ function exEight() {
   htmlOut('Тормозилка', exEight.toString(), 136, 'https://learn.javascript.ru/task/throttle' );
 }
 
+// 8 Eval-калькулятор
+
+function exNine() { 
+
+  var a = prompt('Напиши выражение','25*4/5');
+  
+  console.log(eval(a));
+  htmlOut('Eval-калькулятор', exNine.toString(), eval(a), 'https://learn.javascript.ru/task/throttle' );
+}
+
+
+
