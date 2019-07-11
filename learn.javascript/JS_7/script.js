@@ -244,15 +244,27 @@ function exEight() {
   htmlOut('Тормозилка', exEight.toString(), 136, 'https://learn.javascript.ru/task/throttle' );
 }
 
-// 8 Eval-калькулятор
+// 9 Eval-калькулятор
 
 function exNine() { 
+  var a, result;
 
-  var a = prompt('Напиши выражение','25*4/5');
-  
-  console.log(eval(a));
-  htmlOut('Eval-калькулятор', exNine.toString(), eval(a), 'https://learn.javascript.ru/task/throttle' );
+  while(true){
+    a = prompt('Напиши выражение','0/0');
+    if(a == null) break;
+
+    try {
+      result = eval(a);
+      if(isNaN(result)){
+        throw new SyntaxError("NaN");
+      }
+
+      break;
+    } catch(e){
+      alert(e.name + ' ' + e.message + '\n \n' +'ПРОВЕРЬТЕ ВЫРАЖЕНИЕ');
+    }
+  }
+  alert(result);
+
+  htmlOut('Eval-калькулятор', exNine.toString(),  'https://learn.javascript.ru/task/eval-calculator-errors' );
 }
-
-
-
