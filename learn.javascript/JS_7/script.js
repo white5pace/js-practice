@@ -266,5 +266,5 @@ function exNine() {
   }
   alert(result);
 
-  htmlOut('Eval-калькулятор', exNine.toString(),  'https://learn.javascript.ru/task/eval-calculator-errors' );
+  htmlOut('Eval-калькулятор', exNine.toString(), result,  'https://learn.javascript.ru/task/eval-calculator-errors' );
 }
