@@ -1,6 +1,6 @@
 'use strict';
 
-// Некоторые другие возможности
+// ООП в функциональном стиле
 
 
 function htmlOut(hOne, pOne, output, link) {
@@ -287,5 +287,305 @@ function exSix() {
 
 
   htmlOut('Добавить метод isRunning', exSix.toString(), 'Кофе готов: 150 мл', 'https://learn.javascript.ru/task/coffeemachine-add-isrunning' );
+}
+
+// 7 Запускать только при включённой кофеварке
+
+function exSeven() {
+  function Machine(power) {
+    this._enabled = false;
+
+    this.enable = function() {
+      this._enabled = true;
+    };
+
+    this.disable = function() {
+      this._enabled = false;
+    };
+  }
+
+  function CoffeeMachine(power) {
+    Machine.apply(this, arguments);
+
+    var waterAmount = 0;
+
+    this.setWaterAmount = function(amount) {
+      waterAmount = amount;
+    };
+
+    function onReady() {
+      alert('Кофе готово!');
+    }
+
+    this.run = function() {
+      if(this._enabled){
+        setTimeout(onReady, 1000);
+      } else {
+        throw Error('ошибка, кофеварка выключена');
+      }
+    };
+
+  }
+  var coffeeMachine = new CoffeeMachine(10000);
+  coffeeMachine.run(); // ошибка, кофеварка выключена!
+
+  htmlOut('Запускать только при включённой кофеварке', exSeven.toString(), 'True', 'https://learn.javascript.ru/task/coffeemachine-fix-run' );
+}
+
+// 8 Останавливать кофеварку при выключении
+
+function exEight() {
+  function Machine(power) {
+    this._enabled = false;
+
+    this.enable = function() {
+      this._enabled = true;
+    };
+
+    this.disable = function() {
+      this._enabled = false;
+    };
+  }
+
+  function CoffeeMachine(power) {
+    Machine.apply(this, arguments);
+    var timerId;
+
+    var waterAmount = 0;
+
+    this.setWaterAmount = function(amount) {
+      waterAmount = amount;
+    };
+
+    function onReady() {
+      alert('Кофе готово!');
+    }
+
+    this.run = function() {
+      if(this._enabled){
+        timerId = setTimeout(onReady, 1000);
+      } else {
+        throw Error('ошибка, кофеварка выключена');
+      }
+    };
+    var parentDisable = this.disable;
+    this.disable = function() {
+      parentDisable.call(this);
+      if(!!timerId) {
+        clearTimeout(timerId);
+      }
+
+    }
+
+  }
+  var coffeeMachine = new CoffeeMachine(10000);
+  coffeeMachine.enable();
+  coffeeMachine.run();
+  coffeeMachine.disable(); // остановит работу, ничего не выведет
+
+  htmlOut('Останавливать кофеварку при выключении', exEight.toString(), 'True', 'https://learn.javascript.ru/task/coffeemachine-disable-stop' );
+}
+
+// 9 Унаследуйте холодильник
+
+function exNine() {
+  function Machine(power) {
+    this._power = power;
+    this._enabled = false;
+  
+    var self = this;
+  
+    this.enable = function() {
+      self._enabled = true;
+    };
+  
+    this.disable = function() {
+      self._enabled = false;
+    };
+  }
+  function Fridge(power) {
+    Machine.apply(this, arguments);
+    var food = [];
+    var capacity = this._power / 100;
+    this.addFood = function() {
+      if(!this._enabled){
+        throw Error('Вы не можете добвать еду, холодильник выключен');
+      }
+      if(food.length + arguments.length > capacity) {
+        throw Error('слишком много еды');
+      }
+      for(var i of arguments) {
+        food.push(i);
+      }
+    }
+    this.getFood = function(){
+      var foodrevision = [];
+      for(var i of food){
+        foodrevision.push(i);
+      }
+      return foodrevision;
+      // return food.slice();
+    }
+  }
+  var fridge = new Fridge(500);
+  fridge.enable();
+  fridge.addFood("котлета");
+  fridge.addFood("сок", "варенье");
+  
+  var fridgeFood = fridge.getFood();
+  console.log( fridgeFood ); // котлета, сок, варенье
+  
+  // добавление элементов не влияет на еду в холодильнике
+  fridgeFood.push("вилка", "ложка");
+  
+  console.log( fridge.getFood() ); // внутри по-прежнему: котлета, сок, варенье
+
+  htmlOut('Унаследуйте холодильник', exNine.toString(), 'True', 'https://learn.javascript.ru/task/inherit-fridge' );
+}
+
+// 10 Добавьте методы в холодильник
+
+function exTen() {
+  function Machine(power) {
+    this._power = power;
+    this._enabled = false;
+  
+    var self = this;
+  
+    this.enable = function() {
+      self._enabled = true;
+    };
+  
+    this.disable = function() {
+      self._enabled = false;
+    };
+  }
+  function Fridge(power) {
+    Machine.apply(this, arguments);
+    var food = [];
+    var capacity = this._power / 100;
+    this.addFood = function() {
+      if(!this._enabled){
+        throw Error('Вы не можете добвать еду, холодильник выключен');
+      }
+      if(food.length + arguments.length > capacity) {
+        throw Error('слишком много еды');
+      }
+      for(var i of arguments) {
+        food.push(i);
+      }
+    }
+    this.getFood = function(){
+      return food.slice();
+    }
+    this.removeFood = function(item){
+      for(var i = 0; i < food.length; i++){
+        if(food[i] == item){
+          food.splice(i, 1);
+        }
+      }
+      // var idx = food.indexOf(item);
+      // if (idx != -1) food.splice(idx, 1);
+    }
+    this.filterFood = function(func) {
+      var filteredFood = [];
+      for(var i of food){
+        if(func(i)){
+          filteredFood.push(i);
+        }
+      }
+      //  return food.filter(filter);
+      return filteredFood;
+    }
+  }
+  var fridge = new Fridge(500);
+  fridge.enable();
+  fridge.addFood({
+    title: "котлета",
+    calories: 100
+  });
+  fridge.addFood({
+    title: "сок",
+    calories: 30
+  });
+  fridge.addFood({
+    title: "зелень",
+    calories: 10
+  });
+  fridge.addFood({
+    title: "варенье",
+    calories: 150
+  });
+
+  fridge.removeFood("нет такой еды"); // без эффекта
+  console.log( fridge.getFood().length ); // 4
+  console.log(fridge.getFood());
+
+  var dietItems = fridge.filterFood(function(item) {
+    return item.calories < 50;
+  });
+
+  dietItems.forEach(function(item) {
+    console.log( item.title ); // сок, зелень
+    fridge.removeFood(item);
+  });
+  
+  console.log( fridge.getFood().length ); // 2
+
+  htmlOut('Добавьте методы в холодильник', exTen.toString(), 'True', 'https://learn.javascript.ru/task/add-methods-fridge' );
+}
+
+
+// 11 Переопределите disable
+
+function exEleven() {
+  function Machine(power) {
+    this._power = power;
+    this._enabled = false;
+  
+    var self = this;
+  
+    this.enable = function() {
+      self._enabled = true;
+    };
+  
+    this.disable = function() {
+      self._enabled = false;
+    };
+  }
+  function Fridge(power) {
+    Machine.apply(this, arguments);
+    var food = [];
+    var capacity = this._power / 100;
+
+    this.addFood = function() {
+      if(!this._enabled){
+        throw Error('Вы не можете добвать еду, холодильник выключен');
+      }
+      if(food.length + arguments.length > capacity) {
+        throw Error('слишком много еды');
+      }
+      for(var i of arguments) {
+        food.push(i);
+      }
+    }
+    this.getFood = function(){
+      return food.slice();
+    }
+    var parentDisable = this.disable;
+    this.disable = function() {
+      if(food.length){
+        throw Error('ошибка, в холодильнике есть еда');
+      }
+      parentDisable();
+
+
+    }
+  }
+  var fridge = new Fridge(500);
+  fridge.enable();
+  fridge.addFood("кус-кус");
+  fridge.disable(); // ошибка, в холодильнике есть еда
+  htmlOut('Переопределите disable', exEleven.toString(), 'True', 'https://learn.javascript.ru/task/override-disable' );
 }
 
