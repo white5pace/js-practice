@@ -116,32 +116,149 @@ function exFour() {
   htmlOut('Добавить функциям defer с аргументами', exFour.toString(), true, 'https://learn.javascript.ru/task/defer-to-prototype-extended' );
 }
 
-// 5 Создать сеттер для onReady
+// 5 Перепишите в виде класса
 
 function exFive() {
+  function CoffeeMachine(power) {
+    this._waterAmount = 0;
+    this._WATER_HEAT_CAPACITY = 4200;
+    this._power = power;
+  }
+  // свойства и методы для всех объектов класса
+  // CoffeeMachine.prototype.WATER_HEAT_CAPACITY = 4200;
+  
+  CoffeeMachine.prototype.getTimeToBoil = function(){
+    return this._waterAmount * this._WATER_HEAT_CAPACITY * 80 / this._power;
+  }
+  CoffeeMachine.prototype.run = function(){
+    setTimeout(function() {
+      alert( 'Кофе готов!' );
+    }, this.getTimeToBoil());
+  }
+  CoffeeMachine.prototype.setWaterAmount = function(amount){
+    this._waterAmount = amount;
+  }
+  
+  var coffeeMachine = new CoffeeMachine(10000);
+  coffeeMachine.setWaterAmount(50);
+  coffeeMachine.run();
 
-  htmlOut('Создать сеттер для onReady', exFive.toString(), 'Кофе готов: 150 мл', 'https://learn.javascript.ru/task/setter-onready' );
+  htmlOut('Перепишите в виде класса', exFive.toString(), 'Кофе готов', 'https://learn.javascript.ru/task/rewrite-by-class' );
 }
 
-// 6 Добавить метод isRunning
+// 6 Хомяки с __proto__
 
 function exSix() {
+  function Hamster() {
+    this.food = [];
+  }
 
-  htmlOut('Добавить метод isRunning', exSix.toString(), 'Кофе готов: 150 мл', 'https://learn.javascript.ru/task/coffeemachine-add-isrunning' );
+  // Hamster.prototype.food = []; // пустой "живот"
+  
+  Hamster.prototype.found = function(something) {
+    this.food.push(something);
+  };
+  
+  // Создаём двух хомяков и кормим первого
+  var speedy = new Hamster();
+  var lazy = new Hamster();
+  
+  speedy.found("яблоко");
+  speedy.found("орех");
+  
+  alert( speedy.food.length ); // 2
+  alert( lazy.food.length ); // 2 (!??)
+  htmlOut('Хомяки с __proto__', exSix.toString(), 'Кофе готов: 150 мл', 'https://learn.javascript.ru/task/hamsters-with-proto' );
 }
 
-// 7 Запускать только при включённой кофеварке
+// 7 Класс "часы"
 
 function exSeven() {
+  function Clock(options){
+    this._template = options.template;
+  }
 
-  htmlOut('Запускать только при включённой кофеварке', exSeven.toString(), 'True', 'https://learn.javascript.ru/task/coffeemachine-fix-run' );
+  Clock.prototype._render = function(now) {
+    var options = {
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric'
+    };
+    var now = new Date();
+    var toLocal = now.toLocaleString('ru', options);
+    var splitedDate = toLocal.split(':');
+    var output = this._template.replace('h', splitedDate[0]).replace('m', splitedDate[1]).replace('s', splitedDate[2]);
+    console.log(output);
+  }
+  Clock.prototype.start = function(){
+    this._render();
+    var self = this;
+    var timerId = setTimeout(function tick(){
+      self._render();
+      timerId = setTimeout(tick, 1000);
+    },1000);
+  };
+
+  var clock = new Clock({
+    template: 'h:m:s'
+  });
+  clock.start();
+
+  htmlOut('Класс часы', exSeven.toString(), 'True', 'https://learn.javascript.ru/task/clock-class' );
 }
 
-// 8 Останавливать кофеварку при выключении
+// 8 Класс "расширенные часы"
 
 function exEight() {
+  function Clock(options){
+    this._template = options.template;
+  }
 
-  htmlOut('Останавливать кофеварку при выключении', exEight.toString(), 'True', 'https://learn.javascript.ru/task/coffeemachine-disable-stop' );
+  Clock.prototype._render = function(now) {
+    var options = {
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric'
+    };
+    var now = new Date();
+    var toLocal = now.toLocaleString('ru', options);
+    var splitedDate = toLocal.split(':');
+    var output = this._template.replace('h', splitedDate[0]).replace('m', splitedDate[1]).replace('s', splitedDate[2]);
+    console.log(output);
+  }
+  Clock.prototype.start = function(){
+    this._render();
+    var self = this;
+    var timerId = setTimeout(function tick(){
+      self._render();
+      timerId = setTimeout(tick, 1000);
+    },1000);
+  };
+
+  function ExtendedClock(options){
+    Clock.apply(this, arguments);
+    this._precision = +options.precision || 1000;
+  }
+
+  ExtendedClock.prototype = Object.create(Clock.prototype);
+  ExtendedClock.prototype.constructor = ExtendedClock;
+  ExtendedClock.prototype.start = function(){
+    var savedThis = this;
+    this._render();
+    var timerId = setTimeout(function tick(){
+      savedThis._render();
+      timerId = setTimeout(tick, savedThis._precision);
+    },this._precision);
+  }
+
+
+  var extendedClock = new ExtendedClock({
+      template: 'h:m:s',
+      precision: 2000
+  });
+
+  extendedClock.start();
+  htmlOut('Класс "расширенные часы"', exEight.toString(), 'True', 'https://learn.javascript.ru/task/clock-class-extended' );
 }
 
 // 9 Унаследуйте холодильник
