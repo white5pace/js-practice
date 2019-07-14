@@ -261,11 +261,86 @@ function exEight() {
   htmlOut('Класс "расширенные часы"', exEight.toString(), 'True', 'https://learn.javascript.ru/task/clock-class-extended' );
 }
 
-// 9 Унаследуйте холодильник
+// 9 Меню с таймером для анимации
 
 function exNine() {
+  function Menu(state) {
+    this._state = state || Menu.STATE_CLOSED;
+  };
+  
+  Menu.STATE_OPEN = 1;
+  Menu.STATE_CLOSED = 0;
+  
+  Menu.prototype.open = function() {
+    this._state = Menu.STATE_OPEN;
+  };
+  
+  Menu.prototype.close = function() {
+    this._state = Menu.STATE_CLOSED;
+  };
+  
+  Menu.prototype._stateAsString = function() {
+    switch (this._state) {
+      case Menu.STATE_OPEN:
+        return 'открыто';
+  
+      case Menu.STATE_CLOSED:
+        return 'закрыто';
+    }
+  };
+  Menu.prototype.showState = function() {
+    console.log(this._stateAsString());
+  };
 
-  htmlOut('Унаследуйте холодильник', exNine.toString(), 'True', 'https://learn.javascript.ru/task/inherit-fridge' );
+  function AnimatingMenu(state) {
+    Menu.apply(this, arguments);  
+  }
+
+  AnimatingMenu.STATE_ANIMATING = 2;
+
+  AnimatingMenu.prototype = Object.create(Menu.prototype);
+
+  AnimatingMenu.prototype.open = function(){
+    var self = this;
+
+    this._state = this.STATE_ANIMATING;
+
+    this._timer = setTimeout(function(){
+      Menu.prototype.open.apply(self, arguments);
+    },1000)
+    
+  }
+
+  AnimatingMenu.prototype.close = function() {
+    clearTimeout(this._timer);
+    Menu.prototype.close.apply(this);
+  };
+
+  AnimatingMenu.prototype._stateAsString = function() {
+
+    switch (this._state) {
+      case this.STATE_ANIMATING:
+        return 'анимация';
+
+      default:
+        return Menu.prototype._stateAsString.call(this);
+    }
+  };
+  var animatingMenu = new AnimatingMenu();
+  
+  animatingMenu.showState(); // закрыто
+
+  animatingMenu.open();
+  animatingMenu.showState(); // анимация
+
+  setTimeout(function() {
+    animatingMenu.showState(); // открыто
+
+    animatingMenu.close();
+    animatingMenu.showState(); // закрыто (закрытие без анимации)
+  }, 1000);
+  
+  htmlOut('Меню с таймером для анимации', exNine.toString(), 'True', 'https://learn.javascript.ru/task/menu-timer-animated' );
 }
 
 // 10 Добавьте методы в холодильник
