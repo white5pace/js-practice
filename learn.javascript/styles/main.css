@@ -84,3 +84,47 @@ h2 {
 .keyword {
   color: #07a;
 }
+.chapter-header {
+  margin-bottom: 16px;
+}
+.ex-window {
+  border-top: 2px solid #eee;
+  padding: 16px 0;
+}
+.ex-window h2 {
+  margin-bottom: 10px;
+}
+
+.ex-row {
+  display: flex;
+  
+}
+.ex-body, .ex-code {
+  width: 50%;
+  background: #f5f2f0;
+}
+.ex-body {
+  padding: 20px;
+}
+.ex-code {
+  display: flex;
+  justify-content: center;
+}
+.start-button {
+  height: auto;
+  width: auto;
+  padding: 10px 20px;
+  border-radius: 10px;
+  align-self: center;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  background: rgb(56, 106, 180);
+}
+#diagonal-table {
+  border-collapse: collapse;
+}
+#diagonal-table td {
+  border: 1px solid black;
+  padding: 3px 5px;
+}
