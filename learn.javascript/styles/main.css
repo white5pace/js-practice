@@ -97,11 +97,15 @@ h2 {
 
 .ex-row {
   display: flex;
-  
+  flex-wrap: wrap;
+  justify-content: center;
 }
+
 .ex-body, .ex-code {
   width: 50%;
   background: #f5f2f0;
+  min-width: 550px;
+  box-sizing: border-box;
 }
 .ex-body {
   padding: 20px;
@@ -109,6 +113,7 @@ h2 {
 .ex-code {
   display: flex;
   justify-content: center;
+  min-height: 100px;
 }
 .start-button {
   height: auto;
@@ -127,4 +132,11 @@ h2 {
 #diagonal-table td {
   border: 1px solid black;
   padding: 3px 5px;
+}
+@media only screen and (max-width: 1200px){
+  .ex-body, .ex-code {
+    width: 100%;
+    min-width: auto;
+    margin-bottom: 16px;
+  }
 }

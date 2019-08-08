@@ -64,7 +64,7 @@ function exThree() {
     console.log(searchInputs[0])
     console.log(searchInputs[1])
   }
-  htmlOut(perform, exTwo.toString(),execution, 'https://learn.javascript.ru/task/search-algorithm' );
+  htmlOut(perform, exThree.toString(),execution, 'https://learn.javascript.ru/task/search-algorithm' );
 }
 exThree();
 
