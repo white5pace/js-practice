@@ -68,4 +68,18 @@ function exThree() {
 }
 exThree();
 
+// 1.5 Считаем потомков
+
+function exFour() {
+  let ex = document.getElementById('1.5');
+  let exBody = ex.children[1].children[0];
+  let perform = ex.children[1].children[1];
+  // console.log(exBody.querySelector('li'));
+  console.log(exBody.querySelectorAll('ul'));
+  function execution() {
+    
+  }
+  htmlOut(perform, exFour.toString(),execution, 'https://learn.javascript.ru/task/search-algorithm' );
+}
+exFour();
   

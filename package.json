@@ -1,0 +1,23 @@
+{
+  "name": "js-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/white5pace/js-practice.git"
+  },
+  "author": "white5pace",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/white5pace/js-practice/issues"
+  },
+  "homepage": "https://github.com/white5pace/js-practice#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2"
+  }
+}
