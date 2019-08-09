@@ -11,7 +11,7 @@ gulp.task('browser-sync', function(){
 });
 
 gulp.task('watch', function(){
-  gulp.watch('learn-javascript/*.html', browserSync.reload());
-  gulp.watch('learn-javascript/**/*.js', browserSync.reload());
+  gulp.watch("learn-javascript/**/*.html").on('change', browserSync.reload);
+  gulp.watch("learn-javascript/**/*.js").on('change', browserSync.reload);
 });
-gulp.task('default', gulp.parallel('watch', 'browser-sync'))
+gulp.task('default', gulp.parallel('watch', 'browser-sync'));

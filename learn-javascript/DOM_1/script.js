@@ -74,12 +74,27 @@ function exFour() {
   let ex = document.getElementById('1.5');
   let exBody = ex.children[1].children[0];
   let perform = ex.children[1].children[1];
-  // console.log(exBody.querySelector('li'));
-  console.log(exBody.querySelectorAll('ul'));
   function execution() {
-    
+    for(let li of exBody.querySelectorAll('li')) {
+      console.log(li.firstChild.data.trim() + ": " + li.getElementsByTagName('li').length)
+    }
   }
   htmlOut(perform, exFour.toString(),execution, 'https://learn.javascript.ru/task/search-algorithm' );
 }
 exFour();
+
+// 1.6 Получите атрибут
+
+function exFive() {
+  let ex = document.getElementById('1.6');
+  let exBody = ex.children[1].children[0];
+  let perform = ex.children[1].children[1];
+  function execution() {
+    var atr = exBody.querySelector('[data-widget-name]');
+    console.log(atr.dataset.widgetName);
+  }
+
+  htmlOut(perform, exFive.toString(),execution, 'https://learn.javascript.ru/task/search-algorithm' );
+}
+exFive();
   
