@@ -97,4 +97,32 @@ function exFive() {
   htmlOut(perform, exFive.toString(),execution, 'https://learn.javascript.ru/task/search-algorithm' );
 }
 exFive();
+
+// 1.7 Сделайте внешние ссылки оранжевыми
+
+function exSix() {
+  let ex = document.getElementById('1.7');
+  let exBody = ex.children[1].children[0];
+  let perform = ex.children[1].children[1];
+  let links = exBody.querySelector('ul').querySelectorAll('a');
+  for (let link of links) {
+    let address = link.getAttribute('href');
+    let external = false;
+    for (let i = 0; i < address.length; i++){
+      if(address[i] == ':'){
+        external = true;
+      }
+    }
+    if(external && address.slice(0,19) != 'http://internal.com') {
+      link.style.color = 'orange';
+    }
+  }
+
+  function execution() {
+
+  }
+
+  htmlOut(perform, exSix.toString(),execution, 'https://learn.javascript.ru/task/search-algorithm' );
+}
+exSix();
   
