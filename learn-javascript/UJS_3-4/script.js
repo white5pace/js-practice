@@ -28,6 +28,10 @@ function htmlOut(hOne, pOne, output, link) {
 // 4.1.1 Привет, object
 
 function exOne() {
-
-  htmlOut('Привет, object', exTwo.toString(),admin , 'https://learn.javascript.ru/variables#tasks' );
+  
+  htmlOut( 'Привет, object',
+   exOne.toString(),
+   true,
+    'https://learn.javascript.ru/variables#tasks' 
+  );
 }
