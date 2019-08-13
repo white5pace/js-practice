@@ -17,5 +17,7 @@ module.exports = {
   'rules': {
     'require-jsdoc': 0,
     'no-unused-vars': 0,
+    'prefer-const': 0,
+    'guard-for-in': 0,
   },
 };
