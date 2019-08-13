@@ -17,10 +17,5 @@ module.exports = {
   'rules': {
     'require-jsdoc': 0,
     'no-unused-vars': 0,
-    // "linebreak-style": 0,
-    //  eslint-disable: linebreak-style 
-/* eslint-disable prefer-const 
-/* eslint-disable no-unused-vars */
-/* eslint-disable require-jsdoc */
   },
 };
