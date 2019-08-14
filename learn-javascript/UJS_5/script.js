@@ -25,7 +25,7 @@ function htmlOut(hOne, pOne, output, link) {
   }
 };
 
-// 5.1.1 Сумма пользовательских чисел
+// 5.2.1 Сумма пользовательских чисел
 
 function exOne() {
   let a = +prompt('a?', 0);
@@ -38,7 +38,7 @@ function exOne() {
   );
 }
 
-// 5.1.3 Ввод числового значения
+// 5.2.3 Ввод числового значения
 
 function exTwo() {
   function readNumber() {
@@ -57,7 +57,7 @@ function exTwo() {
   );
 }
 
-// 5.1.5 Случайное число от min до max
+// 5.2.5 Случайное число от min до max
 
 function exThree() {
   function random(min, max) {
@@ -73,7 +73,7 @@ function exThree() {
   );
 }
 
-// 5.1.5 Случайное целое число от min до max
+// 5.2.5 Случайное целое число от min до max
 
 function exFour() {
   function randomInteger(min, max) {
@@ -89,4 +89,70 @@ function exFour() {
       'https://learn.javascript.ru/task/repeat-until-number'
   );
 }
-exFour();
+
+// 5.3.1 Сделать первый символ заглавным
+
+function exFive() {
+  let ucFirst = (str) => {
+    if (!str) return str;
+    return str[0].toUpperCase() + str.slice(1);
+  };
+  console.log(ucFirst('вася'));
+  htmlOut( 'Сделать первый символ заглавным',
+      exFive.toString(),
+      ucFirst('вася'),
+      'https://learn.javascript.ru/task/ucfirst'
+  );
+}
+
+// 5.3.2 Проверка на спам
+
+function exSix() {
+  let checkSpam = (str) => {
+    return str.toLowerCase().includes('viagra') ||
+      str.toLowerCase().includes('xxx');
+  };
+  console.log(checkSpam('buy ViAgRA now') == true);
+  console.log(checkSpam('free xxxxx') == true);
+  console.log(checkSpam('innocent rabbit') == false);
+
+  htmlOut( 'Проверка на спам',
+      exSix.toString(),
+      1,
+      'https://learn.javascript.ru/task/check-spam'
+  );
+}
+
+// 5.3.3 Усечение строки
+
+function exSeven() {
+  let truncate = (str, maxLen) => {
+    if (str.length > maxLen) {
+      return str.slice(0, maxLen - 1) + '\u{2026}';
+    }
+    return str;
+  };
+
+  console.log(truncate('Вот, что мне хотелось бы сказать на эту тему:', 20));
+  console.log(truncate('Всем привет!', 20));
+
+  htmlOut( 'Усечение строки',
+      exSeven.toString(),
+      1,
+      'https://learn.javascript.ru/task/truncate'
+  );
+}
+
+// 5.3.4 Выделить число
+
+function exEight() {
+  let extractCurrencyValue = (str) => {
+    return +str.slice(1);
+  };
+  console.log( extractCurrencyValue('$120') === 120 );
+  htmlOut( 'Выделить число',
+      exEight.toString(),
+      1,
+      'https://learn.javascript.ru/task/extract-currency'
+  );
+}
