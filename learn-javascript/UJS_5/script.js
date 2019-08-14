@@ -156,3 +156,60 @@ function exEight() {
       'https://learn.javascript.ru/task/extract-currency'
   );
 }
+
+// 5.4.2 Операции с массивами
+
+function exNine() {
+  let styles = ['Джаз', 'Блюз'];
+  styles[styles.length] = 'Рок-н-ролл';
+  console.log(styles);
+
+  console.log(styles.length);
+  styles[Math.floor((styles.length - 1) / 2)] = 'Классика';
+  console.log(styles);
+  console.log(styles.shift());
+  console.log(styles);
+  styles.unshift('Рэп', 'Регги');
+  console.log(styles);
+  htmlOut( 'Операции с массивами',
+      exNine.toString(),
+      1,
+      'https://learn.javascript.ru/task/create-array'
+  );
+}
+
+// 5.4.4 Сумма введённых чисел
+
+function exTen() {
+  let sumInput = () => {
+    let inputNumbers = [];
+    while (true) {
+      let inputNumber = prompt('Введите число', '');
+      if (inputNumber == '' ||
+        inputNumber == null ||
+        !isFinite(inputNumber)) break;
+      inputNumbers.push(+inputNumber);
+    }
+
+    let sum = 0;
+    for (let inputNumber of inputNumbers) {
+      sum += inputNumber;
+    }
+    return sum;
+  };
+  console.log(sumInput());
+  htmlOut( 'Сумма введённых чисел',
+      exTen.toString(),
+      1,
+      'https://learn.javascript.ru/task/array-input-sum'
+  );
+}
+
+// 5.4.5 Подмассив наибольшей суммы
+function exEleven() {
+  htmlOut( 'Подмассив наибольшей суммы',
+      exEleven.toString(),
+      'Еще не решил',
+      'https://learn.javascript.ru/task/maximal-subarray'
+  );
+}
