@@ -29,8 +29,15 @@ h1 {
 }
 .list-sub__item {
   margin: 0;
+  width: 30%;
+  box-sizing: border-box;
   padding-right: 20px;
   margin-bottom: 10px;
+}
+@media only screen and (max-width: 1200px){
+  .list-sub__item {
+    width: 50%
+  }
 }
 .number {
   font-size: 12px;
