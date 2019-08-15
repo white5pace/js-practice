@@ -2,7 +2,6 @@
 
 // ООП в прототипном стиле
 
-
 function htmlOut(hOne, pOne, output, link) {
   document.getElementById('hOne').innerHTML = hOne;
   if (link) {
@@ -488,3 +487,60 @@ function exTwentyThree() {
       'https://learn.javascript.ru/task/array-unique'
   );
 }
+
+// 5.7.1 Фильтрация уникальных элементов массива
+
+function exTwentyFour() {
+  function unique(arr) {
+    return Array.from(new Set(arr));
+  }
+
+  let values = ['Hare', 'Krishna', 'Hare', 'Krishna',
+    'Krishna', 'Krishna', 'Hare', 'Hare', ':-O',
+  ];
+
+  console.log( unique(values) ); // Hare, Krishna, :-
+  htmlOut( 'Фильтрация уникальных элементов массива',
+      exTwentyFour.toString(),
+      unique(values),
+      'https://learn.javascript.ru/task/array-unique'
+  );
+}
+
+// 5.7.2 Фильтрация уникальных элементов массива
+
+function exTwentyFive() {
+  let arr = ['nap', 'teachers', 'cheaters', 'PAN', 'ear', 'era', 'hectares'];
+  function aclean(arr) {
+    for (let i = 0; i < arr.length; i++) {
+      let current = new Set(arr[i].toLowerCase());
+      for (let j = i+1; j < arr.length; j++) {
+        let checking = arr[j].toLowerCase;
+        let counter = 0;
+        for (let z = 0; z < checking.length; z++) {
+          if (current.has(checking[z])) counter++;
+        }
+        if(counter == checking.length)
+      }
+    }
+    // Завтра добавить сначала проверку на длину слова, потом внутр проверка каждой буквы, 
+    // Это ускорит алгоритм
+    let firstValue = arr[0];
+    let secondValue = arr[3].toLowerCase();
+    let FS = new Set(firstValue);
+    let counter = 0;
+    for (let i = 0; i < secondValue.length; i++) {
+      console.log('hi')
+      if (FS.has(secondValue[i])) counter++;
+    }
+    console.log(FS);
+    console.log(counter);
+  }
+  console.log( aclean(arr) ); // "nap,teachers,ear" or "PAN,cheaters,era"
+  htmlOut( 'Фильтрация уникальных элементов массива',
+      exTwentyFive.toString(),
+      unique(values),
+      'https://learn.javascript.ru/task/array-unique'
+  );
+}
+exTwentyFive();
