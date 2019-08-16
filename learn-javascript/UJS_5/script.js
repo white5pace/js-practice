@@ -652,3 +652,173 @@ function exThirty() {
       'https://learn.javascript.ru/task/count-properties'
   );
 }
+
+// 5.10.1 Деструктурирующее присваивание
+
+function exThirtyOne() {
+  let user = {
+    name: 'John',
+    years: 30,
+  };
+  let {name, years: age, isAdmin = false} = user;
+  console.log( name );
+  console.log( age );
+  console.log( isAdmin );
+  htmlOut( 'Деструктурирующее присваивание',
+      exThirtyOne.toString(),
+      count(user),
+      'https://learn.javascript.ru/task/destruct-user'
+  );
+}
+
+// 5.10.2 Максимальная зарплата
+
+function exThirtyTwo() {
+  let salaries = {
+    'John': 100,
+    'Pete': 300,
+    'Mary': 250,
+  };
+  let topSalary = (obj) => {
+    let top = null;
+    for (let [key, value] of Object.entries(salaries)) {
+      if (!top || top[1] < value) {
+        top = [key, value];
+      }
+    }
+    return top ? top[0] : top;
+  };
+  console.log(topSalary(salaries));
+
+  htmlOut( 'Максимальная зарплата',
+      exThirtyTwo.toString(),
+      topSalary(salaries),
+      'https://learn.javascript.ru/task/max-salary'
+  );
+}
+
+// 5.11.1 Создайте дату
+
+function exThirtyThree() {
+  let date = new Date(2012, 1, 20, 3, 12);
+  console.log(date);
+  htmlOut( 'Создайте дату',
+      exThirtyThree.toString(),
+      date,
+      'https://learn.javascript.ru/task/new-date'
+  );
+}
+
+// 5.11.2 Покажите день недели
+
+function exThirtyFour() {
+  let date = new Date(2012, 0, 3);
+  function getWeekDay(date) {
+    let weekDays = new Map([[0, 'ВС'], [1, 'ПН'],
+      [2, 'ВТ'], [3, 'СР'],
+      [4, 'ЧТ'], [5, 'ПТ'], [6, 'СБ']]);
+    return weekDays.get(date.getDay());
+  }
+  console.log(getWeekDay(date));
+  htmlOut( 'Покажите день недели',
+      exThirtyFour.toString(),
+      getWeekDay(date),
+      'https://learn.javascript.ru/task/get-week-day'
+  );
+}
+
+// 5.11.3 День недели в европейской нумерации
+
+function exThirtyFive() {
+  let date = new Date(2012, 0, 3);
+  // console.log(getLocalDay(date));
+  let getLocalDay = (date) => {
+    if (date.getDay() == 0) return 7;
+    return date.getDay();
+  };
+  console.log(getLocalDay(date));
+  htmlOut( 'День недели в европейской нумерации',
+      exThirtyFive.toString(),
+      1,
+      'https://learn.javascript.ru/task/weekday'
+  );
+}
+
+// 5.11.4 Какой день месяца был много дней назад?
+
+function exThirtySix() {
+  let date = new Date(2015, 0, 2);
+
+  function getDateAgo(date, days) {
+    let dateCopy = new Date(date);
+
+    dateCopy.setDate(date.getDate() - days);
+    return dateCopy.getDate();
+  }
+
+  console.log( getDateAgo(date, 1) ); // 1, (1 Jan 2015)
+  console.log( getDateAgo(date, 2) ); // 31, (31 Dec 2014)
+  console.log( getDateAgo(date, 365) ); // 2, (2 Jan 2014)
+
+  htmlOut( 'Какой день месяца был много дней назад?',
+      exThirtySix.toString(),
+      getDateAgo(date, 365),
+      'https://learn.javascript.ru/task/get-date-ago'
+  );
+}
+
+// 5.11.5 Последнее число месяца?
+
+function exThirtySeven() {
+  function getLastDayOfMonth(year, month) {
+    let savedDate = new Date(year, month);
+    savedDate.setMonth(savedDate.getMonth() + 1);
+    savedDate.setDate(savedDate.getDate() - 1);
+    return savedDate.getDate();
+  }
+
+  console.log(getLastDayOfMonth(2012, 1));
+
+  htmlOut( 'Последнее число месяца?',
+      exThirtySeven.toString(),
+      getLastDayOfMonth(2012, 1),
+      'https://learn.javascript.ru/task/last-day-of-month'
+  );
+}
+
+// 5.11.6 Сколько сегодня прошло секунд?
+
+function exThirtyEight() {
+  function getSecondsToday() {
+    let now = new Date();
+    let startDay = new Date();
+    startDay.setHours(0, 0, 0,);
+
+    return Math.round((now - startDay) / 1000);
+  }
+  console.log(getSecondsToday());
+  htmlOut( 'Сколько сегодня прошло секунд?',
+      exThirtyEight.toString(),
+      getSecondsToday(),
+      'https://learn.javascript.ru/task/get-seconds-today'
+  );
+}
+
+// 5.11.7 Сколько секунд осталось до завтра?
+
+function exThirtyNine() {
+  function getSecondsToTomorrow() {
+    let now = new Date();
+    let nextDay = new Date(now.getFullYear(),
+        now.getMonth(),
+        now.getDate() + 1);
+    return Math.round((nextDay - now) / 1000);
+  }
+  console.log(getSecondsToTomorrow());
+  htmlOut( 'Сколько секунд осталось до завтра?',
+      exThirtyNine.toString(),
+      getSecondsToTomorrow(),
+      'https://learn.javascript.ru/task/get-seconds-to-tomorrow'
+  );
+}
+exThirtyNine();
