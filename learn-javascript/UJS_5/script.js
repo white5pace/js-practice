@@ -507,40 +507,148 @@ function exTwentyFour() {
   );
 }
 
-// 5.7.2 Фильтрация уникальных элементов массива
+// 5.7.2 Отфильтруйте анаграммы
 
 function exTwentyFive() {
   let arr = ['nap', 'teachers', 'cheaters', 'PAN', 'ear', 'era', 'hectares'];
   function aclean(arr) {
-    for (let i = 0; i < arr.length; i++) {
-      let current = new Set(arr[i].toLowerCase());
-      for (let j = i+1; j < arr.length; j++) {
-        let checking = arr[j].toLowerCase;
-        let counter = 0;
-        for (let z = 0; z < checking.length; z++) {
-          if (current.has(checking[z])) counter++;
+    let arrClone = arr.slice(0, arr.length);
+    for (let i = 0; i < arrClone.length; i++) {
+      let currentWord = new Set(arrClone[i].toLowerCase());
+      for (let j = i + 1; j < arrClone.length; j++) {
+        if (arrClone[i].length == arrClone[j].length) {
+          let counter = 0;
+          let verifiable = arrClone[j].toLowerCase();
+          for (let z = 0; z < verifiable.length; z++) {
+            if (currentWord.has(verifiable[z])) {
+              counter++;
+            }
+          }
+          if (counter == arrClone[i].length) {
+            arrClone.splice(j, 1);
+          }
         }
-        if(counter == checking.length)
       }
     }
-    // Завтра добавить сначала проверку на длину слова, потом внутр проверка каждой буквы, 
-    // Это ускорит алгоритм
-    let firstValue = arr[0];
-    let secondValue = arr[3].toLowerCase();
-    let FS = new Set(firstValue);
-    let counter = 0;
-    for (let i = 0; i < secondValue.length; i++) {
-      console.log('hi')
-      if (FS.has(secondValue[i])) counter++;
-    }
-    console.log(FS);
-    console.log(counter);
+    return arrClone;
   }
-  console.log( aclean(arr) ); // "nap,teachers,ear" or "PAN,cheaters,era"
-  htmlOut( 'Фильтрация уникальных элементов массива',
+  // Есть решение проще и короче через сорт,
+  // мое решение не идеально и может не проходить некоторые тесты
+  console.log( aclean(arr) );
+  htmlOut( 'Отфильтруйте анаграммы',
       exTwentyFive.toString(),
-      unique(values),
-      'https://learn.javascript.ru/task/array-unique'
+      aclean(arr),
+      'https://learn.javascript.ru/task/filter-anagrams'
   );
 }
-exTwentyFive();
+
+// 5.7.3 Итерируемые ключи
+
+function exTwentySix() {
+  let map = new Map();
+
+  map.set('name', 'John');
+  console.log(map.keys());
+  let keys = Array.from(map.keys());
+  console.log(keys);
+  keys.push('more');
+  console.log(keys);
+
+  htmlOut( 'Итерируемые ключи',
+      exTwentySix.toString(),
+      keys,
+      'https://learn.javascript.ru/task/filter-anagrams'
+  );
+}
+
+// 5.8.1 Хранение отметок "не прочитано"
+
+function exTwentySeven() {
+  let messages = [
+    {text: 'Hello', from: 'John'},
+    {text: 'How goes?', from: 'John'},
+    {text: 'See you soon', from: 'Alice'},
+  ];
+
+  let readMessage = new WeakSet();
+  readMessage.add(messages[0]);
+  readMessage.add(messages[1]);
+  readMessage.add(messages[0]);
+
+  console.log(readMessage.has(messages[0]));
+
+  messages.shift();
+
+  htmlOut( 'Хранение отметок "не прочитано"',
+      exTwentySeven.toString(),
+      true,
+      'https://learn.javascript.ru/task/recipients-read'
+  );
+}
+
+// 5.8.2 Хранение времени прочтения
+
+function exTwentyEight() {
+  let messages = [
+    {text: 'Hello', from: 'John'},
+    {text: 'How goes?', from: 'John'},
+    {text: 'See you soon', from: 'Alice'},
+  ];
+
+  let readedTime = new WeakMap();
+  readedTime.set(messages[0], new Date());
+  console.log(readedTime.get(messages[0]));
+
+  htmlOut( 'Хранение времени прочтения',
+      exTwentySeven.toString(),
+      true,
+      'https://learn.javascript.ru/task/recipients-when-read'
+  );
+}
+
+// 5.9.1 Сумма свойств объекта
+
+function exTwentyNine() {
+  let salaries = {
+    'John': 100,
+    'Pete': 300,
+    'Mary': 250,
+  };
+
+  let sumSalaries = (obj) => {
+    return Object.values(obj).reduce((sum, current) => sum + current, 0);
+
+    // let valuesSalaries = Object.values(obj);
+    // let sum = 0;
+    // for (let item of valuesSalaries) {
+    //   sum += item;
+    // }
+    // return sum;
+  };
+
+  console.log( sumSalaries(salaries) ); // 650
+  htmlOut( 'Сумма свойств объекта',
+      exTwentySeven.toString(),
+      sumSalaries(salaries),
+      'https://learn.javascript.ru/task/sum-salaries'
+  );
+}
+
+// 5.9.2 Подсчёт количества свойств объекта
+
+function exThirty() {
+  let user = {
+    name: 'John',
+    age: 30,
+  };
+
+  let count = (obj) => Object.keys(obj).length;
+
+  console.log( count(user) ); // 2
+
+  htmlOut( 'Подсчёт количества свойств объекта',
+      exThirty.toString(),
+      count(user),
+      'https://learn.javascript.ru/task/count-properties'
+  );
+}
