@@ -821,4 +821,41 @@ function exThirtyNine() {
       'https://learn.javascript.ru/task/get-seconds-to-tomorrow'
   );
 }
-exThirtyNine();
+
+// 5.11.8 Форматирование относительной даты
+
+function exFourty() {
+  function formatDate(date) {
+    let diff = new Date() - date;
+
+    if (diff <= 1000) {
+      return 'прямо сейчас';
+    } else if (diff <= 1e3 * 60) {
+      return `${diff / 1e3} секунд назад`;
+    } else if (diff <= 1e3 * 60 * 60) {
+      return `${diff / 1e3 / 60} минут назад`;
+    } else {
+      let d = date;
+      d = [
+        '0' + d.getDate(),
+        '0' + (d.getMonth() + 1),
+        '' + d.getFullYear(),
+        '0' + d.getHours(),
+        '0' + d.getMinutes(),
+      ].map((component) => component.slice(-2));
+
+      return d.slice(0, 3).join('.') + ' ' + d.slice(3).join(':');
+    }
+  }
+
+  console.log( formatDate(new Date(new Date - 1)) );
+  console.log( formatDate(new Date(new Date - 30 * 1000)) );
+  console.log( formatDate(new Date(new Date - 5 * 60 * 1000)) );
+  console.log( formatDate(new Date(new Date - 86400 * 1000)) );
+
+  htmlOut( 'Форматирование относительной даты',
+      exFourty.toString(),
+      formatDate(new Date(new Date - 5 * 60 * 1000)),
+      'https://learn.javascript.ru/task/format-date-relative'
+  );
+}
