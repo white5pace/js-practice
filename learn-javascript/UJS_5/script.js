@@ -859,3 +859,48 @@ function exFourty() {
       'https://learn.javascript.ru/task/format-date-relative'
   );
 }
+
+// 5.12.1 Преобразуйте объект в JSON, а затем обратно в обычный объект
+
+function exFourtyOne() {
+  let user = {
+    name: 'Василий Иванович',
+    age: 35,
+  };
+  let userTo = JSON.stringify(user);
+  console.log(userTo);
+  let userFrom = JSON.parse(userTo);
+  console.log(userFrom);
+  htmlOut( 'Преобразуйте объект в JSON, а затем обратно в обычный объект',
+      exFourtyOne.toString(),
+      userTo,
+      'https://learn.javascript.ru/task/serialize-object'
+  );
+}
+
+// 5.12.2 Исключить обратные ссылки
+
+function exFourtyTwo() {
+  let room = {
+    number: 23,
+  };
+
+  let meetup = {
+    title: 'Совещание',
+    occupiedBy: [{name: 'Иванов'}, {name: 'Петров'}],
+    place: room,
+  };
+
+  room.occupiedBy = meetup;
+  meetup.self = meetup;
+
+  console.log( JSON.stringify(meetup, function replacer(key, value) {
+    return (key != '' && value == meetup) ? undefined : value;
+  }));
+
+  htmlOut( 'Исключить обратные ссылки',
+      exFourtyOne.toString(),
+      1,
+      'https://learn.javascript.ru/task/serialize-event-circular'
+  );
+}
