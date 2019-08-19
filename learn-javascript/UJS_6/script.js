@@ -206,4 +206,100 @@ function exFive() {
       'https://learn.javascript.ru/task/output-single-linked-list-reverse'
   );
 }
-exFive();
+
+// 6.3.4 Сумма с помощью замыканий
+
+function exSix() {
+  function sum(a) {
+    return function(b) {
+      return a + b;
+    };
+  }
+  console.log(sum(1)(2));
+  console.log(sum(5)(-1));
+  htmlOut( 'Сумма с помощью замыканий',
+      exSix.toString(),
+      sum(5)(-1),
+      'https://learn.javascript.ru/task/closure-sum'
+  );
+}
+
+// 6.3.4 Фильтрация с помощью функции
+
+function exSeven() {
+  let arr = [1, 2, 3, 4, 5, 6, 7];
+
+  function inBetween(from, to) {
+    return function(item) {
+      return item >= from && item <= to;
+    };
+  }
+
+  function inArray(arr) {
+    return function(item) {
+      // return !!arr.find((finding) => item == finding);
+      return arr.includes(item);
+    };
+  }
+
+  console.log( arr.filter(inBetween(3, 6)) );
+  console.log( arr.filter(inArray([1, 2, 10])) );
+  htmlOut( 'Фильтрация с помощью функции',
+      exSeven.toString(),
+      arr.filter(inBetween(3, 6)),
+      'https://learn.javascript.ru/task/filter-through-function'
+  );
+}
+
+// 6.3.6 Сортировать по полю
+
+function exEight() {
+  let users = [
+    {name: 'John', age: 20, surname: 'Johnson'},
+    {name: 'Pete', age: 18, surname: 'Peterson'},
+    {name: 'Ann', age: 19, surname: 'Hathaway'},
+  ];
+  function byField(prop) {
+    return (a, b) => a[prop] > b[prop] ? 1 : -1;
+  }
+  users.sort(byField('name'));
+  users.sort(byField('age'));
+  console.log(users);
+  htmlOut( 'Сортировать по полю',
+      exEight.toString(),
+      users,
+      'https://learn.javascript.ru/task/sort-by-field'
+  );
+}
+
+// 6.3.7 Армия функций
+
+function exNine() {
+  function makeArmy() {
+    let shooters = [];
+
+    let i = 0;
+    while (i < 10) {
+      let number = i;
+      let shooter = function() { // функция shooter
+        console.log( number ); // должна выводить порядковый номер
+      };
+      shooters.push(shooter);
+      i++;
+    }
+
+    return shooters;
+  }
+
+  let army = makeArmy();
+
+  army[0](); // у 0-го стрелка будет номер 10
+  army[5](); // и у 5-го стрелка тоже будет номер 10
+  // ... у всех стрелков будет номер 10, вместо 0, 1, 2, 3...
+  htmlOut( 'Армия функций',
+      exNine.toString(),
+      army[5](),
+      'https://learn.javascript.ru/task/make-army'
+  );
+}
+exNine();
