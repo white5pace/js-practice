@@ -371,13 +371,29 @@ function exEleven() {
   );
 }
 
-// 6.8.1 Сумма с произвольным количеством скобок
+// 6.8.1 Вывод каждую секунду
 
 function exTwelve() {
-  htmlOut( 'Сумма с произвольным количеством скобок',
+  function printNumbers(from, to) {
+    let i = from;
+
+    let timerIdInterval = setInterval(() => {
+      if (i >= to ) {
+        clearInterval(timerIdInterval);
+      }
+      console.log(i);
+      i++;
+    }, 1000);
+
+    // if (i >= to ) {
+    //   clearInterval(timerIdInterval);
+    // }
+  }
+  printNumbers(0, 10);
+  htmlOut( 'Вывод каждую секунду',
       exTwelve.toString(),
       1,
-      'https://learn.javascript.ru/task/sum-many-brackets'
+      'https://learn.javascript.ru/task/output-numbers-100ms'
   );
 }
 exTwelve();
