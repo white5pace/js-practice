@@ -302,4 +302,82 @@ function exNine() {
       'https://learn.javascript.ru/task/make-army'
   );
 }
-exNine();
+
+// 6.6.1 Установка и уменьшение значения счётчика
+
+function exTen() {
+  function makeCounter() {
+    let count = 0;
+    function counter() {
+      return count++;
+    };
+    // counter.count = 0;
+    counter.set = function(value) {
+      count = value;
+    };
+    counter.decrease = function() {
+      count--;
+    };
+
+    return counter;
+  }
+
+  let counter = makeCounter();
+
+  console.log( counter() ); // 0
+  console.log( counter() ); // 1
+
+  counter.set(10); // установить новое значение счётчика
+
+  console.log( counter() ); // 10
+
+  counter.decrease(); // уменьшить значение счётчика на 1
+
+  console.log( counter() ); // 10 (вместо 11)
+
+  htmlOut( 'Установка и уменьшение значения счётчика',
+      exTen.toString(),
+      1,
+      'https://learn.javascript.ru/task/counter-inc-dec'
+  );
+}
+
+// 6.6.2 Сумма с произвольным количеством скобок
+
+function exEleven() {
+  function sum(a) {
+    // sum.ans = a;
+    let currentSum = a;
+    function next(b) {
+      // sum.ans += b;
+      currentSum += b;
+      return next;
+    };
+    next.toString = function() {
+      return currentSum;
+      // return sum.ans;
+    };
+    return next;
+  }
+  console.log(sum(1)(2));
+  console.log(sum(1)(2)(3) == 6);
+  console.log(sum(5)(-1)(2));
+  console.log(sum(6)(-1)(-2)(-3));
+  console.log(sum(0)(1)(2)(3)(4)(5));
+  htmlOut( 'Сумма с произвольным количеством скобок',
+      exEleven.toString(),
+      sum(0)(1)(2)(3)(4)(5),
+      'https://learn.javascript.ru/task/sum-many-brackets'
+  );
+}
+
+// 6.8.1 Сумма с произвольным количеством скобок
+
+function exTwelve() {
+  htmlOut( 'Сумма с произвольным количеством скобок',
+      exTwelve.toString(),
+      1,
+      'https://learn.javascript.ru/task/sum-many-brackets'
+  );
+}
+exTwelve();
