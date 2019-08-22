@@ -605,4 +605,3 @@ function exEightteen() {
       'https://learn.javascript.ru/task/ask-partial'
   );
 }
-exEightteen();
