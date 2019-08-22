@@ -374,7 +374,7 @@ function exEleven() {
 // 6.8.1 Вывод каждую секунду
 
 function exTwelve() {
-  function printNumbers(from, to) {
+  function printNumbersInterval(from, to) {
     let i = from;
 
     let timerIdInterval = setInterval(() => {
@@ -384,16 +384,23 @@ function exTwelve() {
       console.log(i);
       i++;
     }, 1000);
-
-    // if (i >= to ) {
-    //   clearInterval(timerIdInterval);
-    // }
   }
-  printNumbers(0, 10);
+  function printNumbersTimeout(from, to) {
+    let i = from;
+
+    let timerIdTimeout = setTimeout(function tick() {
+      console.log(i);
+      if (i < to) {
+        timerIdTimeout = setTimeout(tick, 1000);
+      }
+      i++;
+    }, 1000);
+  }
+  // printNumbersInterval(0, 10);
+  printNumbersTimeout(0, 10);
   htmlOut( 'Вывод каждую секунду',
       exTwelve.toString(),
       1,
       'https://learn.javascript.ru/task/output-numbers-100ms'
   );
 }
-exTwelve();
