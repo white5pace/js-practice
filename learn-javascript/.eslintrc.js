@@ -19,5 +19,7 @@ module.exports = {
     'no-unused-vars': 0,
     'prefer-const': 0,
     'guard-for-in': 0,
+    'no-invalid-this': 0,
+    'prefer-rest-params': 0,
   },
 };

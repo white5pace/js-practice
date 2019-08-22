@@ -404,3 +404,151 @@ function exTwelve() {
       'https://learn.javascript.ru/task/output-numbers-100ms'
   );
 }
+
+// 6.9.1 Декоратор-шпион
+
+function exThirteen() {
+  function work(a, b) {
+    console.log( a + b ); // произвольная функция или метод
+  }
+
+  function spy(func) {
+    function wrapper(...args) {
+      wrapper.calls.push(args);
+      return func.apply(this, args);
+    };
+
+    wrapper.calls = [];
+
+    return wrapper;
+  }
+
+  work = spy(work);
+
+  work(1, 2); // 3
+  work(4, 5); // 9
+
+  for (let args of work.calls) {
+    console.log( 'call:' + args.join() ); // "call:1,2", "call:4,5"
+  }
+
+  htmlOut( 'Декоратор-шпион',
+      exThirteen.toString(),
+      1,
+      'https://learn.javascript.ru/task/spy-decorator'
+  );
+}
+
+// 6.9.2 Задерживающий декоратор
+
+function exFourteen() {
+  function f(x) {
+    console.log(x);
+  }
+
+  function delay(func, ms) {
+    return function(...args) {
+      setTimeout(() => func.apply(this, args), ms);
+    };
+  }
+
+  let f1000 = delay(f, 1000);
+  let f1500 = delay(f, 1500);
+
+  f1000('test'); // показывает "test" после 1000 мс
+  f1500('test'); // показывает "test" после 1500 мс
+
+  htmlOut( 'Задерживающий декоратор',
+      exFourteen.toString(),
+      1,
+      'https://learn.javascript.ru/task/delay'
+  );
+}
+
+// 6.9.3 Декоратор debounce
+
+function exFiveteen() {
+  function someF(x) {
+    console.log(x);
+  }
+
+  function debounce(someF, ms) {
+    let called = false;
+    return function() {
+      if (called) return;
+
+      someF.apply(this, arguments);
+
+      called = true;
+
+      setTimeout(() => called = false, ms);
+    };
+  }
+
+  let f = debounce(someF, 1000);
+  f(1);
+  f(2);
+
+  setTimeout( () => f(3), 100);
+  setTimeout( () => f(4), 1100);
+  setTimeout( () => f(5), 1500);
+
+  htmlOut( 'Декоратор debounce',
+      exFiveteen.toString(),
+      1,
+      'https://learn.javascript.ru/task/debounce'
+  );
+}
+
+// 6.9.4 Тормозящий (throttling) декоратор
+
+function exSixteen() {
+  function f(a) {
+    console.log(a);
+  }
+
+  function throttle(someF, ms) {
+    let isThrottled = false;
+    let lastCalledArg;
+    let lastCalledThis;
+
+    function wrapper() {
+      if (isThrottled) {
+        lastCalledArg = arguments;
+        lastCalledThis = this;
+        return;
+      }
+
+      someF.apply(this, arguments);
+
+      isThrottled = true;
+
+      setTimeout(() => {
+        isThrottled = false;
+        if (lastCalledArg) {
+          wrapper.apply(lastCalledThis, lastCalledArg);
+          lastCalledArg = lastCalledThis = null;
+        }
+      }, ms);
+    };
+    return wrapper;
+  }
+
+  let f1000 = throttle(f, 1000);
+
+  f1000(1);
+  f1000(2);
+  f1000(3);
+
+  setTimeout( () => f1000(4), 1100);
+  setTimeout( () => f1000(5), 1200);
+  setTimeout( () => f1000(6), 1900);
+
+  htmlOut( 'Тормозящий (throttling) декоратор',
+      exSixteen.toString(),
+      1,
+      'https://learn.javascript.ru/task/throttle'
+  );
+}
+exSixteen();
+
