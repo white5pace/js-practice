@@ -550,5 +550,59 @@ function exSixteen() {
       'https://learn.javascript.ru/task/throttle'
   );
 }
-exSixteen();
 
+// 6.10.4 Исправьте функцию, теряющую "this"
+
+function exSeventeen() {
+  function askPassword(ok, fail) {
+    let password = prompt('Password?', '');
+    if (password == 'rockstar') ok();
+    else fail();
+  }
+
+  let user = {
+    name: 'Вася',
+
+    loginOk() {
+      alert(`${this.name} logged in`);
+    },
+
+    loginFail() {
+      alert(`${this.name} failed to log in`);
+    },
+
+  };
+
+  askPassword(user.loginOk.bind(user), user.loginFail.bind(user));
+  htmlOut( 'Исправьте функцию, теряющую "this"',
+      exSeventeen.toString(),
+      1,
+      'https://learn.javascript.ru/task/question-use-bind'
+  );
+}
+
+// 6.10.5 Использование частично применённой функции для логина
+
+function exEightteen() {
+  function askPassword(ok, fail) {
+    let password = prompt('Password?', '');
+    if (password == 'rockstar') ok();
+    else fail();
+  }
+
+  let user = {
+    name: 'John',
+
+    login(result) {
+      alert( this.name + (result ? ' logged in' : ' failed to log in') );
+    },
+  };
+
+  askPassword(user.login.bind(user, true), user.login.bind(user, false)); // ?
+  htmlOut( 'Использование частично применённой функции для логина',
+      exEightteen.toString(),
+      1,
+      'https://learn.javascript.ru/task/ask-partial'
+  );
+}
+exEightteen();
