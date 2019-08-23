@@ -118,4 +118,29 @@ function exFour() {
       'https://learn.javascript.ru/task/defer-to-prototype-extended'
   );
 }
-exFour();
+
+// 8.4.1 Добавьте toString в словарь
+
+function exFive() {
+  let dictionary = Object.create(null);
+
+  dictionary.toString = function() {
+    return Object.keys(this).join(',');
+  };
+
+  Object.defineProperty(dictionary, 'toString', {
+    enumerable: false,
+  });
+
+  dictionary.apple = 'Apple';
+  dictionary.__proto__ = 'test';
+  for (let key in dictionary) {
+    console.log(key);
+  }
+
+  htmlOut( 'Добавьте toString в словарь',
+      exFive.toString(),
+      dictionary,
+      'https://learn.javascript.ru/task/dictionary-tostring'
+  );
+}
