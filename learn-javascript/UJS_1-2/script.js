@@ -1,11 +1,4 @@
-
-/* eslint-disable prefer-const */
-/* eslint-disable no-unused-vars */
-/* eslint-disable require-jsdoc */
 'use strict';
-
-// ООП в прототипном стиле
-
 
 function htmlOut(hOne, pOne, output, link) {
   document.getElementById('hOne').innerHTML = hOne;

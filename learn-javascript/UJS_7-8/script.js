@@ -1,8 +1,6 @@
 /* eslint-disable no-extend-native */
 'use strict';
 
-// ООП в прототипном стиле
-
 function htmlOut(hOne, pOne, output, link) {
   document.getElementById('hOne').innerHTML = hOne;
   if (link) {

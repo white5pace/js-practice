@@ -1,7 +1,4 @@
-/* eslint-disable no-extend-native */
 'use strict';
-
-// Класс: базовый синтаксис
 
 function htmlOut(hOne, pOne, output, link) {
   document.getElementById('hOne').innerHTML = hOne;
