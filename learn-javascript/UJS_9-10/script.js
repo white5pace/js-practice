@@ -172,3 +172,52 @@ function exFour() {
       'https://learn.javascript.ru/task/class-extend-object'
   );
 }
+
+// 10.1.1 Finally или просто код?
+
+function exFive() {
+  function finallyFunc() {
+    try {
+      console.log('Начать работу');
+      return 1;
+      throw Error('Обана');
+    } catch (e) {
+      console.log(`Возникла ошибка ${e.name} ${e.message}`);
+    } finally {
+      console.log('Ya vse ravno zdes');
+    }
+  };
+  finallyFunc();
+  htmlOut( 'Finally или просто код?',
+      exFive.toString(),
+      1,
+      'https://learn.javascript.ru/task/finally-or-code-after'
+  );
+}
+
+// 10.2.1 Наследование от SyntaxError
+
+function exSix() {
+  class FormatError extends SyntaxError {
+    constructor(message) {
+      super(message);
+      this.name = 'FormatError';
+    }
+  }
+  let err = new FormatError('ошибка форматирования');
+
+  console.log( err.message ); // ошибка форматирования
+  console.log( err.name ); // FormatError
+  console.log( err.stack ); // stack
+
+  console.log( err instanceof FormatError ); // true
+  console.log( err instanceof SyntaxError ); // true
+
+  htmlOut( 'Наследование от SyntaxError',
+      exSix.toString(),
+      1,
+      'https://learn.javascript.ru/task/format-error'
+  );
+}
+exSix();
+
