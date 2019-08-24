@@ -219,5 +219,3 @@ function exSix() {
       'https://learn.javascript.ru/task/format-error'
   );
 }
-exSix();
-
