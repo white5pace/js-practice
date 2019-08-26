@@ -3,13 +3,13 @@
 
 // Документ
 
-function htmlOut(perform, pOne, execution, link) {
-  let codeOut = perform.children[1];
-  perform.children[0].onclick = function() {
+function htmlOut(exCode, pOne, execution) {
+  exCode.previousElementSibling.onclick = function() {
     this.style.display = 'none';
-    codeOut.style.display = 'block';
-    codeOut.innerHTML = pOne;
-    Prism.highlightElement(codeOut);
+    exCode.style.display = 'block';
+    exCode.innerHTML = pOne;
+    exCode.parentElement.style.justifyContent = 'start';
+    Prism.highlightElement(exCode);
     execution();
   };
 };
@@ -18,18 +18,19 @@ function htmlOut(perform, pOne, execution, link) {
 
 function exOne() {
   let ex = document.getElementById('1.3.1');
-  let exBody = ex.children[1].children[0];
-  let perform = ex.children[1].children[1];
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
   function execution() {
-    exBody.children[0].style.background = 'red'; // Получили элемент div
-    exBody.children[1].style.background = 'green'; // Получили элемент ul
-    exBody.children[1].children[1].style.background = 'yellow'; // Получили второй li
+    exBody.firstElementChild.style.background = 'red'; // Получили элемент div
+    exBody.lastElementChild.style.background = 'green'; // Получили элемент ul
+    exBody.lastElementChild.children[1].style.background = 'yellow'; // Получили второй li
     console.log(exBody.children);
   }
-  htmlOut(perform,
+
+  htmlOut(exCode,
       exOne.toString(),
-      execution,
-      'https://learn.javascript.ru/task/search-algorithm');
+      execution);
 }
 exOne();
 
@@ -37,18 +38,19 @@ exOne();
 
 function exTwo() {
   let ex = document.getElementById('1.3.3');
-  let exBody = ex.children[1].children[0];
-  let perform = ex.children[1].children[1];
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
   function execution() {
     let table = exBody.children[0];
     for (let i = 0; i < table.rows.length; i++) {
       table.rows[i].cells[i].style.background = 'red';
     }
   }
-  htmlOut(perform,
+
+  htmlOut(exCode,
       exTwo.toString(),
-      execution,
-      'https://learn.javascript.ru/task/search-algorithm');
+      execution);
 }
 exTwo();
 
@@ -56,8 +58,9 @@ exTwo();
 
 function exThree() {
   let ex = document.getElementById('1.4');
-  let exBody = ex.children[1].children[0];
-  let perform = ex.children[1].children[1];
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
   function execution() {
     let table = exBody.querySelector('#age-table');
     let label = table.getElementsByTagName('label');
@@ -71,10 +74,9 @@ function exThree() {
     console.log(searchInputs[0]);
     console.log(searchInputs[1]);
   }
-  htmlOut(perform,
+  htmlOut(exCode,
       exThree.toString(),
-      execution,
-      'https://learn.javascript.ru/task/search-algorithm');
+      execution);
 }
 exThree();
 
@@ -82,17 +84,17 @@ exThree();
 
 function exFour() {
   let ex = document.getElementById('1.5');
-  let exBody = ex.children[1].children[0];
-  let perform = ex.children[1].children[1];
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
   function execution() {
     for (let li of exBody.querySelectorAll('li')) {
       console.log(li.firstChild.data.trim() + ': ' + li.getElementsByTagName('li').length);
     }
   }
-  htmlOut(perform,
+  htmlOut(exCode,
       exFour.toString(),
-      execution,
-      'https://learn.javascript.ru/task/search-algorithm' );
+      execution);
 }
 exFour();
 
@@ -100,17 +102,17 @@ exFour();
 
 function exFive() {
   let ex = document.getElementById('1.6');
-  let exBody = ex.children[1].children[0];
-  let perform = ex.children[1].children[1];
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
   function execution() {
     let atr = exBody.querySelector('[data-widget-name]');
     console.log(atr.dataset.widgetName);
   }
 
-  htmlOut(perform,
+  htmlOut(exCode,
       exFive.toString(),
-      execution,
-      'https://learn.javascript.ru/task/search-algorithm' );
+      execution);
 }
 exFive();
 
@@ -118,8 +120,9 @@ exFive();
 
 function exSix() {
   let ex = document.getElementById('1.7');
-  let exBody = ex.children[1].children[0];
-  let perform = ex.children[1].children[1];
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
   let links = exBody.querySelector('ul').querySelectorAll('a');
 
   function execution() {
@@ -137,12 +140,10 @@ function exSix() {
     }
   }
 
-  htmlOut(perform,
+  htmlOut(exCode,
       exSix.toString(),
-      execution,
-      'https://learn.javascript.ru/task/search-algorithm' );
+      execution);
 }
 exSix();
 
-console.log(navigator);
 
