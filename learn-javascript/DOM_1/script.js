@@ -98,10 +98,10 @@ function exFour() {
 }
 exFour();
 
-// 1.6 Получите атрибут
+// 1.6.1 Получите атрибут
 
 function exFive() {
-  let ex = document.getElementById('1.6');
+  let ex = document.getElementById('1.6.1');
   let exBody = ex.querySelector('.ex-body');
   let exCode = ex.querySelector('.ex-code');
 
@@ -116,10 +116,10 @@ function exFive() {
 }
 exFive();
 
-// 1.7 Сделайте внешние ссылки оранжевыми
+// 1.6.2 Сделайте внешние ссылки оранжевыми
 
 function exSix() {
-  let ex = document.getElementById('1.7');
+  let ex = document.getElementById('1.6.2');
   let exBody = ex.querySelector('.ex-body');
   let exCode = ex.querySelector('.ex-code');
 
@@ -145,5 +145,114 @@ function exSix() {
       execution);
 }
 exSix();
+
+// 1.7.2 Сделайте внешние ссылки оранжевыми
+
+function exEight() {
+  let ex = document.getElementById('1.7.2');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  function execution() {
+    let elem = exBody.querySelector('#elem');
+    function clear(elem) {
+      while (elem.firstChild) {
+        elem.firstChild.remove();
+      }
+    }
+    clear(elem);
+  }
+
+  htmlOut(exCode,
+      exEight.toString(),
+      execution);
+}
+exEight();
+
+// 1.7.4 Создайте список
+
+function exNine() {
+  let ex = document.getElementById('1.7.4');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  let ul = document.createElement('ul');
+  exBody.append(ul);
+
+  function execution() {
+    let list = exBody.querySelector('ul');
+
+    while (true) {
+      let addLi = prompt('What is new li', '');
+
+      if (addLi == null || addLi == '') break;
+
+      let newLi = document.createElement('li');
+      newLi.textContent = addLi;
+      list.append(newLi);
+    }
+  }
+
+  htmlOut(exCode,
+      exNine.toString(),
+      execution);
+}
+exNine();
+
+// 1.7.5 Создайте дерево из объекта
+
+function exTen() {
+  let ex = document.getElementById('1.7.5');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  let data = {
+    'Рыбы': {
+      'форель': {},
+      'лосось': {},
+    },
+
+    'Деревья': {
+      'Огромные': {
+        'секвойя': {},
+        'дуб': {},
+      },
+      'Цветковые': {
+        'яблоня': {},
+        'магнолия': {},
+      },
+    },
+  };
+  let nowList = exBody;
+  let goBack = exBody;
+  function goThrough(obj) {
+    for (let key in obj) {
+      if (Object.keys(obj[key]).length > 0) {
+        let newList = document.createElement('ul');
+        let li = document.createElement('li');
+
+        li.textContent = key;
+        newList.append(li);
+        nowList.append(newList);
+        let secondList = document.createElement('ul');
+        newList.append(secondList);
+        nowList = secondList;
+        console.log(`is first ${key}`);
+        goThrough(obj[key]);
+      } else {
+        let li = document.createElement('li');
+        li.textContent = key;
+        nowList.append(li);
+        console.log(`is second ${key}`);
+      }
+    }
+  };
+  goThrough(data);
+
+  htmlOut(exCode,
+      exTen.toString(),
+      execution);
+}
+exTen();
 
 
