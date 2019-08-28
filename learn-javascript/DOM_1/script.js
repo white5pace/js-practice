@@ -223,36 +223,153 @@ function exTen() {
       },
     },
   };
-  let nowList = exBody;
-  let goBack = exBody;
-  function goThrough(obj) {
-    for (let key in obj) {
-      if (Object.keys(obj[key]).length > 0) {
-        let newList = document.createElement('ul');
-        let li = document.createElement('li');
 
-        li.textContent = key;
-        newList.append(li);
-        nowList.append(newList);
-        let secondList = document.createElement('ul');
-        newList.append(secondList);
-        nowList = secondList;
-        console.log(`is first ${key}`);
-        goThrough(obj[key]);
-      } else {
-        let li = document.createElement('li');
-        li.textContent = key;
-        nowList.append(li);
-        console.log(`is second ${key}`);
-      }
-    }
-  };
-  goThrough(data);
-
+  function execution() {
+    console.log('i am fucked up ');
+  }
   htmlOut(exCode,
       exTen.toString(),
       execution);
 }
 exTen();
 
+// 1.7.6 Выведите список потомков в дереве
 
+function exEleven() {
+  let ex = document.getElementById('1.7.6');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  function execution() {
+    for (let li of exBody.querySelectorAll('li')) {
+      let length = li.querySelectorAll('li').length;
+      if (length > 0) {
+        li.firstChild.data += `[${length}]`;
+      }
+    }
+  }
+
+  htmlOut(exCode,
+      exEleven.toString(),
+      execution);
+}
+exEleven();
+
+// 1.7.7 Создайте календарь в виде таблицы
+
+function exTwelve() {
+  let ex = document.getElementById('1.7.7');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  function createCalendar(elem, year, month) {
+    let date = new Date(year, month, 0);
+    let numberOfDays = date.getDate();
+    date.setDate(date.getDate() - (numberOfDays - 1));
+
+    function monthBeginsWith() {
+      if (date.getDay() == 0) {
+        return 7;
+      }
+      return date.getDay();
+    }
+
+    function calculateRowsAmount() {
+      if ( (( monthBeginsWith() - 1) + numberOfDays) > 35 ) return 7;
+      return 6;
+    }
+
+    let table = document.createElement('table');
+    elem.append(table);
+
+    for (let i = 0; i < calculateRowsAmount(); i++) {
+      let tr = document.createElement('tr');
+
+      for (let j = 0; j < 7; j++) {
+        let td = document.createElement('td');
+        tr.append(td);
+      }
+      table.append(tr);
+    }
+
+    let weekDays = new Map([
+      [1, 'пн'],
+      [2, 'вт'],
+      [3, 'ср'],
+      [4, 'чт'],
+      [5, 'пт'],
+      [6, 'сб'],
+      [7, 'вс'],
+    ]);
+
+    for (let i = 0; i < 7; i++) {
+      table.rows[0].cells[i].innerHTML = weekDays.get(i+1);
+    }
+
+    table.rows[0].style.backgroundColor = '#E6E6E6';
+    table.rows[0].style.fontWeight = 'bold';
+
+    let day = 1;
+    let firstWeek = true;
+
+    for (let iRows = 1; iRows < calculateRowsAmount(); iRows++) {
+      table.rows[iRows].style.backgroundColor = '#ffffff';
+      for (let iCells = 0; iCells < 7; iCells++) {
+        if (iCells < monthBeginsWith() - 1 && firstWeek) {
+          continue;
+        }
+        firstWeek = false;
+        if (day > numberOfDays) {
+          break;
+        }
+        table.rows[iRows].cells[iCells].innerHTML = day;
+        day++;
+      }
+    }
+  };
+  function execution() {
+    createCalendar(exBody, 2019, 9);
+  }
+  htmlOut(exCode,
+      exTwelve.toString(),
+      execution);
+}
+exTwelve();
+
+// 1.7.8 Создайте календарь в виде таблицы
+
+function exThirteen() {
+  let ex = document.getElementById('1.7.8');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  let htmlHour = exBody.querySelector('.hours');
+  let htmlMinutes = exBody.querySelector('.minutes');
+  let htmlSeconds = exBody.querySelector('.seconds');
+
+  let cachedHours;
+  let cachedMinutes;
+
+  function clockHmtl(hours, minutes, seconds) {
+    if (cachedHours != hours) {
+      htmlHour.innerHTML = hours;
+      cachedHours = hours;
+    }
+    if (cachedMinutes != minutes) {
+      htmlMinutes.innerHTML = minutes;
+      cachedMinutes = minutes;
+    }
+    htmlSeconds.innerHTML = seconds;
+  }
+  setInterval(() => {
+    let now = new Date();
+    console.log(now.getHours(), now.getMinutes(), now.getSeconds());
+    clockHmtl(now.getHours(), now.getMinutes(), now.getSeconds());
+  }, 1000);
+  // console.log(now.getHours(), now.getMinutes(), now.getSeconds());
+
+  htmlOut(exCode,
+      exThirteen.toString(),
+      execution);
+}
+exThirteen();
