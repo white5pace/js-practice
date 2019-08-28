@@ -392,19 +392,33 @@ function exFourteen() {
 
   let one = exBody.querySelector('#one');
 
-  let liTwo = document.createElement('li');
-  liTwo.innerHTML = '2';
+  // let liTwo = document.createElement('li');
+  // liTwo.innerHTML = '2';
 
-  let liThree = document.createElement('li');
-  liThree.innerHTML = '3';
+  // let liThree = document.createElement('li');
+  // liThree.innerHTML = '3';
 
-  one.after(liTwo);
-  liTwo.after(liThree);
-
-  // one.insertAdjacentHTML('afterend', '<li>2</li><li>3</li>');
+  // one.after(liTwo);
+  // liTwo.after(liThree);
+  function execution() {
+    one.insertAdjacentHTML('afterend', '<li>2</li><li>3</li>');
+  }
 
   htmlOut(exCode,
       exFourteen.toString(),
       execution);
 }
 exFourteen();
+
+// 1.7.10 Сортировка таблицы
+
+function exFiveteen() {
+  let ex = document.getElementById('1.7.10');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  htmlOut(exCode,
+      exFiveteen.toString(),
+      execution);
+}
+exFiveteen();
