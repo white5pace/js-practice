@@ -15,3 +15,7 @@
 .clock .seconds {
   color: rgb(11, 21, 114);
 }
+
+.ex-body {
+  position: relative;
+}

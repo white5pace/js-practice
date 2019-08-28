@@ -443,3 +443,54 @@ function exFiveteen() {
       execution);
 }
 exFiveteen();
+
+// 1.8.1 Сортировка таблицы
+
+function exSixteen() {
+  let ex = document.getElementById('1.8.1');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  let div = document.createElement('div');
+  function showNotification(options) {
+    div.style.cssText = `
+      ${options};
+      position: absolute;
+      height: 50px;
+      width: 150px;
+      text-align: center;
+      line-height: 50px;
+      background-color: black;
+      color: #fff;
+    `;
+
+    div.style.top = options.top + 'px';
+    div.style.right = options.right + 'px';
+
+    div.innerHTML = options.html;
+    div.className = options.className;
+    exBody.append(div);
+  }
+
+  function execution() {
+    showNotification({
+      top: 10,
+      right: 10,
+      html: 'Hello!',
+      className: 'welcome',
+    });
+
+    setInterval(() => {
+      if (div.style.display === 'none') {
+        div.style.display = 'block';
+      } else {
+        div.style.display = 'none';
+      }
+    }, 1000);
+  }
+
+  htmlOut(exCode,
+      exSixteen.toString(),
+      execution);
+}
+exSixteen();
