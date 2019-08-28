@@ -350,7 +350,12 @@ function exThirteen() {
   let cachedHours;
   let cachedMinutes;
 
-  function clockHmtl(hours, minutes, seconds) {
+  function clockHmtl() {
+    let now = new Date();
+    let hours = now.getHours();
+    let minutes = now.getMinutes();
+    let seconds = now.getSeconds();
+
     function ifOneNumber(time) {
       if (time < 10) return `0${time}`;
       return time;
@@ -367,13 +372,39 @@ function exThirteen() {
     htmlSeconds.innerHTML = ifOneNumber(seconds);
   }
 
-  setInterval(() => {
-    let now = new Date();
-    clockHmtl(now.getHours(), now.getMinutes(), now.getSeconds());
-  }, 1000);
+  function execution() {
+    clockHmtl();
+    setInterval(() => clockHmtl(), 1000);
+  }
 
   htmlOut(exCode,
       exThirteen.toString(),
       execution);
 }
 exThirteen();
+
+// 1.7.9 Вставьте HTML в список
+
+function exFourteen() {
+  let ex = document.getElementById('1.7.9');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  let one = exBody.querySelector('#one');
+
+  let liTwo = document.createElement('li');
+  liTwo.innerHTML = '2';
+
+  let liThree = document.createElement('li');
+  liThree.innerHTML = '3';
+
+  one.after(liTwo);
+  liTwo.after(liThree);
+
+  // one.insertAdjacentHTML('afterend', '<li>2</li><li>3</li>');
+
+  htmlOut(exCode,
+      exFourteen.toString(),
+      execution);
+}
+exFourteen();
