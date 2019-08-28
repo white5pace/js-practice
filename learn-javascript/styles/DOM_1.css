@@ -1,10 +1,11 @@
-table {
+.my-table {
   border-collapse: collapse;
 }
-table td {
+.my-table td {
   border: 1px solid black;
   padding: 3px 5px;
 }
+
 .clock .hours {
   color: rgb(116, 7, 7);
 }

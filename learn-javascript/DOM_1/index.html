@@ -9,12 +9,13 @@
   <link rel="stylesheet" href="../styles/main.css">
   <link rel="stylesheet" href="../styles/DOM_1.css">
 
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="../libs/prism.css" rel="stylesheet" />
 </head>
 
 <body>
   <h1>Документ</h1>
-  <div class="container">
+  <div class="my-container">
     <div class="chapter">
       <h2 class="chapter-header">1.3 Навигация по DOM-элементам</h2>
       <div class="ex-window" id="1.3.1">
@@ -37,7 +38,7 @@
         <h2>1.3.3 Выделите ячейки по диагонали</h2>
         <div class="ex-row">
           <div class="ex-body">
-            <table id='diagonal-table'>
+            <table id='diagonal-table' class="my-table">
               <tr>
                 <td>1:1</td>
                 <td>2:1</td>
@@ -94,7 +95,7 @@
             <hr>
             <form name="search-person">
               Search the visitors:
-              <table id="age-table">
+              <table id="age-table my-table">
                 <tbody>
                   <tr>
                     <td>Age:</td>
@@ -335,7 +336,7 @@
         <h2>1.7.10 Сортировка таблицы</h2>
         <div class="ex-row">
           <div class="ex-body">
-            <table id="table">
+            <table class="table">
               <tr>
                 <th>Имя</th>
                 <th>Фамилия</th>
@@ -380,6 +381,7 @@
 
     <script src="script.js"></script>
     <script src="../libs/prism.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 
 </html>
