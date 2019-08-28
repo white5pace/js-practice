@@ -351,22 +351,26 @@ function exThirteen() {
   let cachedMinutes;
 
   function clockHmtl(hours, minutes, seconds) {
+    function ifOneNumber(time) {
+      if (time < 10) return `0${time}`;
+      return time;
+    }
+
     if (cachedHours != hours) {
-      htmlHour.innerHTML = hours;
-      cachedHours = hours;
+      htmlHour.innerHTML = ifOneNumber(hours);
+      cachedHours = ifOneNumber(hours);
     }
     if (cachedMinutes != minutes) {
-      htmlMinutes.innerHTML = minutes;
-      cachedMinutes = minutes;
+      htmlMinutes.innerHTML = ifOneNumber(minutes);
+      cachedMinutes = ifOneNumber(minutes);
     }
-    htmlSeconds.innerHTML = seconds;
+    htmlSeconds.innerHTML = ifOneNumber(seconds);
   }
+
   setInterval(() => {
     let now = new Date();
-    console.log(now.getHours(), now.getMinutes(), now.getSeconds());
     clockHmtl(now.getHours(), now.getMinutes(), now.getSeconds());
   }, 1000);
-  // console.log(now.getHours(), now.getMinutes(), now.getSeconds());
 
   htmlOut(exCode,
       exThirteen.toString(),
