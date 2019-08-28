@@ -444,7 +444,7 @@ function exFiveteen() {
 }
 exFiveteen();
 
-// 1.8.1 Сортировка таблицы
+// 1.8.1 Создать уведомление
 
 function exSixteen() {
   let ex = document.getElementById('1.8.1');
@@ -493,3 +493,31 @@ function exSixteen() {
       execution);
 }
 exSixteen();
+
+// 1.9.1 Найти размер прокрутки снизу
+
+function exSeventeen() {
+  let ex = document.getElementById('1.9.1');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  let elem = exBody.querySelector('.elem');
+  let valueOut = exBody.querySelector('.scroll-value').children[1];
+
+
+  function scrollBottom(elem) {
+    let value = 0;
+    value = elem.scrollHeight - elem.scrollTop - elem.clientHeight;
+    return (value < 0) ? 0 : value;
+  }
+  function execution() {
+    valueOut.innerHTML = scrollBottom(elem);
+  }
+
+  // setInterval(() => console.log(scrollBottom(elem)), 500);
+
+  htmlOut(exCode,
+      exSeventeen.toString(),
+      execution);
+}
+exSeventeen();

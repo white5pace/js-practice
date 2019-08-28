@@ -19,3 +19,18 @@
 .ex-body {
   position: relative;
 }
+
+.one-nine-one {
+  display: flex;
+}
+.one-nine-one .elem {
+  width: 100px;
+  height: 200px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.one-nine-one .scroll-value {
+  font-size: 24px;
+  font-weight: bold;
+  padding-left: 50px;
+}
