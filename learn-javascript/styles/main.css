@@ -145,13 +145,7 @@ h2 {
   color: #333 !important;
   font-size: 14px !important;
 }
-#diagonal-table {
-  border-collapse: collapse;
-}
-#diagonal-table td {
-  border: 1px solid black;
-  padding: 3px 5px;
-}
+
 @media only screen and (max-width: 1200px){
   .ex-body, .ex-perform {
     width: 100%;

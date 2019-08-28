@@ -1,0 +1,16 @@
+table {
+  border-collapse: collapse;
+}
+table td {
+  border: 1px solid black;
+  padding: 3px 5px;
+}
+.clock .hours {
+  color: rgb(116, 7, 7);
+}
+.clock .minutes {
+  color: rgb(2, 102, 32);
+}
+.clock .seconds {
+  color: rgb(11, 21, 114);
+}
