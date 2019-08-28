@@ -417,6 +417,27 @@ function exFiveteen() {
   let exBody = ex.querySelector('.ex-body');
   let exCode = ex.querySelector('.ex-code');
 
+  let table = exBody.querySelector('table');
+  let tableLength = table.children[0].children.length;
+  let allTr = table.querySelectorAll('tr');
+  let names = [];
+
+  function execution() {
+    for (let i = 1; i < tableLength; i++) {
+      names.push(allTr[i].children[0].innerHTML);
+    }
+    names.sort();
+
+    for (let i = 0; i < tableLength - 1; i++ ) {
+      let coincide = 0;
+      for (let j = 1; j < tableLength; j++) {
+        if (allTr[j].children[0].innerHTML == names[i]) {
+          coincide = allTr[j];
+        }
+      }
+      allTr[i].after(coincide);
+    }
+  }
   htmlOut(exCode,
       exFiveteen.toString(),
       execution);
