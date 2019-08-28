@@ -454,7 +454,6 @@ function exSixteen() {
   let div = document.createElement('div');
   function showNotification(options) {
     div.style.cssText = `
-      ${options};
       position: absolute;
       height: 50px;
       width: 150px;
