@@ -529,7 +529,7 @@ function exEighteen() {
   let outputValues = exBody.querySelector('.output-values');
 
   let html = document.querySelector('html');
-
+  // <html> === document.documentElement
   function execution() {
     outputValues.innerHTML = `Width of scrollbar 
       ${window.innerWidth - html.clientWidth}`;
@@ -539,3 +539,24 @@ function exEighteen() {
       execution);
 }
 exEighteen();
+
+// 1.9.3 Поместите мяч в центр поля
+
+function exNineteen() {
+  let ex = document.getElementById('1.9.3');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  let field = exBody.querySelector('.field');
+  let ball = exBody.querySelector('.ball');
+
+  function execution() {
+    ball.style.left = field.clientWidth / 2 - ball.clientWidth / 2 + 'px';
+    ball.style.top = field.clientHeight / 2 - ball.clientHeight / 2 + 'px';
+  }
+
+  htmlOut(exCode,
+      exNineteen.toString(),
+      execution);
+}
+exNineteen();
