@@ -504,20 +504,38 @@ function exSeventeen() {
   let elem = exBody.querySelector('.elem');
   let valueOut = exBody.querySelector('.scroll-value').children[1];
 
-
   function scrollBottom(elem) {
     let value = 0;
     value = elem.scrollHeight - elem.scrollTop - elem.clientHeight;
-    return (value < 0) ? 0 : value;
+    return Math.round(value);
   }
+
   function execution() {
     valueOut.innerHTML = scrollBottom(elem);
   }
-
-  // setInterval(() => console.log(scrollBottom(elem)), 500);
 
   htmlOut(exCode,
       exSeventeen.toString(),
       execution);
 }
 exSeventeen();
+
+// 1.9.2 Узнать ширину полосы прокрутки
+
+function exEighteen() {
+  let ex = document.getElementById('1.9.2');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+  let outputValues = exBody.querySelector('.output-values');
+
+  let html = document.querySelector('html');
+
+  function execution() {
+    outputValues.innerHTML = `Width of scrollbar 
+      ${window.innerWidth - html.clientWidth}`;
+  }
+  htmlOut(exCode,
+      exEighteen.toString(),
+      execution);
+}
+exEighteen();
