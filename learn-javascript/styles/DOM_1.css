@@ -115,3 +115,54 @@
   left: 200px;
   top: -43px;
 }
+
+.one-eleven-two .note {
+  position: fixed;
+  z-index: 10;
+  padding: 5px;
+  border: 1px solid black;
+  background: white;
+  text-align: center;
+  font: italic 14px serif;
+}
+
+.one-eleven-two blockquote, .one-eleven-three blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 0 0 0 100px;
+  padding: .5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+  display: inline-block;
+  white-space: pre;
+}
+
+.one-eleven-two blockquote:before, .one-eleven-three blockquote:before{
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: .1em;
+  margin-right: .25em;
+  vertical-align: -.4em;
+}
+
+.one-eleven-two .hide-note {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  background: rgb(251, 255, 0);
+  padding: 5px;
+  font-weight: bold;
+  color: #444;
+  cursor: pointer;
+  border-radius: 20px;
+  display: none;
+}
+.one-eleven-three .note {
+  position: absolute;
+  z-index: 10;
+  padding: 5px;
+  border: 1px solid black;
+  background: white;
+  text-align: center;
+  font: italic 14px serif;
+}

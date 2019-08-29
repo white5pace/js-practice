@@ -568,10 +568,10 @@ function exTwenty() {
   let ex = document.getElementById('1.11.1');
   let exCode = ex.querySelector('.ex-code');
 
-  let iframe = document.querySelector('.iframe-one-eleven-one');
-  let iframeDoc = iframe.contentWindow.document;
-
   function execution() {
+    let iframe = document.querySelector('.iframe-one-eleven-one');
+    let iframeDoc = iframe.contentWindow.document;
+
     let exBody = iframeDoc.querySelector('.one-eleven-one');
     let coords = exBody.querySelector('.coords');
 
@@ -624,3 +624,204 @@ function exTwenty() {
       execution);
 }
 exTwenty();
+
+// 1.11.2 Покажите заметку рядом с элементом
+
+function exTwentyOne() {
+  let ex = document.getElementById('1.11.2');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  function positionAt(anchor, position, elem) {
+    let anchorCoords = anchor.getBoundingClientRect();
+    let elemStyles = getComputedStyle(elem);
+
+    if (position == 'top') {
+      elem.style.top = anchorCoords.y - parseInt(elemStyles.height) + 'px';
+      elem.style.left = anchorCoords.x + anchorCoords.width / 2 - parseInt(elemStyles.width) / 2 + 'px';
+    }
+
+    if (position == 'right') {
+      elem.style.top = anchorCoords.bottom - parseInt(elemStyles.height) / 2 - anchorCoords.height / 2 + 'px';
+      elem.style.left = anchorCoords.right + 'px';
+    }
+
+    if (position == 'left') {
+      elem.style.top = anchorCoords.bottom - parseInt(elemStyles.height) / 2 - anchorCoords.height / 2 + 'px';
+      elem.style.left = anchorCoords.x - parseInt(elemStyles.width) + 'px';
+    }
+
+    if (position == 'bottom') {
+      elem.style.top = anchorCoords.bottom + 'px';
+      elem.style.left = anchorCoords.right - parseInt(elemStyles.width) / 2 - anchorCoords.width / 2 + 'px';
+    }
+  }
+
+  function showNote(anchor, position, html) {
+    let note = document.createElement('div');
+    note.className = 'note';
+    note.innerHTML = html;
+    exBody.append(note);
+
+    positionAt(anchor, position, note);
+  }
+
+  function execution() {
+    let hideButton = exBody.querySelector('.hide-note');
+    hideButton.style.display = 'block';
+    hideButton.onclick = function() {
+      let allNote = exBody.querySelectorAll('.note');
+      for (let note of allNote) {
+        note.style.display = 'none';
+      }
+    };
+
+    let blockquote = exBody.querySelector('blockquote');
+
+    showNote(blockquote, 'top', 'note above');
+    showNote(blockquote, 'right', 'note at the right');
+    showNote(blockquote, 'bottom', 'note below');
+    showNote(blockquote, 'left', 'note at the left');
+  }
+
+  htmlOut(exCode,
+      exTwentyOne.toString(),
+      execution);
+}
+exTwentyOne();
+
+// 1.11.3 Покажите заметку около элемента (абсолютное позиционирование)
+
+function exTwentyTwo() {
+  let ex = document.getElementById('1.11.3');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  function positionAt(anchor, position, elem) {
+    let anchorCoords = anchor.getBoundingClientRect();
+    let elemStyles = getComputedStyle(elem);
+
+    if (position == 'top') {
+      elem.style.top = anchorCoords.y + document.documentElement.scrollTop - parseInt(elemStyles.height) + 'px';
+      elem.style.left = anchorCoords.x + anchorCoords.width / 2 - parseInt(elemStyles.width) / 2 + 'px';
+    }
+
+    if (position == 'right') {
+      elem.style.top = anchorCoords.bottom + document.documentElement.scrollTop - parseInt(elemStyles.height) / 2 - anchorCoords.height / 2 + 'px';
+      elem.style.left = anchorCoords.right + 'px';
+    }
+
+    if (position == 'left') {
+      elem.style.top = anchorCoords.bottom + document.documentElement.scrollTop - parseInt(elemStyles.height) / 2 - anchorCoords.height / 2 + 'px';
+      elem.style.left = anchorCoords.x - parseInt(elemStyles.width) + 'px';
+    }
+
+    if (position == 'bottom') {
+      elem.style.top = anchorCoords.bottom + document.documentElement.scrollTop + 'px';
+      elem.style.left = anchorCoords.right - parseInt(elemStyles.width) / 2 - anchorCoords.width / 2 + 'px';
+    }
+  }
+
+  function showNote(anchor, position, html) {
+    let note = document.createElement('div');
+    note.className = 'note';
+    note.innerHTML = html;
+    exBody.append(note);
+
+    positionAt(anchor, position, note);
+  }
+
+  function execution() {
+    let blockquote = exBody.querySelector('blockquote');
+
+    showNote(blockquote, 'top', 'note above');
+    showNote(blockquote, 'right', 'note at the right');
+    showNote(blockquote, 'bottom', 'note below');
+    showNote(blockquote, 'left', 'note at the left');
+  }
+
+  htmlOut(exCode,
+      exTwentyTwo.toString(),
+      execution);
+}
+exTwentyTwo();
+
+// 1.11.4 Расположите заметку внутри элемента (абсолютное позиционирование)
+
+function exTwentyThree() {
+  let ex = document.getElementById('1.11.4');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  function positionAt(anchor, position, elem) {
+    let anchorCoords = anchor.getBoundingClientRect();
+    let elemStyles = getComputedStyle(elem);
+
+    if (position == 'top-in') {
+      elem.style.top = anchorCoords.y + document.documentElement.scrollTop + 'px';
+      elem.style.left = anchorCoords.x + anchorCoords.width / 2 - parseInt(elemStyles.width) / 2 + 'px';
+    }
+
+    if (position == 'right-in') {
+      elem.style.top = anchorCoords.bottom + document.documentElement.scrollTop - parseInt(elemStyles.height) / 2 - anchorCoords.height / 2 + 'px';
+      elem.style.left = anchorCoords.right - parseInt(elemStyles.width) + 'px';
+    }
+
+    if (position == 'left-in') {
+      elem.style.top = anchorCoords.bottom + document.documentElement.scrollTop - parseInt(elemStyles.height) / 2 - anchorCoords.height / 2 + 'px';
+      elem.style.left = anchorCoords.x + 'px';
+    }
+
+    if (position == 'bottom-in') {
+      elem.style.top = anchorCoords.bottom - parseInt(elemStyles.height) + document.documentElement.scrollTop + 'px';
+      elem.style.left = anchorCoords.right - parseInt(elemStyles.width) / 2 - anchorCoords.width / 2 + 'px';
+    }
+
+    if (position == 'top-out') {
+      elem.style.top = anchorCoords.y + document.documentElement.scrollTop - parseInt(elemStyles.height) + 'px';
+      elem.style.left = anchorCoords.x + anchorCoords.width / 2 - parseInt(elemStyles.width) / 2 + 'px';
+    }
+
+    if (position == 'right-out') {
+      elem.style.top = anchorCoords.bottom + document.documentElement.scrollTop - parseInt(elemStyles.height) / 2 - anchorCoords.height / 2 + 'px';
+      elem.style.left = anchorCoords.right + 'px';
+    }
+
+    if (position == 'left-out') {
+      elem.style.top = anchorCoords.bottom + document.documentElement.scrollTop - parseInt(elemStyles.height) / 2 - anchorCoords.height / 2 + 'px';
+      elem.style.left = anchorCoords.x - parseInt(elemStyles.width) + 'px';
+    }
+
+    if (position == 'bottom-out') {
+      elem.style.top = anchorCoords.bottom + document.documentElement.scrollTop + 'px';
+      elem.style.left = anchorCoords.right - parseInt(elemStyles.width) / 2 - anchorCoords.width / 2 + 'px';
+    }
+  }
+
+  function showNote(anchor, position, html) {
+    let note = document.createElement('div');
+    note.className = 'note';
+    note.innerHTML = html;
+    exBody.append(note);
+
+    positionAt(anchor, position, note);
+  }
+
+  function execution() {
+    let blockquote = exBody.querySelector('blockquote');
+
+    showNote(blockquote, 'top-in', 'note top-in');
+    showNote(blockquote, 'right-in', 'note right-in');
+    showNote(blockquote, 'bottom-in', 'note bottom-in');
+    showNote(blockquote, 'left-in', 'note left-in');
+    showNote(blockquote, 'top-out', 'note top-out');
+    showNote(blockquote, 'right-out', 'note right-out');
+    showNote(blockquote, 'bottom-out', 'note bottom-out');
+    showNote(blockquote, 'left-out', 'note left-out');
+  }
+
+  htmlOut(exCode,
+      exTwentyThree.toString(),
+      execution);
+}
+exTwentyThree();
