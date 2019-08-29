@@ -280,6 +280,7 @@ function exTwelve() {
     }
 
     let table = document.createElement('table');
+    table.className = 'my-table';
     elem.append(table);
 
     for (let i = 0; i < calculateRowsAmount(); i++) {
@@ -560,3 +561,35 @@ function exNineteen() {
       execution);
 }
 exNineteen();
+
+// 1.11.1 Найдите координаты точек относительно окна браузера
+
+function exTwenty() {
+  let ex = document.getElementById('1.11.1');
+  let exBody = document.querySelector('.one-eleven-one');
+  // let exCode = ex.querySelector('.ex-code');
+
+  let field = exBody.querySelector('.field');
+  let coords = exBody.querySelector('.coords');
+
+  exBody.onclick = function(e) {
+    coords.innerHTML = e.clientX + ':' + e.clientY;
+  };
+  console.log(exBody);
+
+  function kuskus() {
+    let getCoords = exBody.getBoundingClientRect();
+    console.log(getCoords.x);
+    console.log(getCoords.y);
+  }
+
+
+  function execution() {
+    console.log('kus');
+  }
+
+  htmlOut(exCode,
+      exTwenty.toString(),
+      execution);
+}
+exTwenty();
