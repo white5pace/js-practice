@@ -566,26 +566,57 @@ exNineteen();
 
 function exTwenty() {
   let ex = document.getElementById('1.11.1');
-  let exBody = document.querySelector('.one-eleven-one');
-  // let exCode = ex.querySelector('.ex-code');
+  let exCode = ex.querySelector('.ex-code');
 
-  let field = exBody.querySelector('.field');
-  let coords = exBody.querySelector('.coords');
-
-  exBody.onclick = function(e) {
-    coords.innerHTML = e.clientX + ':' + e.clientY;
-  };
-  console.log(exBody);
-
-  function kuskus() {
-    let getCoords = exBody.getBoundingClientRect();
-    console.log(getCoords.x);
-    console.log(getCoords.y);
-  }
-
+  let iframe = document.querySelector('.iframe-one-eleven-one');
+  let iframeDoc = iframe.contentWindow.document;
 
   function execution() {
-    console.log('kus');
+    let exBody = iframeDoc.querySelector('.one-eleven-one');
+    let coords = exBody.querySelector('.coords');
+
+    exBody.onclick = function(e) {
+      coords.innerHTML = e.clientX + ':' + e.clientY;
+    };
+
+    alert(searchPoints(exBody));
+  }
+
+  function searchPoints(exBody) {
+    let field = exBody.querySelector('.field');
+    let fieldStyles = getComputedStyle(field);
+    let fieldPosition = field.getBoundingClientRect();
+
+    function getBorderSize(border) {
+      return parseInt(border.split(' ')[0]);
+    }
+
+    let getPoints = {
+      leftInner() {
+        let x = fieldPosition.x + getBorderSize(fieldStyles.borderTop);
+        let y = fieldPosition.y + getBorderSize(fieldStyles.borderLeft);
+        return `Координаты левой внутренней точки x: ${Math.round(x)}, y: ${Math.round(y)}`;
+      },
+      rightInner() {
+        let x = fieldPosition.bottom - getBorderSize(fieldStyles.borderRight);
+        let y = fieldPosition.right - getBorderSize(fieldStyles.borderBottom);
+        return `Координаты правой внутренней точки x: ${Math.round(x)}, y: ${Math.round(y)}`;
+      },
+      leftOuter() {
+        let x = fieldPosition.x;
+        let y = fieldPosition.y;
+        return `Координаты левой внешней точки x: ${Math.round(x)}, y: ${Math.round(y)}`;
+      },
+      rightOuter() {
+        let x = fieldPosition.bottom;
+        let y = fieldPosition.right;
+        return `Координаты правой внешней точки x: ${Math.round(x)}, y: ${Math.round(y)}`;
+      },
+    };
+    return `${getPoints.leftOuter()},
+    ${getPoints.leftInner()},
+    ${getPoints.rightInner()},
+    ${getPoints.rightOuter()}`;
   }
 
   htmlOut(exCode,
