@@ -66,21 +66,25 @@ function exThree() {
   let exCode = ex.querySelector('.ex-code');
 
   let field = exBody.querySelector('.field');
-  let fieldCoords = field.getBoundingClientRect();
-  let fieldStyles = getComputedStyle(field);
-  let borderWidth = parseInt(fieldStyles.borderWidth);
+  let fieldDots = '. ';
+  field.append(fieldDots.repeat(1000));
 
   let ball = exBody.querySelector('.ball');
-  let ballSize = parseInt(getComputedStyle(ball).width);
-
-  let fieldBorders = {
-    left: Math.round(fieldCoords.x + borderWidth),
-    top: Math.round(fieldCoords.y + borderWidth),
-    right: Math.round(fieldCoords.right - borderWidth),
-    bottom: Math.round(fieldCoords.bottom - borderWidth),
-  };
 
   field.onclick = function(e) {
+    let fieldCoords = field.getBoundingClientRect();
+    let fieldStyles = getComputedStyle(field);
+    let borderWidth = parseInt(fieldStyles.borderWidth);
+
+    let ballSize = parseInt(getComputedStyle(ball).width);
+
+    let fieldBorders = {
+      left: Math.round(fieldCoords.x + borderWidth),
+      top: Math.round(fieldCoords.y + borderWidth),
+      right: Math.round(fieldCoords.right - borderWidth),
+      bottom: Math.round(fieldCoords.bottom - borderWidth),
+    };
+
     function checkBorderX(mouseCords) {
       if (mouseCords < fieldBorders.left + ballSize / 2) {
         return fieldBorders.left + ballSize / 2;

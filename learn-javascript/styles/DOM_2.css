@@ -1,6 +1,6 @@
 .one-two-four .field {
-  width: 200px;
-  height: 150px;
+  width: 500px;
+  height: 300px;
   border: 10px solid black;
   background-color: #00FF00;
   overflow: hidden;
@@ -13,5 +13,5 @@
   position: absolute;
   left: 0;
   top: 0;
-  transition: all .7s ease-out;
+  transition: all 1 s ease-out;
 }
