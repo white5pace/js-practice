@@ -36,3 +36,39 @@
 .two-one-five .closed ul {
   display: none;
 }
+
+.two-one-six h3 {
+  margin: 0;
+  padding-bottom: .3em;
+  font-size: 1.1em;
+}
+
+.two-one-six  p {
+  margin: 0;
+  padding: 0 0 .5em;
+}
+.two-one-six .panes-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.two-one-six  .pane {
+  max-width: 500px;
+  background: #edf5e1;
+  padding: 10px 20px 10px;
+  border-top: solid 2px #c4df9b;
+  position: relative;
+}
+
+.two-one-six  .remove-button {
+  position: absolute;
+  top: 0px;
+  right: 5px;
+  font-size: 110%;
+  color: darkred;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
