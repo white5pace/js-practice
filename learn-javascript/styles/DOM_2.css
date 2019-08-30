@@ -1,0 +1,17 @@
+.one-two-four .field {
+  width: 200px;
+  height: 150px;
+  border: 10px solid black;
+  background-color: #00FF00;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+.one-two-four .ball {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: all .7s ease-out;
+}
