@@ -1,4 +1,4 @@
-.one-two-four .field {
+.two-one-four .field {
   width: 500px;
   height: 300px;
   border: 10px solid black;
@@ -9,7 +9,7 @@
   user-select: none;
 }
 
-.one-two-four .ball {
+.two-one-four .ball {
   position: absolute;
   left: 0;
   top: 0;

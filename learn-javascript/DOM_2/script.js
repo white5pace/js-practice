@@ -14,10 +14,10 @@ function htmlOut(exCode, pOne, execution) {
   };
 };
 
-// 2.2.1 Скрыть элемент по нажатию кнопки
+// 2.1.1 Скрыть элемент по нажатию кнопки
 
 function exOne() {
-  let ex = document.getElementById('1.2.1');
+  let ex = document.getElementById('2.1.1');
   let exBody = ex.querySelector('.ex-body');
   let exCode = ex.querySelector('.ex-code');
 
@@ -40,10 +40,10 @@ function exOne() {
 }
 exOne();
 
-// 2.2.2 Спрятать себя
+// 2.1.2 Спрятать себя
 
 function exTwo() {
-  let ex = document.getElementById('1.2.2');
+  let ex = document.getElementById('2.1.2');
   let exBody = ex.querySelector('.ex-body');
   let exCode = ex.querySelector('.ex-code');
 
@@ -58,10 +58,10 @@ function exTwo() {
 }
 exTwo();
 
-// 2.2.4Передвиньте мяч по полю
+// 2.1.4 Передвиньте мяч по полю
 
 function exThree() {
-  let ex = document.getElementById('1.2.4');
+  let ex = document.getElementById('2.1.4');
   let exBody = ex.querySelector('.ex-body');
   let exCode = ex.querySelector('.ex-code');
 
@@ -115,3 +115,21 @@ function exThree() {
       execution);
 }
 exThree();
+
+// 2.1.5 Спрятать себя
+
+function exFour() {
+  let ex = document.getElementById('2.1.5');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  let btn = exBody.querySelector('.hide-self');
+  btn.addEventListener('click', function() {
+    this.style.display = 'none';
+  });
+  function execution() {}
+  htmlOut(exCode,
+      exFour.toString(),
+      execution);
+}
+exFour();
