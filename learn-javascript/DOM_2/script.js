@@ -116,17 +116,20 @@ function exThree() {
 }
 exThree();
 
-// 2.1.5 Спрятать себя
+// 2.1.5 Создать раскрывающееся меню
 
 function exFour() {
   let ex = document.getElementById('2.1.5');
   let exBody = ex.querySelector('.ex-body');
   let exCode = ex.querySelector('.ex-code');
 
-  let btn = exBody.querySelector('.hide-self');
-  btn.addEventListener('click', function() {
-    this.style.display = 'none';
-  });
+  let sweeties = exBody.querySelector('.sweeties');
+  let toggleList = exBody.querySelector('.toggle-list');
+
+  toggleList.onclick = function() {
+    sweeties.classList.toggle('closed');
+  };
+
   function execution() {}
   htmlOut(exCode,
       exFour.toString(),
