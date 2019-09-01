@@ -157,3 +157,39 @@ function exFive() {
       execution);
 }
 exFive();
+
+// 2.1.7 Карусель
+
+function exSix() {
+  let ex = document.getElementById('2.1.7');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  let carousel = exBody.querySelector('.carousel');
+  let images = carousel.querySelector('ul');
+  let imagesSize = parseInt(getComputedStyle(carousel.querySelector('img')).width);
+  let buttonLeft = carousel.firstElementChild;
+  let buttonRight = carousel.lastElementChild;
+
+  let carouselScreenSize = imagesSize * 3;
+  let imgAmount = images.children.length;
+  let maxRight = imgAmount * imagesSize;
+
+  console.log(imgAmount);
+  buttonRight.onclick = function() {
+    let imagesMargin = parseInt(getComputedStyle(images).marginLeft);
+
+    console.log(imagesMargin);
+    let step = -carouselScreenSize + imagesMargin;
+    if (step > maxRight) {
+      images.style.marginLeft = step + 'px';
+    }
+
+    images.style.marginLeft = - imagesSize * 3 + imagesMargin + 'px';
+  };
+  function execution() {}
+  htmlOut(exCode,
+      exFive.toString(),
+      execution);
+}
+exSix();
