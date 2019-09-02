@@ -259,3 +259,49 @@ function exEight() {
       execution);
 }
 exEight();
+
+// 2.3.3 Раскрывающееся дерево
+
+function exNine() {
+  let ex = document.getElementById('2.3.3');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  let table = exBody.querySelector('.grid');
+
+  class SortingTable {
+    constructor(elem) {
+      this._elem = elem;
+      this._tbody = elem.querySelector('tbody');
+      elem.onclick = this.onClick.bind(this);
+    }
+
+    number() {
+      let sortedRows = Array.from(this._tbody.rows).sort((rowA, rowB) => {
+        return + rowA.cells[0].innerHTML > + rowB.cells[0].innerHTML ? 1 : -1;
+      });
+      this._tbody.append(...sortedRows);
+    }
+
+    string() {
+      let sortedRows = Array.from(this._tbody.rows).sort((rowA, rowB) => {
+        return rowA.cells[1].innerHTML > rowB.cells[1].innerHTML ? 1 : -1;
+      });
+      this._tbody.append(...sortedRows);
+    }
+
+    onClick(event) {
+      let type = event.target.dataset.type;
+      if (type) {
+        this[type]();
+      }
+    };
+  }
+
+  new SortingTable(table);
+  function execution() {}
+  htmlOut(exCode,
+      exNine.toString(),
+      execution);
+}
+exNine();

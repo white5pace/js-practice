@@ -141,3 +141,17 @@
 .two-three-two span:hover {
   font-weight: bold;
 }
+
+.two-three-three table {
+  border-collapse: collapse;
+}
+.two-three-three th, .two-three-three td {
+  border: 1px solid black;
+  padding: 4px;
+}
+.two-three-three th {
+  cursor: pointer;
+}
+.two-three-three th:hover {
+  background: yellow;
+}
