@@ -37,22 +37,22 @@
   display: none;
 }
 
-.two-one-six h3 {
+.two-one-six h3, .two-three-one h3{
   margin: 0;
   padding-bottom: .3em;
   font-size: 1.1em;
 }
 
-.two-one-six  p {
+.two-one-six p, .two-three-one p{
   margin: 0;
   padding: 0 0 .5em;
 }
-.two-one-six .panes-wrapper {
+.two-one-six .panes-wrapper, .two-three-one .panes-wrappe {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.two-one-six  .pane {
+.two-one-six .pane, .two-three-one .pane{
   max-width: 500px;
   background: #edf5e1;
   padding: 10px 20px 10px;
@@ -60,7 +60,7 @@
   position: relative;
 }
 
-.two-one-six  .remove-button {
+.two-one-six .remove-button, .two-three-one .remove-button {
   position: absolute;
   top: 0px;
   right: 5px;

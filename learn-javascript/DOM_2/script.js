@@ -202,3 +202,24 @@ function exSix() {
       execution);
 }
 exSix();
+
+// 2.3.1 Спрячьте сообщения с помощью делегирования
+
+function exSeven() {
+  let ex = document.getElementById('2.3.1');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  exBody.addEventListener('click', function(event) {
+    if (event.target.tagName == 'BUTTON') {
+      event.target.parentElement.remove();
+    }
+    // let pane = event.target.closest('.pane');
+    // pane.remove();
+  });
+  function execution() {}
+  htmlOut(exCode,
+      exSeven.toString(),
+      execution);
+}
+exSeven();
