@@ -305,3 +305,26 @@ function exNine() {
       execution);
 }
 exNine();
+
+// 2.3.4 Раскрывающееся дерево
+
+function exTen() {
+  let ex = document.getElementById('2.3.4');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  let tooltip = document.createElement('div');
+  tooltip.className = 'tooltip';
+
+  exBody.addEventListener('mouseover', function(event) {
+    if (event.target.tagName == 'BUTTON') {
+      tooltip.innerHTML = event.target.dataset.tooltip;
+      exBody.append(tooltip);
+    }
+  });
+  function execution() {}
+  htmlOut(exCode,
+      exTen.toString(),
+      execution);
+}
+exTen();
