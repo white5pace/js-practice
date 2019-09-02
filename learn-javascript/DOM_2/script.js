@@ -173,23 +173,32 @@ function exSix() {
 
   let carouselScreenSize = imagesSize * 3;
   let imgAmount = images.children.length;
-  let maxRight = imgAmount * imagesSize;
+  let maxRight = - (imgAmount * imagesSize - carouselScreenSize);
 
-  console.log(imgAmount);
   buttonRight.onclick = function() {
-    let imagesMargin = parseInt(getComputedStyle(images).marginLeft);
-
-    console.log(imagesMargin);
-    let step = -carouselScreenSize + imagesMargin;
+    let translated = + getComputedStyle(images).getPropertyValue('transform').match(/(-?[0-9\.]+)/g).slice(-2, -1);
+    let step = -carouselScreenSize + translated;
     if (step > maxRight) {
-      images.style.marginLeft = step + 'px';
+      images.style.transform = `translate(${step}px, 0)`;
+    } else {
+      images.style.transform = `translate(${maxRight}px, 0)`;
     }
-
-    images.style.marginLeft = - imagesSize * 3 + imagesMargin + 'px';
   };
+
+  buttonLeft.onclick = function() {
+    let translated = + getComputedStyle(images).getPropertyValue('transform').match(/(-?[0-9\.]+)/g).slice(-2, -1);
+    let step = carouselScreenSize + translated;
+    images.style.transform = `translate(${step}px, 0)`;
+    if (step < 0) {
+      images.style.transform = `translate(${step}px, 0)`;
+    } else {
+      images.style.transform = `translate(${0}px, 0)`;
+    }
+  };
+
   function execution() {}
   htmlOut(exCode,
-      exFive.toString(),
+      exSix.toString(),
       execution);
 }
 exSix();

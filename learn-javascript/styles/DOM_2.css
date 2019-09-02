@@ -72,10 +72,18 @@
   background: transparent;
   cursor: pointer;
 }
+
+.two-one-seven .carousel {
+  position: relative;
+  margin-left: 50px;
+  width: 390px;
+}
+
 .two-one-seven .gallery {
   width: 390px;
   overflow: hidden;
 }
+
 .two-one-seven .arrow {
   padding: 0;
   background: #ddd;
@@ -85,8 +93,18 @@
   line-height: 24px;
   color: #444;
   display: block;
+  position: absolute;
 }
-
+.arrow-left {
+  top: 50%;
+  left: -40px;
+  transform: translate(0, -50%);
+}
+.arrow-right {
+  top: 50%;
+  right: -40px;
+  transform: translate(0, -50%);
+}
 .two-one-seven .arrow:focus {
   outline: none;
 }
@@ -103,14 +121,16 @@
   padding: 0;
   list-style: none;
   font-size: 0;
+  transform: translate(0, 0);
+  transition: transform .5s ease-out;
 }
 
 .two-one-seven ul img {
   width: 130px;
   height: 130px;
-  display: block; /* убираем пустое место вокруг картинок */
+  display: block; 
 }
 
 .two-one-seven ul li {
-  display: inline-block; /* убираем пустое место между элементами списка */
+  display: inline-block;
 }
