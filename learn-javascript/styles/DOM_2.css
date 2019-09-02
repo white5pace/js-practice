@@ -134,3 +134,10 @@
 .two-one-seven ul li {
   display: inline-block;
 }
+
+.two-three-two span {
+  cursor: pointer;
+}
+.two-three-two span:hover {
+  font-weight: bold;
+}

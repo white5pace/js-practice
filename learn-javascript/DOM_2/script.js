@@ -223,3 +223,39 @@ function exSeven() {
       execution);
 }
 exSeven();
+
+// 2.3.2 Раскрывающееся дерево
+
+function exEight() {
+  let ex = document.getElementById('2.3.2');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  let tree = exBody.querySelector('.tree');
+
+  function styling() {
+    let allLI = exBody.querySelectorAll('li');
+    for (let li of allLI) {
+      if (li.children[0]) {
+        let span = document.createElement('span');
+        li.prepend(span);
+        span.append(span.nextSibling);
+      }
+    }
+  }
+  styling();
+
+  tree.addEventListener('click', function(event) {
+    let targetInnerList = event.target.nextSibling;
+
+    if (event.target.tagName != 'SPAN') return;
+
+    targetInnerList.hidden = !targetInnerList.hidden;
+  });
+
+  function execution() {}
+  htmlOut(exCode,
+      exEight.toString(),
+      execution);
+}
+exEight();
