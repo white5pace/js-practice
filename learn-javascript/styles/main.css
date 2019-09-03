@@ -45,6 +45,9 @@ h1 {
   line-height: 16px;
   padding-right: 5px;
 }
+.button[href] {
+  text-decoration: none;
+}
 .button {
   display: inline;
   color: #0059b2;
