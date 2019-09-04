@@ -25,15 +25,22 @@ h1 {
   margin-bottom: 24px;
   padding-left: 0;
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
 }
 .list-sub__item {
   margin: 0;
-  width: 30%;
+  width: 33.3%;
   box-sizing: border-box;
   padding-right: 20px;
   margin-bottom: 10px;
+}
+.column {
+  width: 33.3%;
+  /* padding-right: 20px;
+  margin-bottom: 10px;   */
+}
+.column > .list-sub__item   {
+  width: 100%
 }
 @media only screen and (max-width: 1200px){
   .list-sub__item {
