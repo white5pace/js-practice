@@ -306,7 +306,7 @@ function exNine() {
 }
 exNine();
 
-// 2.3.4 Раскрывающееся дерево
+// 2.3.4 Поведение "подсказка"
 
 function exTen() {
   let ex = document.getElementById('2.3.4');
@@ -314,12 +314,30 @@ function exTen() {
   let exCode = ex.querySelector('.ex-code');
 
   let tooltip = document.createElement('div');
-  tooltip.className = 'tooltip';
+  tooltip.className = 'my-tooltip';
+  exBody.append(tooltip);
 
   exBody.addEventListener('mouseover', function(event) {
     if (event.target.tagName == 'BUTTON') {
       tooltip.innerHTML = event.target.dataset.tooltip;
-      exBody.append(tooltip);
+      tooltip.style.display = 'block';
+      let targetCoords = event.target.getBoundingClientRect();
+      let tooltipMetrics = getComputedStyle(tooltip);
+      let tooltipMetricHeight = parseInt(tooltipMetrics.height);
+      let targetMetrics = getComputedStyle(event.target);
+
+      if (targetCoords.y > tooltipMetricHeight ) {
+        tooltip.style.top = targetCoords.y - parseInt(tooltipMetrics.height) + 'px';
+        tooltip.style.left = targetCoords.x + 'px';
+      } else {
+        tooltip.style.top = targetCoords.y + parseInt(targetMetrics.height) + 'px';
+        tooltip.style.left = targetCoords.x + 'px';
+      }
+    }
+  });
+  exBody.addEventListener('mouseout', function(event) {
+    if (event.target.tagName == 'BUTTON') {
+      tooltip.style.display = 'none';
     }
   });
   function execution() {}
