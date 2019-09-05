@@ -346,3 +346,31 @@ function exTen() {
       execution);
 }
 exTen();
+
+// 2.4.2 Поймайте переход по ссылке
+
+function exEleven() {
+  let ex = document.getElementById('2.4.2');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  let contents = exBody.querySelector('.contents');
+
+  contents.addEventListener('click', function(event) {
+    let target = event.target.closest('a');
+
+    if (target && contents.contains(target)) {
+      let link = target.getAttribute('href');
+      let confirmed = confirm(`Вы действительно хотите перейти? ${link}`);
+      if (!confirmed) {
+        event.preventDefault();
+      }
+    }
+  });
+
+  function execution() {}
+  htmlOut(exCode,
+      exEleven.toString(),
+      execution);
+}
+exEleven();

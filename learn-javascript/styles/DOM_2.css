@@ -21,38 +21,47 @@
   cursor: pointer;
   user-select: none;
 }
+
 .two-one-five .arrow {
   color: rgb(42, 212, 235);
   margin-right: 10px;
 }
+
 .two-one-five .closed .arrow {
   transform: rotate(-90deg);
 }
 
-.two-one-five ul{
+.two-one-five ul {
   list-style: none;
   padding-inline-start: 30px;
 }
+
 .two-one-five .closed ul {
   display: none;
 }
 
-.two-one-six h3, .two-three-one h3{
+.two-one-six h3,
+.two-three-one h3 {
   margin: 0;
   padding-bottom: .3em;
   font-size: 1.1em;
 }
 
-.two-one-six p, .two-three-one p{
+.two-one-six p,
+.two-three-one p {
   margin: 0;
   padding: 0 0 .5em;
 }
-.two-one-six .panes-wrapper, .two-three-one .panes-wrappe {
+
+.two-one-six .panes-wrapper,
+.two-three-one .panes-wrappe {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.two-one-six .pane, .two-three-one .pane{
+
+.two-one-six .pane,
+.two-three-one .pane {
   max-width: 500px;
   background: #edf5e1;
   padding: 10px 20px 10px;
@@ -60,7 +69,8 @@
   position: relative;
 }
 
-.two-one-six .remove-button, .two-three-one .remove-button {
+.two-one-six .remove-button,
+.two-three-one .remove-button {
   position: absolute;
   top: 0px;
   right: 5px;
@@ -95,16 +105,19 @@
   display: block;
   position: absolute;
 }
+
 .arrow-left {
   top: 50%;
   left: -40px;
   transform: translate(0, -50%);
 }
+
 .arrow-right {
   top: 50%;
   right: -40px;
   transform: translate(0, -50%);
 }
+
 .two-one-seven .arrow:focus {
   outline: none;
 }
@@ -128,7 +141,7 @@
 .two-one-seven ul img {
   width: 130px;
   height: 130px;
-  display: block; 
+  display: block;
 }
 
 .two-one-seven ul li {
@@ -138,6 +151,7 @@
 .two-three-two span {
   cursor: pointer;
 }
+
 .two-three-two span:hover {
   font-weight: bold;
 }
@@ -145,13 +159,17 @@
 .two-three-three table {
   border-collapse: collapse;
 }
-.two-three-three th, .two-three-three td {
+
+.two-three-three th,
+.two-three-three td {
   border: 1px solid black;
   padding: 4px;
 }
+
 .two-three-three th {
   cursor: pointer;
 }
+
 .two-three-three th:hover {
   background: yellow;
 }
@@ -169,4 +187,12 @@
   color: #333;
   background: #fff;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
+}
+
+.two-four-two .contents {
+  padding: 5px;
+  border: 1px green solid;
+}
+.two-four-two legend {
+  width: auto;
 }
