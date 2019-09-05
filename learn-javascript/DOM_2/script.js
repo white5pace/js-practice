@@ -374,3 +374,29 @@ function exEleven() {
       execution);
 }
 exEleven();
+
+// 2.4.3 Галерея изображений
+
+function exTwelve() {
+  let ex = document.getElementById('2.4.3');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  let imgDisplay = exBody.querySelector('.largeImg');
+  let list = exBody.querySelector('.thumbs');
+
+  list.onclick = function(event) {
+    let target = event.target.closest('a');
+    if (target && list.contains(target)) {
+      let targetImg = target.getAttribute('href');
+      imgDisplay.setAttribute('src', targetImg);
+      imgDisplay.setAttribute('alt', target.title);
+      return false;
+    }
+  };
+  function execution() {}
+  htmlOut(exCode,
+      exTwelve.toString(),
+      execution);
+}
+exTwelve();
