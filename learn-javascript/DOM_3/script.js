@@ -158,3 +158,54 @@ function exThree() {
       execution);
 }
 exThree();
+
+// 3.3.1 Слайдер
+
+function exFour() {
+  let ex = document.getElementById('3.3.1');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  let thumb = exBody.querySelector('.thumb');
+  let slider = exBody.querySelector('.slider');
+  let sliderMetrics = slider.getBoundingClientRect();
+
+  thumb.onmousedown = function(event) {
+    event.preventDefault();
+
+    let shiftX = event.clientX - thumb.getBoundingClientRect().left;
+    function onMouseMove(event) {
+      let innerCoords = event.clientX - shiftX -
+        slider.getBoundingClientRect().left;
+
+      if (innerCoords < 0) {
+        innerCoords = 0;
+      }
+      let rightEdge = slider.offsetWidth - thumb.offsetWidth;
+      if (innerCoords > rightEdge) {
+        innerCoords = rightEdge;
+      }
+
+      thumb.style.left = innerCoords + 'px';
+    }
+
+    exBody.addEventListener('mousemove', onMouseMove);
+    exBody.addEventListener('mouseup', onMouseUp);
+
+    function onMouseUp() {
+      exBody.removeEventListener('mousemove', onMouseMove);
+      exBody.removeEventListener('mouseup', onMouseUp);
+    };
+
+    thumb.ondragstart = function() {
+      return false;
+    };
+  };
+
+
+  function execution() {}
+  htmlOut(exCode,
+      exFour.toString(),
+      execution);
+}
+exFour();
