@@ -37,3 +37,37 @@
   text-align: justify;
   margin: 10px 3px;
 }
+
+.three-two-two {
+  position: relative;
+}
+
+.three-two-two .hours {
+  color: red;
+}
+
+.three-two-two .minutes {
+  color: green;
+}
+
+.three-two-two .seconds {
+  color: blue;
+}
+
+.three-two-two .clock {
+  border: 1px dashed black;
+  padding: 5px;
+  display: inline-block;
+  background: yellow;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: .3;
+}
+
+.three-two-two .my-tooltip {
+  position: absolute;
+  background: #eee;
+  border: 1px brown solid;
+  padding: 3px;
+}

@@ -97,3 +97,64 @@ function exTwo() {
       execution);
 }
 exTwo();
+
+// 3.2.2 "Умная" подсказка
+
+function exThree() {
+  let ex = document.getElementById('3.2.2');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+  class HoverIntent {
+    constructor({
+      sensitivity = 0.1,
+      interval = 100,
+      elem,
+      over,
+      out,
+    }) {
+      this.sensitivity = sensitivity;
+      this.interval = interval;
+      this.elem = elem;
+      this.over = over;
+      this.out = out;
+      this.variable = 0;
+
+      this.onMouseMove = this.onMouseMove.bind(this);
+      this.onMouseOver = this.onMouseOver.bind(this);
+      this.onMouseOut = this.onMouseOut.bind(this);
+
+      elem.addEventListener('mouseover', this.onMouseOver);
+      elem.addEventListener('mouseout', this.onMouseOut);
+    }
+
+    onMouseOver(event) {
+    }
+
+    onMouseOut(event) {
+    }
+
+    onMouseMove(event) {
+    }
+
+
+    destroy() {
+    }
+  }
+  let elem = exBody.querySelector('.clock');
+  let tooltip = exBody.querySelector('.my-tooltip');
+  new HoverIntent({
+    elem,
+    over() {
+      tooltip.hidden = false;
+    },
+    out() {
+      tooltip.hidden = true;
+    },
+  });
+
+  function execution() {}
+  htmlOut(exCode,
+      exThree.toString(),
+      execution);
+}
+exThree();
