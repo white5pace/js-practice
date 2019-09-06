@@ -209,3 +209,66 @@ function exFour() {
       execution);
 }
 exFour();
+
+// 3.3.2 Расставить супергероев по полю
+
+function exFive() {
+  let ex = document.getElementById('3.3.2');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  exBody.onmousedown = function(event) {
+    let target = event.target;
+
+    if (!target.classList.contains('draggable')) return;
+    event.preventDefault();
+
+    let shiftX = event.clientX - target.getBoundingClientRect().left;
+    let shiftY = event.clientY - target.getBoundingClientRect().top;
+
+    moveAt(event.pageX, event.pageY);
+
+    function moveAt(pageX, pageY) {
+      event.target.style.position = 'absolute';
+      event.target.style.top = pageY - shiftY + 'px';
+      event.target.style.left = pageX - shiftX + 'px';
+    }
+
+    function onMouseMove(event) {
+      let pageX = event.pageX;
+      let pageY = event.pageY;
+
+      if (pageX < shiftX) {
+        pageX = shiftX;
+      }
+      console.log(pageX);
+      console.log(target.getBoundingClientRect());
+      // if (pageX + target.getBoundingClientRect().width > document.documentElement.clientWidth) {
+      //   pageX = document.documentElement.clientWidth -  target.getBoundingClientRect().width ;
+      // }
+      if (event.clientY < shiftY) {
+        if (pageY < shiftY) {
+          pageY = shiftY;
+        } else {
+          window.scrollTo(0, pageY);
+        }
+      }
+      moveAt(pageX, event.pageY);
+    }
+
+    exBody.addEventListener('mousemove', onMouseMove);
+    exBody.addEventListener('mouseup', onMouseUp);
+
+    function onMouseUp() {
+      exBody.removeEventListener('mousemove', onMouseMove);
+      exBody.removeEventListener('mouseup', onMouseUp);
+    };
+
+  };
+
+  function execution() {}
+  htmlOut(exCode,
+      exFive.toString(),
+      execution);
+}
+exFive();

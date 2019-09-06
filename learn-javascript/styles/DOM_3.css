@@ -92,3 +92,34 @@
   background: blue;
   cursor: pointer;
 }
+
+.three-three-two .hero {
+  background: url(https://js.cx/drag-heroes/heroes.png);
+  width: 130px;
+  height: 128px;
+  float: left;
+}
+
+.three-three-two .hero1 {
+  background-position: 0 0;
+}
+
+.three-three-two .hero2 {
+  background-position: 0 -128px;
+}
+
+.three-three-two .hero3 {
+  background-position: -120px 0;
+}
+
+.three-three-two .hero4 {
+  background-position: -125px -128px;
+}
+
+.three-three-two .hero5 {
+  background-position: -248px -128px;
+}
+
+.three-three-two .hero6 {
+  background-position: -244px 0;
+}
