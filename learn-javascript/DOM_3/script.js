@@ -332,3 +332,17 @@ function exSix() {
       execution);
 }
 exSix();
+
+// 3.5.1 Расставить супергероев по полю
+
+function exSeven() {
+  let ex = document.getElementById('3.5.1');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  function execution() {}
+  htmlOut(exCode,
+      exSeven.toString(),
+      execution);
+}
+exSeven();
