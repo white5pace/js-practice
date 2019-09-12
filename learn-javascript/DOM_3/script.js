@@ -288,3 +288,47 @@ function exFive() {
       execution);
 }
 exFive();
+
+// 3.4.1 Расставить супергероев по полю
+
+function exSix() {
+  let ex = document.getElementById('3.4.1');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  // Решение намного длинее и сложнее, чем решение автора,
+  // но у меня есть проверка на длину множества нажатых клавиш
+  // итого, если нажаты неподходящие по условию клавиши -
+  // вызов не сработает
+
+  function runOnKeys(func, ...keys) {
+    let setKeys = new Set();
+    document.addEventListener('keydown', function(event) {
+      setKeys.add(event.code);
+      let checkSet = new Set();
+
+      document.addEventListener('keyup', function() {
+        for (let key of keys) {
+          checkSet.add(setKeys.has(key));
+        }
+        if (!checkSet.has(false) && keys.length == setKeys.size) {
+          func();
+        }
+
+        checkSet.clear();
+        setKeys.clear();
+      });
+    });
+  }
+  runOnKeys(
+      () => alert('Kus\' kus\''),
+      'KeyQ',
+      'KeyW'
+  );
+
+  function execution() {}
+  htmlOut(exCode,
+      exSix.toString(),
+      execution);
+}
+exSix();
