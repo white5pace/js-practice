@@ -256,11 +256,10 @@ function exFive() {
         pageX = document.documentElement.clientWidth - shiftRightX;
       }
 
-
       // top border
       if (pageY - shiftY < window.pageYOffset) {
         pageY = window.pageYOffset + shiftY;
-        window.scrollBy(0, -20);
+        window.scrollBy(0, -10);
       }
 
       let scroledHeight = window.pageYOffset
@@ -269,7 +268,7 @@ function exFive() {
       // bottom border
       if (pageY + shiftBottom > scroledHeight) {
         pageY = scroledHeight - shiftBottom;
-        window.scrollBy(0, 20);
+        window.scrollBy(0, 10);
       }
       moveAt(pageX, pageY);
     }
