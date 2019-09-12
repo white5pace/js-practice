@@ -217,7 +217,7 @@ function exFive() {
   let exBody = ex.querySelector('.ex-body');
   let exCode = ex.querySelector('.ex-code');
 
-  exBody.onmousedown = function(event) {
+  document.documentElement.onmousedown = function(event) {
     let target = event.target;
 
     if (!target.classList.contains('draggable')) return;
@@ -225,6 +225,8 @@ function exFive() {
 
     let shiftX = event.clientX - target.getBoundingClientRect().left;
     let shiftY = event.clientY - target.getBoundingClientRect().top;
+    let shiftRightX = target.getBoundingClientRect().right - event.clientX;
+    let shiftBottom = target.getBoundingClientRect().bottom - event.clientY;
 
     moveAt(event.pageX, event.pageY);
 
@@ -235,35 +237,50 @@ function exFive() {
     }
 
     function onMouseMove(event) {
+      let scrollHeight = Math.max(
+          document.body.scrollHeight, document.documentElement.scrollHeight,
+          document.body.offsetHeight, document.documentElement.offsetHeight,
+          document.body.clientHeight, document.documentElement.clientHeight
+      );
+
       let pageX = event.pageX;
       let pageY = event.pageY;
 
-      if (pageX < shiftX) {
-        pageX = shiftX;
+      // left border
+      if (pageX - shiftX < 0) {
+        pageX = 0 + shiftX;
       }
-      console.log(pageX);
-      console.log(target.getBoundingClientRect());
-      // if (pageX + target.getBoundingClientRect().width > document.documentElement.clientWidth) {
-      //   pageX = document.documentElement.clientWidth -  target.getBoundingClientRect().width ;
-      // }
-      if (event.clientY < shiftY) {
-        if (pageY < shiftY) {
-          pageY = shiftY;
-        } else {
-          window.scrollTo(0, pageY);
-        }
+
+      // right border
+      if (pageX + shiftRightX > document.documentElement.clientWidth) {
+        pageX = document.documentElement.clientWidth - shiftRightX;
       }
-      moveAt(pageX, event.pageY);
+
+
+      // top border
+      if (pageY - shiftY < window.pageYOffset) {
+        pageY = window.pageYOffset + shiftY;
+        window.scrollBy(0, -20);
+      }
+
+      let scroledHeight = window.pageYOffset
+          + document.documentElement.clientHeight;
+
+      // bottom border
+      if (pageY + shiftBottom > scroledHeight) {
+        pageY = scroledHeight - shiftBottom;
+        window.scrollBy(0, 20);
+      }
+      moveAt(pageX, pageY);
     }
 
-    exBody.addEventListener('mousemove', onMouseMove);
-    exBody.addEventListener('mouseup', onMouseUp);
+    document.documentElement.addEventListener('mousemove', onMouseMove);
+    document.documentElement.addEventListener('mouseup', onMouseUp);
 
     function onMouseUp() {
-      exBody.removeEventListener('mousemove', onMouseMove);
-      exBody.removeEventListener('mouseup', onMouseUp);
+      document.documentElement.removeEventListener('mousemove', onMouseMove);
+      document.documentElement.removeEventListener('mouseup', onMouseUp);
     };
-
   };
 
   function execution() {}
