@@ -133,3 +133,30 @@
   margin: 10px;
   font-size: 16px;
 }
+
+.three-five-two iframe {
+  width: 100%;
+  overflow: scroll;
+  height: 300px
+}
+.three-five-two_body .content{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 60%;
+  margin: 0 auto;
+}
+.three-five-two_body span{
+  padding: 2px;
+}
+
+.three-five-two_body .buttonUp{
+  display: none;
+  position: fixed;
+  cursor: pointer;
+  top: 0;
+  left: 5px;
+  color: #fff;
+  text-align: center;
+  border: 10px solid transparent; border-bottom: 25px solid rgb(80, 27, 105);
+}

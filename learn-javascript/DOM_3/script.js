@@ -340,8 +340,8 @@ function exSeven() {
   let exBody = ex.querySelector('.ex-body');
   let exCode = ex.querySelector('.ex-code');
 
-  window.onload = function() {
-    let iframe = exBody.querySelector('.three-five-one_iframe');
+  let iframe = exBody.querySelector('.three-five-one_iframe');
+  iframe.onload = function() {
     let iframeDoc = iframe.contentWindow.document;
     let frameBody = iframeDoc.querySelector('.three-five-one_body');
 
@@ -354,6 +354,7 @@ function exSeven() {
       newDivNow.className = 'time';
       return newDivNow;
     }
+
     while (frameBody.offsetHeight < 400) {
       scroll.append(createTimeBlock());
     }
@@ -387,40 +388,43 @@ function exEigth() {
   let ex = document.getElementById('3.5.2');
   let exBody = ex.querySelector('.ex-body');
   let exCode = ex.querySelector('.ex-code');
+  let iframe = exBody.querySelector('.three-five-two_iframe');
 
-  window.onload = function() {
-    let iframe = exBody.querySelector('.three-five-one_iframe');
+  iframe.onload = function() {
     let iframeDoc = iframe.contentWindow.document;
-    let frameBody = iframeDoc.querySelector('.three-five-one_body');
+    let frameBody = iframeDoc.querySelector('.three-five-two_body');
+    let content = frameBody.querySelector('.content');
 
-    // let scroll = frameBody.querySelector('.scroll');
+    let nowYear = (new Date()).getFullYear();
+    for (let i = 0; i < nowYear; i++) {
+      let number = document.createElement('span');
+      number.innerHTML = i;
+      content.append(number);
+    }
 
-    // function createTimeBlock() {
-    //   let now = new Date();
-    //   let newDivNow = document.createElement('div');
-    //   newDivNow.innerHTML = now;
-    //   newDivNow.className = 'time';
-    //   return newDivNow;
-    // }
-    // while (frameBody.offsetHeight < 400) {
-    //   scroll.append(createTimeBlock());
-    // }
+    let buttonUp = document.createElement('div');
+    buttonUp.className = 'buttonUp';
 
-    // iframeDoc.addEventListener('scroll', function() {
-    //   let scrollHeight = Math.max(
-    //       iframeDoc.body.scrollHeight, iframeDoc.documentElement.scrollHeight,
-    //       iframeDoc.body.offsetHeight, iframeDoc.documentElement.offsetHeight,
-    //       iframeDoc.body.clientHeight, iframeDoc.documentElement.clientHeight
-    //   );
-    //   let scroledTop = iframeDoc.documentElement.scrollTop;
-    //   let frameHeight = iframeDoc.documentElement.clientHeight;
+    buttonUp.addEventListener('click', function() {
+      let timerId = setInterval(() => {
+        iframeDoc.documentElement.scrollBy(0, -40);
+        if (!iframeDoc.documentElement.scrollTop) {
+          clearInterval(timerId);
+          buttonUp.style.display = 'none';
+        }
+      }, 1);
+    });
 
-    //   if (scroledTop + frameHeight + 100 > scrollHeight) {
-    //     scroll.append(createTimeBlock());
-    //   }
-    // });
+    iframeDoc.addEventListener('scroll', function() {
+      let scroledTop = iframeDoc.documentElement.scrollTop;
+      let frameHeight = iframeDoc.documentElement.clientHeight;
+      if (scroledTop > 250) {
+        buttonUp.style.display = 'block';
+      }
+    });
+
+    content.append(buttonUp);
   };
-
 
   function execution() {}
   htmlOut(exCode,
