@@ -289,7 +289,7 @@ function exFive() {
 }
 exFive();
 
-// 3.4.1 Расставить супергероев по полю
+// 3.4.1 Отследить одновременное нажатие
 
 function exSix() {
   let ex = document.getElementById('3.4.1');
@@ -333,12 +333,46 @@ function exSix() {
 }
 exSix();
 
-// 3.5.1 Расставить супергероев по полю
+// 3.5.1 Бесконечная страница
 
 function exSeven() {
   let ex = document.getElementById('3.5.1');
   let exBody = ex.querySelector('.ex-body');
   let exCode = ex.querySelector('.ex-code');
+
+  window.onload = function() {
+    let iframe = exBody.querySelector('.three-five-one_iframe');
+    let iframeDoc = iframe.contentWindow.document;
+    let frameBody = iframeDoc.querySelector('.three-five-one_body');
+
+    let scroll = frameBody.querySelector('.scroll');
+
+    function createTimeBlock() {
+      let now = new Date();
+      let newDivNow = document.createElement('div');
+      newDivNow.innerHTML = now;
+      newDivNow.className = 'time';
+      return newDivNow;
+    }
+    while (frameBody.offsetHeight < 400) {
+      scroll.append(createTimeBlock());
+    }
+
+    iframeDoc.addEventListener('scroll', function() {
+      let scrollHeight = Math.max(
+          iframeDoc.body.scrollHeight, iframeDoc.documentElement.scrollHeight,
+          iframeDoc.body.offsetHeight, iframeDoc.documentElement.offsetHeight,
+          iframeDoc.body.clientHeight, iframeDoc.documentElement.clientHeight
+      );
+      let scroledTop = iframeDoc.documentElement.scrollTop;
+      let frameHeight = iframeDoc.documentElement.clientHeight;
+
+      if (scroledTop + frameHeight + 100 > scrollHeight) {
+        scroll.append(createTimeBlock());
+      }
+    });
+  };
+
 
   function execution() {}
   htmlOut(exCode,
@@ -346,3 +380,51 @@ function exSeven() {
       execution);
 }
 exSeven();
+
+// 3.5.2 Кнопка вверх/вниз
+
+function exEigth() {
+  let ex = document.getElementById('3.5.2');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  window.onload = function() {
+    let iframe = exBody.querySelector('.three-five-one_iframe');
+    let iframeDoc = iframe.contentWindow.document;
+    let frameBody = iframeDoc.querySelector('.three-five-one_body');
+
+    // let scroll = frameBody.querySelector('.scroll');
+
+    // function createTimeBlock() {
+    //   let now = new Date();
+    //   let newDivNow = document.createElement('div');
+    //   newDivNow.innerHTML = now;
+    //   newDivNow.className = 'time';
+    //   return newDivNow;
+    // }
+    // while (frameBody.offsetHeight < 400) {
+    //   scroll.append(createTimeBlock());
+    // }
+
+    // iframeDoc.addEventListener('scroll', function() {
+    //   let scrollHeight = Math.max(
+    //       iframeDoc.body.scrollHeight, iframeDoc.documentElement.scrollHeight,
+    //       iframeDoc.body.offsetHeight, iframeDoc.documentElement.offsetHeight,
+    //       iframeDoc.body.clientHeight, iframeDoc.documentElement.clientHeight
+    //   );
+    //   let scroledTop = iframeDoc.documentElement.scrollTop;
+    //   let frameHeight = iframeDoc.documentElement.clientHeight;
+
+    //   if (scroledTop + frameHeight + 100 > scrollHeight) {
+    //     scroll.append(createTimeBlock());
+    //   }
+    // });
+  };
+
+
+  function execution() {}
+  htmlOut(exCode,
+      exEigth.toString(),
+      execution);
+}
+exEigth();

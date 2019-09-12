@@ -129,6 +129,7 @@
   overflow: scroll;
   height: 300px
 }
-.three-five-one_body .scroll{
-
+.three-five-one_body .scroll .time{
+  margin: 10px;
+  font-size: 16px;
 }
