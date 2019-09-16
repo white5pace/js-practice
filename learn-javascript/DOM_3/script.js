@@ -434,7 +434,7 @@ function exEigth() {
 exEigth();
 
 
-// 3.5.3 Кнопка вверх/вниз
+// 3.5.3 Загрузка видимых изображений
 
 function exNine() {
   let ex = document.getElementById('3.5.3');
@@ -471,7 +471,6 @@ function exNine() {
     let windowHeight = document.documentElement.clientHeight;
     let topVisible = coords.top > 0 && coords.top < windowHeight;
     let bottomVisible = coords.bottom < windowHeight && coords.bottom > 0;
-
     return topVisible || bottomVisible;
   }
 
