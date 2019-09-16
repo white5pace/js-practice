@@ -432,3 +432,22 @@ function exEigth() {
       execution);
 }
 exEigth();
+
+
+// 3.5.3 Кнопка вверх/вниз
+
+function exNine() {
+  let ex = document.getElementById('3.5.3');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  document.addEventListener('scroll', function(event) {
+    console.log('kuskus');
+  });
+
+  function execution() {}
+  htmlOut(exCode,
+      exNine.toString(),
+      execution);
+}
+exNine();
