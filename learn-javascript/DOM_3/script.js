@@ -441,10 +441,30 @@ function exNine() {
   let exBody = ex.querySelector('.ex-body');
   let exCode = ex.querySelector('.ex-code');
 
-  document.addEventListener('scroll', function(event) {
-    console.log('kuskus');
-  });
+  // this solution is shit
 
+  // let imgs = document.querySelectorAll('img[data-src]');
+  // let nextVisible = 0;
+
+  // document.addEventListener('scroll', function() {
+  //   isVisible();
+  // });
+
+  // function isVisible() {
+  //   let currentScroll = window.pageYOffset + window.innerHeight;
+  //   let preload = 1000;
+  //   if (nextVisible == imgs.length) return;
+  //   if (currentScroll + preload >= imgs[nextVisible].offsetTop) {
+  //     showVisible();
+  //   }
+  // }
+
+  // function showVisible() {
+  //   imgs[nextVisible].src = imgs[nextVisible].dataset.src;
+  //   if (nextVisible < imgs.length) {
+  //     nextVisible++;
+  //   }
+  // }
   function execution() {}
   htmlOut(exCode,
       exNine.toString(),
