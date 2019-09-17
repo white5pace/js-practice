@@ -16,3 +16,47 @@
 
 .four-two-one .edit:focus {
   outline: none; }
+
+.four-two-two th {
+  text-align: center;
+  font-weight: bold; }
+
+.four-two-two td {
+  width: 150px;
+  white-space: nowrap;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px; }
+
+.four-two-two .nw {
+  background-color: #999; }
+
+.four-two-two .n {
+  background-color: #03f;
+  color: #fff; }
+
+.four-two-two .ne {
+  background-color: #ff6; }
+
+.four-two-two .w {
+  background-color: #ff0; }
+
+.four-two-two .c {
+  background-color: #60c;
+  color: #fff; }
+
+.four-two-two .e {
+  background-color: #09f;
+  color: #fff; }
+
+.four-two-two .sw {
+  background-color: #963;
+  color: #fff; }
+
+.four-two-two .s {
+  background-color: #f60;
+  color: #fff; }
+
+.four-two-two .se {
+  background-color: #0c3;
+  color: #fff; }
