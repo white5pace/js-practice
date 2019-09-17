@@ -81,6 +81,81 @@ function exThree() {
   let exBody = ex.querySelector('.ex-body');
   let exCode = ex.querySelector('.ex-code');
 
+  let table = exBody.querySelector('.bagua-table');
+  let editing = false;
+  let area = null;
+  let td;
+  let savedHTML;
+
+  // editingTd = {
+  //   elem: td,
+  //   data: td.innerHTML
+  // };
+  table.addEventListener('click', startEdit);
+
+  function startEdit(event) {
+    if (event.target.tagName != 'TD') return;
+    if (editing) return;
+
+    td = event.target;
+    editing = true;
+
+    savedHTML = td.innerHTML;
+
+    // editingTd = {
+    //   elem: td,
+    //   data: td.innerHTML
+    // };
+
+    area = document.createElement('textarea');
+    area.className = 'edit';
+    area.value = td.innerHTML;
+
+    td.innerHTML = '';
+    td.append(area);
+
+    td.classList.add('td-edit');
+
+    createControls();
+  }
+
+  function createControls() {
+    let editControls = document.createElement('div');
+    editControls.className = 'edit-controls';
+
+    let editOk = document.createElement('button');
+    editOk.className = 'edit-ok';
+    editOk.innerHTML = 'ok';
+    editOk.onclick = function() {
+      endEdit(true);
+    };
+    editControls.append(editOk);
+
+    let editCancel = document.createElement('button');
+    editCancel.className = 'edit-cancel';
+    editCancel.innerHTML = 'cancel';
+    editCancel.onclick = function() {
+      endEdit(false);
+    };
+    editControls.append(editCancel);
+
+    td.append(editControls);
+
+    // td.insertAdjacentHTML('beforeEnd',
+    //     '<div class="edit-controls"><button class="edit-ok">OK</button><button class="edit-cancel">CANCEL</button></div>'
+    // );
+  }
+
+  function endEdit(confirm) {
+    editing = false;
+    if (confirm) {
+      td.innerHTML = area.value;
+    } else {
+      td.innerHTML = savedHTML;
+    }
+    td.classList.remove('td-edit');
+  }
+
   function execution() {}
   htmlOut(exCode,
       exThree.toString(),

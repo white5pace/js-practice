@@ -112,6 +112,14 @@ h2 {
 .ex-window h2 {
   margin-bottom: 10px;
 }
+.ex-window h2 a {
+  text-decoration: none;
+  color: #000;
+}
+.ex-window h2 a:hover {
+  text-decoration: underline;
+  /* color: #000; */
+}
 
 .ex-row {
   display: flex;

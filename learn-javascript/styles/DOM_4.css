@@ -26,7 +26,12 @@
   white-space: nowrap;
   text-align: center;
   vertical-align: middle;
-  padding: 10px; }
+  padding: 10px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none; }
 
 .four-two-two .nw {
   background-color: #999; }
@@ -60,3 +65,23 @@
 .four-two-two .se {
   background-color: #0c3;
   color: #fff; }
+
+.four-two-two .td-edit {
+  padding: 0;
+  position: relative; }
+
+.four-two-two .edit {
+  width: 170px;
+  height: 96px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  resize: none;
+  white-space: nowrap;
+  outline: none;
+  border: none;
+  overflow: auto; }
+
+.four-two-two .edit-controls {
+  position: absolute;
+  bottom: -23px; }
