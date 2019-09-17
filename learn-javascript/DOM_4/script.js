@@ -38,41 +38,33 @@ function exTwo() {
   let exBody = ex.querySelector('.ex-body');
   let exCode = ex.querySelector('.ex-code');
 
-  exBody.querySelector('.view').remove();
-  returnView('');
+  let area = null;
+  let view = exBody.querySelector('.view');
 
-  function createEdit(text) {
-    let edit = document.createElement('textarea');
-    edit.className = 'edit';
-    edit.value = text;
+  view.addEventListener('click', startEdit);
 
-    edit.onblur = function() {
-      this.remove();
-      returnView(this.value);
+  function startEdit() {
+    area = document.createElement('textarea');
+    area.className = 'edit';
+    area.value = view.innerHTML;
+
+    area.onblur = function() {
+      endEdit();
     };
 
-    edit.addEventListener('keydown', function(event) {
+    area.addEventListener('keydown', function(event) {
       if (event.code == 'Enter') {
         this.blur();
       }
     });
 
-    exBody.append(edit);
-    edit.focus();
+    view.replaceWith(area);
+    area.focus();
   }
 
-  function returnView(text) {
-    let view = document.createElement('div');
-    view.className = 'view';
-    view.innerHTML = text;
-    view.setAttribute('tabindex', '0');
-
-    view.addEventListener('focus', function() {
-      createEdit(this.innerHTML);
-      view.remove();
-    });
-
-    exBody.append(view);
+  function endEdit() {
+    view.innerHTML = area.value;
+    area.replaceWith(view);
   }
 
   function execution() {}
