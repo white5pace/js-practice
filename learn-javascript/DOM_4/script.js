@@ -16,35 +16,13 @@ function htmlOut(exCode, pOne, execution) {
 // 4.1.1 Скрыть элемент по нажатию кнопки
 
 function exOne() {
-  let ex = document.getElementById('3.1.1');
+  let ex = document.getElementById('4.1.1');
   let exBody = ex.querySelector('.ex-body');
   let exCode = ex.querySelector('.ex-code');
 
-  let ul = exBody.querySelector('.ul');
-
-  ul.onmousedown = () => false;
-
-  ul.addEventListener('click', function(e) {
-    if (e.target.tagName != 'LI') return;
-
-    if (e.ctrlKey || e.metaKey) {
-      toggleSelect(e.target);
-    } else {
-      singleSelect(e.target);
-    }
-  });
-
-  function toggleSelect(target) {
-    target.classList.toggle('selected');
-  }
-
-  function singleSelect(target) {
-    let selected = ul.querySelectorAll('.selected');
-    for (let elem of selected) {
-      elem.classList.remove('selected');
-    }
-    target.classList.add('selected');
-  }
+  let select = exBody.querySelector('select.genres');
+  let newOption = new Option('Классика', 'classic', false, true);
+  select.append(newOption);
 
   function execution() {}
   htmlOut(exCode,
@@ -52,3 +30,17 @@ function exOne() {
       execution);
 }
 exOne();
+
+// 4.2.1 Скрыть элемент по нажатию кнопки
+
+function exTwo() {
+  let ex = document.getElementById('4.2.1');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+  
+  function execution() {}
+  htmlOut(exCode,
+      exTwo.toString(),
+      execution);
+}
+exTwo();
