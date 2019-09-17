@@ -142,7 +142,9 @@ function exThree() {
     td.append(editControls);
 
     // td.insertAdjacentHTML('beforeEnd',
-    //     '<div class="edit-controls"><button class="edit-ok">OK</button><button class="edit-cancel">CANCEL</button></div>'
+    //     '<div class="edit-controls">
+    //      <button class="edit-ok">OK</button>
+    //      <button class="edit-cancel">CANCEL</button></div>'
     // );
   }
 
@@ -162,3 +164,43 @@ function exThree() {
       execution);
 }
 exThree();
+
+
+// 4.2.3 Мышь, управляемая клавиатурой
+
+function exFour() {
+  let ex = document.getElementById('4.2.3');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  let mouse = exBody.querySelector('.mouse');
+
+  mouse.setAttribute('tabindex', '0');
+  mouse.addEventListener('focus', function() {
+    let coords = mouse.getBoundingClientRect();
+    mouse.style.position = 'fixed';
+    mouse.style.left = coords.left + 'px';
+    mouse.style.top = coords.top + 'px';
+
+    mouse.addEventListener('keydown', function(event) {
+      coords = mouse.getBoundingClientRect();
+      if (event.code == 'ArrowUp') {
+        event.preventDefault();
+        mouse.style.top = coords.top - 50 + 'px';
+      } else if (event.code == 'ArrowRight') {
+        mouse.style.left = coords.left + 50 + 'px';
+      } else if (event.code == 'ArrowDown') {
+        event.preventDefault();
+        mouse.style.top = coords.top + 50 + 'px';
+      } else if (event.code == 'ArrowLeft') {
+        mouse.style.left = coords.left - 50 + 'px';
+      }
+    });
+  });
+
+  function execution() {}
+  htmlOut(exCode,
+      exFour.toString(),
+      execution);
+}
+exFour();

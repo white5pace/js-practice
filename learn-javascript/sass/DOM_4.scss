@@ -101,3 +101,15 @@
     bottom: -23px;
   }
 }
+
+.four-two-three {
+  .mouse {
+    display: inline-block;
+    cursor: pointer;
+    margin: 0;
+  }
+
+  .mouse:focus {
+    outline: 1px dashed black;
+  }
+}
