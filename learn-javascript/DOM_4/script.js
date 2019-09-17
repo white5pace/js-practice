@@ -37,7 +37,44 @@ function exTwo() {
   let ex = document.getElementById('4.2.1');
   let exBody = ex.querySelector('.ex-body');
   let exCode = ex.querySelector('.ex-code');
-  
+
+  exBody.querySelector('.view').remove();
+  returnView('');
+
+  function createEdit(text) {
+    let edit = document.createElement('textarea');
+    edit.className = 'edit';
+    edit.value = text;
+
+    edit.onblur = function() {
+      this.remove();
+      returnView(this.value);
+    };
+
+    edit.addEventListener('keydown', function(event) {
+      if (event.code == 'Enter') {
+        this.blur();
+      }
+    });
+
+    exBody.append(edit);
+    edit.focus();
+  }
+
+  function returnView(text) {
+    let view = document.createElement('div');
+    view.className = 'view';
+    view.innerHTML = text;
+    view.setAttribute('tabindex', '0');
+
+    view.addEventListener('focus', function() {
+      createEdit(this.innerHTML);
+      view.remove();
+    });
+
+    exBody.append(view);
+  }
+
   function execution() {}
   htmlOut(exCode,
       exTwo.toString(),
