@@ -13,7 +13,7 @@ function htmlOut(exCode, pOne, execution) {
   };
 };
 
-// 4.1.1 Скрыть элемент по нажатию кнопки
+// 4.1.1 Добавьте пункт к выпадающему списку
 
 function exOne() {
   let ex = document.getElementById('4.1.1');
@@ -31,7 +31,7 @@ function exOne() {
 }
 exOne();
 
-// 4.2.1 Скрыть элемент по нажатию кнопки
+// 4.2.1 Редактируемый div
 
 function exTwo() {
   let ex = document.getElementById('4.2.1');
@@ -73,3 +73,17 @@ function exTwo() {
       execution);
 }
 exTwo();
+
+// 4.2.2 Редактирование TD по клику
+
+function exThree() {
+  let ex = document.getElementById('4.2.2');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  function execution() {}
+  htmlOut(exCode,
+      exThree.toString(),
+      execution);
+}
+exThree();
