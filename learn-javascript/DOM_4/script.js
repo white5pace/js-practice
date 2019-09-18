@@ -212,10 +212,29 @@ function exFive() {
   let exBody = ex.querySelector('.ex-body');
   let exCode = ex.querySelector('.ex-code');
 
-  // initial: начальная сумма денег
-  // interest: проценты, например, 0.05 означает 5% в год
-  // years: сколько лет ждать
-  let result = Math.round(initial * (1 + interest * years));
+  let form = document.forms.calculator;
+  changeDiagram();
+
+  form.money.addEventListener('input', changeDiagram);
+
+  form.months.addEventListener('change', changeDiagram);
+
+  form.interest.addEventListener('input', changeDiagram);
+
+  function changeDiagram() {
+    let initial = form.money.value;
+    let years = form.months.value / 12;
+    let interest = form.interest.value / 100;
+
+    // нужен обработчик ошибок, если поле пустое
+
+    let result = Math.round(initial * (1 + interest * years));
+    let heightAfter = interest * years * 100 + 100;
+
+    document.querySelector('.money-before').innerHTML = initial;
+    document.querySelector('.money-after').innerHTML = result;
+    document.querySelector('.height-after').style.height = heightAfter + 'px';
+  }
 
   function execution() {}
   htmlOut(exCode,
