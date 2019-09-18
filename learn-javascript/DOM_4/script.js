@@ -242,3 +242,17 @@ function exFive() {
       execution);
 }
 exFive();
+
+// 4.4.1 Депозитный калькулятор
+
+function exSix() {
+  let ex = document.getElementById('4.4.1');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  function execution() {}
+  htmlOut(exCode,
+      exSix.toString(),
+      execution);
+}
+exSix();
