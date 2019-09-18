@@ -204,3 +204,22 @@ function exFour() {
       execution);
 }
 exFour();
+
+// 4.3.1 Депозитный калькулятор
+
+function exFive() {
+  let ex = document.getElementById('4.3.1');
+  let exBody = ex.querySelector('.ex-body');
+  let exCode = ex.querySelector('.ex-code');
+
+  // initial: начальная сумма денег
+  // interest: проценты, например, 0.05 означает 5% в год
+  // years: сколько лет ждать
+  let result = Math.round(initial * (1 + interest * years));
+
+  function execution() {}
+  htmlOut(exCode,
+      exFive.toString(),
+      execution);
+}
+exFive();

@@ -93,3 +93,15 @@
 
 .four-two-three .mouse:focus {
   outline: 1px dashed black; }
+
+.four-three-one td select,
+.four-three-one td input {
+  width: 150px; }
+
+.four-three-one #diagram td {
+  vertical-align: bottom;
+  text-align: center;
+  padding: 10px; }
+
+.four-three-one #diagram div {
+  margin: auto; }

@@ -1,4 +1,5 @@
 .four-two-one {
+
   .view,
   .edit {
     height: 150px;
@@ -80,10 +81,12 @@
     background-color: #0c3;
     color: #fff;
   }
+
   .td-edit {
     padding: 0;
     position: relative;
   }
+
   .edit {
     width: 170px;
     height: 96px;
@@ -96,6 +99,7 @@
     border: none;
     overflow: auto;
   }
+
   .edit-controls {
     position: absolute;
     bottom: -23px;
@@ -111,5 +115,23 @@
 
   .mouse:focus {
     outline: 1px dashed black;
+  }
+}
+
+.four-three-one {
+
+  td select,
+  td input {
+    width: 150px;
+  }
+
+  #diagram td {
+    vertical-align: bottom;
+    text-align: center;
+    padding: 10px;
+  }
+
+  #diagram div {
+    margin: auto;
   }
 }
