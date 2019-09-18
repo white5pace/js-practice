@@ -115,6 +115,7 @@
   vertical-align: middle; }
 
 .four-four-one .prompt-form-container {
+  display: none;
   background: rgba(31, 31, 31, 0.356);
   position: fixed;
   top: 0;

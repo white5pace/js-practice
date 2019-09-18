@@ -147,6 +147,7 @@
   }
 
   .prompt-form-container {
+    display: none;
     background: rgba(31, 31, 31, 0.356);
     position: fixed;
     top: 0;
@@ -169,4 +170,8 @@
     margin: 5px;
     width: 180px;
   }
+  // input[type="button"]:focus {
+  //   outline-offset: 0px;
+  //   // border: 1px solid red;
+  // }
 }

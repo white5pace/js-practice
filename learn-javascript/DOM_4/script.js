@@ -250,6 +250,60 @@ function exSix() {
   let exBody = ex.querySelector('.ex-body');
   let exCode = ex.querySelector('.ex-code');
 
+  let modalWindow = exBody.querySelector('.prompt-form-container');
+  let showModal = exBody.querySelector('.showModal');
+
+  showModal.onclick = function() {
+    showPrompt('Введите что-нибудь<br>...умное :)', function(value) {
+      alert(value);
+    });
+  };
+  function showPrompt(html, callback) {
+    let message = modalWindow.querySelector('.prompt-message');
+    let form = modalWindow.querySelector('.prompt-form');
+
+    message.innerHTML = html;
+    modalWindow.style.display = 'block';
+    form.text.value = '';
+
+    form.text.focus();
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      if (form.text.value == '') return;
+      callback(form.text.value);
+      modalWindow.style.display = 'none';
+    });
+
+    form.addEventListener('keydown', function(e) {
+      if (e.code == 'Escape') {
+        form.cancel.click();
+      }
+    });
+
+    let lastElem = form.elements[form.elements.length - 1];
+    let firstElem = form.elements[0];
+
+    lastElem.onkeydown = function(e) {
+      if (e.key == 'Tab' && !e.shiftKey) {
+        firstElem.focus();
+        return false;
+      }
+    };
+
+    firstElem.onkeydown = function(e) {
+      if (e.key == 'Tab' && e.shiftKey) {
+        lastElem.focus();
+        return false;
+      }
+    };
+
+    form.cancel.onclick = function() {
+      callback(null);
+      modalWindow.style.display = 'none';
+    };
+  }
+
   function execution() {}
   htmlOut(exCode,
       exSix.toString(),
