@@ -318,6 +318,18 @@ function exSeven() {
   let exBody = ex.querySelector('.ex-body');
   let exCode = ex.querySelector('.ex-code');
 
+  function preloadImages(links, callback) {
+    let counter = 0;
+    for (let link of links) {
+      let img = document.createElement('img');
+      img.onload = img.onerror = () => {
+        counter++;
+        if (counter == links.length) callback();
+      };
+      img.src = link;
+    }
+  }
+
   let sources = [
     'https://en.js.cx/images-load/1.jpg',
     'https://en.js.cx/images-load/2.jpg',
@@ -330,7 +342,8 @@ function exSeven() {
   }
 
   // для каждого изображения
-  // создадим другое изображение с аналогичным src и проверим, есть ли у нас его ширина
+  // создадим другое изображение с аналогичным
+  // src и проверим, есть ли у нас его ширина
   function testLoaded() {
     let widthSum = 0;
     for (let i = 0; i < sources.length; i++) {
@@ -338,11 +351,10 @@ function exSeven() {
       img.src = sources[i];
       widthSum += img.width;
     }
-    alert(widthSum);
+    alert(`5.3.1 onload: ${widthSum}`);
   }
 
   preloadImages(sources, testLoaded);
-  function execution() {}
   htmlOut(exCode,
       exSeven.toString(),
       execution);
