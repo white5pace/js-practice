@@ -1,0 +1,10 @@
+mixin exercise(exObj)
+  .ex-window(id = exObj.id) 
+    h2
+      a(href = exObj.link)= exObj.id + ' '+ exObj.name
+    .ex-row
+      .ex-body(class = exObj.textId)
+        block
+      .ex-perform
+        .start-button.btn.btn-primary Show code
+        code.ex-code.lang-js

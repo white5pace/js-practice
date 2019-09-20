@@ -1,0 +1,12 @@
+.eleven-one-one button {
+  margin-bottom: 30px; }
+
+.eleven-one-one .circle {
+  -webkit-transition-property: width, height, margin-left, margin-top;
+  -o-transition-property: width, height, margin-left, margin-top;
+  transition-property: width, height, margin-left, margin-top;
+  -webkit-transition-duration: 2s;
+       -o-transition-duration: 2s;
+          transition-duration: 2s;
+  background-color: red;
+  border-radius: 50%; }

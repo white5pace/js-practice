@@ -1,0 +1,28 @@
+include ../components/exMixin.pug
+
+doctype html
+head
+  link(rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png")
+  meta(http-equiv="Content-Type", content="text/html;charset=UTF-8")
+  title updated JS_11
+  meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1")
+  link(rel="stylesheet", href="../styles/main.css")
+  link(rel="stylesheet", href="../styles/UJS_11.css")
+  link(rel="stylesheet", href="../libs/prism.css")
+
+body
+  h1 Промисы, async/await
+  .my-container
+    - 
+      let elevenOneOne = { 
+        id: '11.1.1',
+        link: 'https://learn.javascript.ru/task/animate-circle-callback',
+        name: 'Загрузите изображения с колбэком',
+        textId: 'eleven-one-one'
+      };
+    +exercise(elevenOneOne)
+      button ShowCircle
+
+  script(src="script.js")
+  script(src="../libs/prism.js")
+    
