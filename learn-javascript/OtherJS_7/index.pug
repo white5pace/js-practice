@@ -1,0 +1,31 @@
+include ../components/codeEx.pug
+
+doctype html
+head
+  link(rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png")
+  meta(http-equiv="Content-Type", content="text/html;charset=UTF-8")
+  title updated JS_11
+  meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1")
+  link(rel="stylesheet", href="../styles/main.css")
+  link(rel="stylesheet", href="../styles/task.css")
+  link(rel="stylesheet", href="../libs/prism.css")
+
+body
+  h1 Регулярные выражения
+ 
+  .my-container
+   .list-title 7.6 Граница слова: \b
+    - 
+      let sevenSixOne = { 
+        exNumber: 'sevenSixOne',
+        link: 'https://learn.javascript.ru/task/animate-circle-callback',
+        name: 'Загрузите изображения с колбэком',
+        textId: 'eleven-one-one'
+      };
+    +exercise(sevenSixOne)
+      button ShowCircle
+    button(onclick='kus()') kus kus
+
+  script(src="script.js")
+  script(src="../libs/prism.js")
+    

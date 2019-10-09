@@ -1,0 +1,9 @@
+mixin exercise(exObj)
+  .task 
+    .task__header
+      h3.task__title Найдите время
+      a.task__link(href = exObj.link target="_blank")
+        include ../img/share-symbol.svg
+    .task__code
+      code.ex-code.lang-js
+      .task__perform

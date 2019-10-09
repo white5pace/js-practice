@@ -1,0 +1,36 @@
+.task__header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 16px; }
+
+.task__title {
+  margin: 0;
+  font-size: 20px; }
+
+.task__link {
+  margin-left: 20px; }
+
+.task__link svg {
+  fill: #0059b2; }
+
+.task__link svg:hover {
+  fill: #ba1000; }
+
+.task__code {
+  position: relative;
+  display: block; }
+
+.task__code .ex-code {
+  display: block;
+  height: 300px; }
+
+.task__perform {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: #c4c2c0;
+  text-align: center;
+  line-height: 30px;
+  font-size: 16px; }

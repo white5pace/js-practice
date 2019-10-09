@@ -167,8 +167,7 @@ h2 {
   background-color: #0069d9;
   border-color: #0062cc;
 }
-
-.ex-code {
+.ex-perform .ex-code {
   display: none;
   width: 100%;
   overflow-x: scroll; 
