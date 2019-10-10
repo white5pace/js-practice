@@ -1,10 +1,10 @@
 mixin exercise(exObj)
-  .task 
+  .task(data-task-number=exObj.taskNumber)
     .task__header
-      h3.task__title Найдите время
+      h3.task__title= exObj.title
       a.task__link(href = exObj.link target="_blank")
-        include ../img/share-symbol.svg
+        i(class="fas fa-share-square")
     .task__code
       code.ex-code.lang-js
       .task__perform
-        i(class="fas fa-share-square")
+        i(class="fas fa-play")
