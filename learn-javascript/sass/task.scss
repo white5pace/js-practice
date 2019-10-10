@@ -26,9 +26,12 @@
 .task__code .ex-code{
   display: block;
   height: 300px;
+  white-space: pre !important;
 }
 .task__perform {
   position: absolute;
+  top: 0;
+  right: 0;
   width: 30px;
   height: 30px;
   background: #c4c2c0;
