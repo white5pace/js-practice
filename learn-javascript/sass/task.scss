@@ -1,12 +1,11 @@
 .new-appearance{
   .list-title {
-    font-size: 24px;
+    font-size: 22px;
   }
 }
 .task__header {
   display: flex;
-  margin-top: 20px;
-  margin-bottom: 16px;
+  margin: 20px 0;
   i{
     color: #0059b2;
   }
@@ -18,7 +17,7 @@
 
 .task__title {
   margin: 0;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .task__link {
@@ -28,10 +27,12 @@
 .task__code {
   position: relative;
   display: block;
+  margin-bottom: 50px;
 
   .ex-code{
     display: block;
     white-space: pre !important;
+    overflow: scroll;
   }
 }
 
