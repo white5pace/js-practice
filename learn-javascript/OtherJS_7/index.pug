@@ -32,7 +32,7 @@ body
       };
     +exercise(sevenEightTwo)
     .list-title 7.9 Квантификаторы +, *, ? и {n}
-    - 
+    -
       let sevenNineOne = { 
         taskNumber: 'sevenNineOne',
         link: 'https://learn.javascript.ru/task/find-text-manydots',
@@ -42,19 +42,33 @@ body
     -
       let theme = {
         chapter: {
-          number: '7.9',
-          titile: 'Квантификаторы +, *, ? и {n}',
-          tasks: {
-            sevenNineTwo: { 
-              taskNumber: 'sevenNineTwo',
-              link: 'https://learn.javascript.ru/task/find-html-colors-6hex',
-              title: 'Регулярное выражение для HTML-цветов',
-            }
-          }
+          
         },
 
       };  
-    +exercise(theme.chapter.tasks.sevenNineTwo)
+    //- +exercise(theme.chapter.tasks.sevenNineTwo)
+    -
+      let kus = {
+        chapters: [
+          {
+            number: '7.9',
+            titile: 'Квантификаторы +, *, ? и {n}',
+            tasks: [
+              {
+                taskNumber: 'sevenNineTwo',
+                link: 'https://learn.javascript.ru/task/find-html-colors-6hex',
+                title: 'Регулярное выражение для HTML-цветов',
+              },
+            ],
+          },
+        ],
+      };
+    mixin test(kus)
+      ul 
+        each val in kus.chapters
+          li= val.kus
+    +test(kus)
+
   script(src="script.js")
   script(src="../libs/prism.js")
     
