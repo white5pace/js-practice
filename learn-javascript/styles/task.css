@@ -16,6 +16,17 @@
   margin: 0;
   font-size: 18px; }
 
+.task__anchor {
+  position: relative;
+  text-decoration: none;
+  color: inherit; }
+  .task__anchor:hover {
+    color: #666; }
+  .task__anchor .anchorIcon {
+    position: absolute;
+    left: -30px;
+    color: #d8d8d8; }
+
 .task__link {
   margin-left: 20px; }
 

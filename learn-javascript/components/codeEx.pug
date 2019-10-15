@@ -8,3 +8,20 @@ mixin exercise(exObj)
       code.ex-code.lang-js
       .task__perform
         i(class="fas fa-play")
+
+
+mixin theme(obj)
+  each chapter in obj.chapters
+    .chapter 
+      .list-title= chapter.number + ' ' + chapter.title
+      each task in chapter.tasks
+        .task(data-task-number=task.taskNumber)
+          .task__header
+            h3.task__title
+              a.task__anchor(href = '#')= task.title
+                a.task__link(href = task.link target="_blank")
+                  i(class="fas fa-share-square")
+          .task__code
+            code.ex-code.lang-js
+            .task__perform
+              i(class="fas fa-play")

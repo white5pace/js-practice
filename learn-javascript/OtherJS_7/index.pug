@@ -15,45 +15,40 @@ body
   h1 Регулярные выражения
 
   .my-container.new-appearance
-    .list-title 7.6 Граница слова: \b
-    - 
-      let sevenSixOne = { 
-        taskNumber: 'sevenSixOne',
-        link: 'https://learn.javascript.ru/task/find-time-hh-mm',
-        title: 'Найдите время',
-      };
-    +exercise(sevenSixOne)
-    .list-title 7.8 Наборы и диапазоны [...]
-    - 
-      let sevenEightTwo = { 
-        taskNumber: 'sevenEightTwo',
-        link: 'https://learn.javascript.ru/task/find-time-2-formats',
-        title: 'Найдите время как hh:mm или hh-mm',
-      };
-    +exercise(sevenEightTwo)
-    .list-title 7.9 Квантификаторы +, *, ? и {n}
-    -
-      let sevenNineOne = { 
-        taskNumber: 'sevenNineOne',
-        link: 'https://learn.javascript.ru/task/find-text-manydots',
-        title: 'Как найти многоточие "..." ?',
-      };
-    +exercise(sevenNineOne)
-    -
-      let theme = {
-        chapter: {
-          
-        },
-
-      };  
-    //- +exercise(theme.chapter.tasks.sevenNineTwo)
     -
       let kus = {
         chapters: [
           {
-            number: '7.9',
-            titile: 'Квантификаторы +, *, ? и {n}',
+            number: '7.6',
+            title: 'Граница слова: \\b',
             tasks: [
+              { 
+                taskNumber: 'sevenSixOne',
+                link: 'https://learn.javascript.ru/task/find-time-hh-mm',
+                title: 'Найдите время',
+              },
+            ],
+          },
+          {
+            number: '7.8',
+            title: 'Наборы и диапазоны [...]',
+            tasks: [
+              { 
+                taskNumber: 'sevenEightTwo',
+                link: 'https://learn.javascript.ru/task/find-time-2-formats',
+                title: 'Найдите время как hh:mm или hh-mm',
+              },
+            ],
+          },
+          {
+            number: '7.9',
+            title: 'Квантификаторы +, *, ? и {n}',
+            tasks: [
+              { 
+                taskNumber: 'sevenNineOne',
+                link: 'https://learn.javascript.ru/task/find-text-manydots',
+                title: 'Как найти многоточие "..." ?',
+              },
               {
                 taskNumber: 'sevenNineTwo',
                 link: 'https://learn.javascript.ru/task/find-html-colors-6hex',
@@ -63,12 +58,9 @@ body
           },
         ],
       };
-    mixin test(kus)
-      ul 
-        each val in kus.chapters
-          li= val.kus
-    +test(kus)
+    +theme(kus)
 
   script(src="script.js")
+  script(src="../scripts/main.js")
   script(src="../libs/prism.js")
     
