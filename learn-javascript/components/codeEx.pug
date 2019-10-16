@@ -1,5 +1,5 @@
 mixin exercise(exObj)
-  .task(data-task-number=exObj.taskNumber)
+  .task(data-task-number=exObj.numberStr)
     .task__header
       h3.task__title= exObj.title
       a.task__link(href = exObj.link target="_blank")
@@ -13,15 +13,25 @@ mixin exercise(exObj)
 mixin theme(obj)
   each chapter in obj.chapters
     .chapter 
-      .list-title= chapter.number + ' ' + chapter.title
       each task in chapter.tasks
-        .task(data-task-number=task.taskNumber)
+        .task(id= task.numberStr data-task-number= task.numberStr)
           .task__header
             h3.task__title
-              a.task__anchor(href = '#')= task.title
+              a.task__anchor(href = '#' + task.numberStr)= chapter.number + '.' + task.number + ' ' + task.title
                 a.task__link(href = task.link target="_blank")
                   i(class="fas fa-share-square")
           .task__code
             code.ex-code.lang-js
             .task__perform
               i(class="fas fa-play")
+
+mixin themeContent(obj)
+  .chapters
+    each chapter in obj.chapters
+      .list-item
+        .list-title= chapter.title
+        ul.list-sub
+          each task in chapter.tasks
+            li.list-sub__item
+              span.number= chapter.number + '.' + task.number
+              a.button(href='#'+task.numberStr)= task.title

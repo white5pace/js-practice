@@ -14,16 +14,18 @@ head
 body
   h1 Регулярные выражения
 
+
   .my-container.new-appearance
     -
-      let kus = {
+      let theme = {
         chapters: [
           {
             number: '7.6',
             title: 'Граница слова: \\b',
             tasks: [
-              { 
-                taskNumber: 'sevenSixOne',
+              {
+                number: '1',
+                numberStr: 'sevenSixOne',
                 link: 'https://learn.javascript.ru/task/find-time-hh-mm',
                 title: 'Найдите время',
               },
@@ -33,8 +35,9 @@ body
             number: '7.8',
             title: 'Наборы и диапазоны [...]',
             tasks: [
-              { 
-                taskNumber: 'sevenEightTwo',
+              {
+                number: '2',
+                numberStr: 'sevenEightTwo',
                 link: 'https://learn.javascript.ru/task/find-time-2-formats',
                 title: 'Найдите время как hh:mm или hh-mm',
               },
@@ -45,20 +48,41 @@ body
             title: 'Квантификаторы +, *, ? и {n}',
             tasks: [
               { 
-                taskNumber: 'sevenNineOne',
+                number: '1',
+                numberStr: 'sevenNineOne',
                 link: 'https://learn.javascript.ru/task/find-text-manydots',
                 title: 'Как найти многоточие "..." ?',
               },
               {
-                taskNumber: 'sevenNineTwo',
+                number: '2',
+                numberStr: 'sevenNineTwo',
                 link: 'https://learn.javascript.ru/task/find-html-colors-6hex',
                 title: 'Регулярное выражение для HTML-цветов',
               },
             ],
           },
+          {
+            number: '7.10',
+            title: 'Жадные и ленивые квантификаторы',
+            tasks: [
+              { 
+                number: '2',
+                numberStr: 'sevenTenTwo',
+                link: 'https://learn.javascript.ru/task/find-html-comments',
+                title: 'Поиск HTML-комментариев',
+              },
+              { 
+                number: '3',
+                numberStr: 'sevenTenThree',
+                link: 'https://learn.javascript.ru/task/find-html-tags-greedy-lazy',
+                title: 'Поиск HTML-тегов',
+              },
+            ],
+          },          
         ],
       };
-    +theme(kus)
+    +themeContent(theme)
+    +theme(theme)
 
   script(src="script.js")
   script(src="../scripts/main.js")

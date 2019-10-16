@@ -1,6 +1,9 @@
 .new-appearance .list-title {
   font-size: 22px; }
 
+.task {
+  border-top: 2px solid #eee; }
+
 .task__header {
   display: -webkit-box;
   display: -webkit-flex;

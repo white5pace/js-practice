@@ -38,3 +38,21 @@ function sevenNineTwo() {
 
   alert( str.match(regexp) ); // #121212,#AA00ef
 }
+
+function sevenTenTwo() {
+  let regexp = /<!--.*?-->/gs;
+
+  let str = `... <!-- My -- comment
+   test --> ..  <!----> ..
+  `;
+
+  alert( str.match(regexp) ); // '<!-- My -- comment \n test -->', '<!---->'
+}
+
+function sevenTenThree() {
+  let regexp = /ваше регулярное выражение/g;
+
+  let str = '<> <a href="/"> <input type="radio" checked> <b>';
+
+  alert( str.match(regexp) ); // '<a href="/">', '<input type="radio" checked>', '<b>'
+}
