@@ -13,8 +13,6 @@ head
 
 body
   h1 Регулярные выражения
-
-
   .my-container.new-appearance
     -
       let theme = {
@@ -78,7 +76,37 @@ body
                 title: 'Поиск HTML-тегов',
               },
             ],
-          },          
+          },
+          {
+            number: '7.11',
+            title: 'Скобочные группы',
+            tasks: [
+              { 
+                number: '1',
+                numberStr: 'sevenElevenOne',
+                link: 'https://learn.javascript.ru/task/find-webcolor-3-or-6',
+                title: 'Найти цвет в формате #abc или #abcdef',
+              },
+              { 
+                number: '2',
+                numberStr: 'sevenElevenTwo',
+                link: 'https://learn.javascript.ru/task/find-decimal-numbers',
+                title: 'Найти все числа',
+              },
+              { 
+                number: '3',
+                numberStr: 'sevenElevenThree',
+                link: 'https://learn.javascript.ru/task/parse-expression',
+                title: 'Разобрать выражение',
+              },
+              { 
+                number: '4',
+                numberStr: 'sevenElevenFour',
+                link: 'https://learn.javascript.ru/task/test-mac',
+                title: 'Проверьте MAC-адрес',
+              },
+            ],
+          },       
         ],
       };
     +themeContent(theme)
