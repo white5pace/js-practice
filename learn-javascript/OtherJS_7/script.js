@@ -50,7 +50,7 @@ function sevenTenTwo() {
 }
 
 function sevenTenThree() {
-  let regexp = /ваше регулярное выражение/g;
+  let regexp = /<[^>]+>/g;
 
   let str = '<> <a href="/"> <input type="radio" checked> <b>';
 
