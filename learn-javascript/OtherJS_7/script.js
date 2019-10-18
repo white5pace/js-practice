@@ -98,5 +98,42 @@ function sevenElevenFour() {
 
   alert( regexp.test('01:32:54:67:89') ); // false (5 чисел, должно быть 6)
 
-  alert( regexp.test('01:32:54:67:89:ZZ') ) // false (ZZ в конце строки)
+  alert( regexp.test('01:32:54:67:89:ZZ') ); // false (ZZ в конце строки)
+}
+
+function sevenThirtyOne() {
+  let regexp = /java(script)?|php|c(\+\+)?/gi;
+
+  alert('Java JavaScript PHP C++ C'.match(regexp)); // Java JavaScript PHP C++ C
+}
+
+function sevenThirtyTwo() {
+  let regexp = /\[(url|quote|b)\].*?\[\/\1\]/gs;
+
+  let str1 = '..[url]http://ya.ru[/url]..';
+  let str2 = '..[url][b]http://ya.ru[/b][/url]..';
+  let str3 = `
+  [b]привет![/b]
+  [quote]
+    [url]http://ya.ru[/url]
+  [/quote]
+`;
+  alert( str1.match(regexp) ); // [url]http://ya.ru[/url]
+  alert( str2.match(regexp) ); // [url][b]http://ya.ru[/b][/url
+  alert( str3.match(regexp) ); // [b]привет![/b],[quote][url]http://ya.ru[/url][/quote]
+}
+
+function sevenThirtyThree() {
+  // let regexp = //g;
+
+  let str = ' .. "test me" .. "Скажи \\"Привет\\"!" .. "\\\\ \\"" .. ';
+  console.log(str);
+  // alert( str1.match(regexp) );
+}
+
+function sevenThirtyFour() {
+  let regexp = /<style(>|\s.*?>)/g;
+  // <style(\s.*|)> Мое первое решение (ошибка, жадное)
+
+  alert( '<style> <styler> <style test="...">'.match(regexp) ); // <style>, <style test="...">
 }
