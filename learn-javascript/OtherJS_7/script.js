@@ -137,3 +137,26 @@ function sevenThirtyFour() {
 
   alert( '<style> <styler> <style test="...">'.match(regexp) ); // <style>, <style test="...">
 }
+
+function sevenFortyOne() {
+  let regexp = /(?<!\-)(?<!\d)\d+/g;
+
+  let str = '0 12 -5 123 -18';
+
+  alert( str.match(regexp) ); // 0, 12, 123
+}
+
+function sevenFortyTwo() {
+  let regexp = /(?<=(<body.+>))/si;
+
+  let str = `
+  <html>
+    <body style="height: 200px">
+    ...
+    </body>
+  </html>
+  `;
+
+  str = str.replace(regexp, `<h1>Hello</h1>`);
+  alert(str);
+}
