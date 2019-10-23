@@ -1,0 +1,40 @@
+include ../components/codeEx.pug
+
+doctype html
+head
+  link(rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png")
+  meta(http-equiv="Content-Type", content="text/html;charset=UTF-8")
+  title OtherJS_8
+  meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1")
+  link(rel="stylesheet", href="../styles/main.css")
+  link(rel="stylesheet", href="../styles/task.css")
+  link(rel="stylesheet", href="../libs/prism.css")
+  link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css")
+
+body
+  h1 CSS для JavaScript-разработчика
+  .my-container.new-appearance
+    -
+      let theme = {
+        chapters: [
+          {
+            number: '8.4',
+            title: 'Свойство float',
+            tasks: [
+              {
+                number: '2',
+                numberStr: 'eightFourTwo',
+                link: 'https://learn.javascript.ru/task/tree-with-multiline-nodes',
+                title: 'Дерево с многострочными узлами',
+              },
+            ],
+          },
+        ],
+      };
+    +themeContent(theme)
+    +theme(theme)
+
+  script(src="script.js")
+  script(src="../scripts/main.js")
+  script(src="../libs/prism.js")
+    
