@@ -1,1 +1,1 @@
-https://learn.javascript.ru
+# js-practice
