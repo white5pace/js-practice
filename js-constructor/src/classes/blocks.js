@@ -22,24 +22,13 @@ export class TitleBlock extends Block {
     }
 }
 
-export class ImageBlock extends Block {
-    constructor(value, options) {
-        super(value, options);
-    }
-
-    toHTML() {
-        const {imageStyle: imgS, styles, alt = ''} = this.options
-        return row(`<img src="${this.value}" alt="${css(alt)}" style="${css(imgS)}">`, css(styles))
-    }
-}
-
 export class ColumnsBlock extends Block {
     constructor(value, options) {
         super(value, options);
     }
 
     toHTML() {
-        const html = this.value.map(col).join('');
+        const html = this.value.split(';').map(col).join('');
         return row(html, css(this.options.styles));
     }
 }
