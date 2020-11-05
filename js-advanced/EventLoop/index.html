@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EventLoop and SetTimeout</title>
+</head>
+<body>
+
+<h2>Что есть интересного в этой теме</h2>
+
+<p>
+  SetTimeout это не нативный JS, а webApi.
+  У браузера есть callStack webApis callbackQueue.
+  Весь код сихнороно выполняется в callStack, любые отложенные вызовы
+  или лисенеры попадают в webApis, где ждут пока отработают сихнорныее
+  вызовы из кол стака, после чего исполняются операции из webApis отсюда
+  они попадают в callbackQueue и в порядке очереди попадают в callStack.
+  Именно поэтому нулевой setTimeout исполяется в конце любых синхронных
+  операций
+</p>
+
+<script src="index.js"></script>
+</body>
+</html>
