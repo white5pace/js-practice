@@ -143,8 +143,8 @@ function exThree() {
 
     // td.insertAdjacentHTML('beforeEnd',
     //     '<div class="edit-controls">
-    //      <button class="edit-ok">OK</button>
-    //      <button class="edit-cancel">CANCEL</button></div>'
+    //      <Button class="edit-ok">OK</Button>
+    //      <Button class="edit-cancel">CANCEL</Button></div>'
     // );
   }
 

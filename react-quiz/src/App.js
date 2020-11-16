@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from "./hoc/Layout/Layout";
-import Quiz from "./hoc/containers/Quiz/Quiz";
+import Quiz from "./containers/Quiz/Quiz";
 
 
 function App() {

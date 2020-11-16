@@ -16,7 +16,7 @@ function elevenOneOne() {
   let exBody = ex.querySelector('.ex-body');
   let exCode = ex.querySelector('.ex-code');
 
-  exBody.querySelector('button').onclick = function() {
+  exBody.querySelector('Button').onclick = function() {
     showCircle(0, 0, 100);
   };
 

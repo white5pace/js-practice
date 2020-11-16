@@ -143,7 +143,7 @@ function exFive() {
   let ex = document.getElementById('2.1.6');
   let exBody = ex.querySelector('.ex-body');
   let exCode = ex.querySelector('.ex-code');
-  let removeButtons = exBody.querySelectorAll('.remove-button');
+  let removeButtons = exBody.querySelectorAll('.remove-Button');
 
   for (let button of removeButtons) {
     button.onclick = function() {
