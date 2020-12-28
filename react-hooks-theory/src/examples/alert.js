@@ -1,7 +1,7 @@
 import React from "react";
 import Main from "./Main";
-import Alert from "./Alert/Alert";
-import {AlertProvider} from "./Alert/AlertContext";
+import Alert from "./alert/alert";
+import {AlertProvider} from "./alert/AlertContext";
 
 function App() {
   return (
