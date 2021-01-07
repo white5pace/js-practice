@@ -1,35 +1,50 @@
 <template>
   <div>
-    <the-header></the-header>
-    <badge-list></badge-list>
-    <user-info
-      :full-name="activeUser.name"
-      :info-text="activeUser.description"
-      :role="activeUser.role"
-    ></user-info>
+    <TheHeader/>
+    <button @click="setSelectedComponent('ActiveGoals')">Active Goals</button>
+    <button @click="setSelectedComponent('ManageGoals')">Manage Goals</button>
+    <!--    <ActiveGoals v-if="selectedComponent === 'ActiveGoals'"></ActiveGoals>-->
+    <!--    <ManageGoals v-if="selectedComponent === 'ManageGoals'"></ManageGoals>-->
+    <keep-alive>
+      <component :is="selectedComponent"></component>
+    </keep-alive>
   </div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      activeUser: {
-        name: 'Maximilian Schwarzmüller',
-        description: 'Site owner and admin',
-        role: 'admin',
-      },
-    };
-  },
-};
+  import TheHeader from "@/components/layout/TheHeader";
+  import ActiveGoals from "@/components/ActiveGoals";
+  import ManageGoals from "@/components/ManageGoals";
+
+  export default {
+    components: {ManageGoals, ActiveGoals, TheHeader},
+    // components: {
+    //   'badge-list': BadgeList,
+    // },
+    data() {
+      return {
+        selectedComponent: 'ActiveGoals',
+        activeUser: {
+          name: 'Maximilian Schwarzmüller',
+          description: 'Site owner and admin',
+          role: 'admin',
+        },
+      };
+    },
+    methods: {
+      setSelectedComponent(cmp) {
+        this.selectedComponent = cmp;
+      }
+    }
+  };
 </script>
 
 <style>
-html {
-  font-family: sans-serif;
-}
+  html {
+    font-family: sans-serif;
+  }
 
-body {
-  margin: 0;
-}
+  body {
+    margin: 0;
+  }
 </style>
