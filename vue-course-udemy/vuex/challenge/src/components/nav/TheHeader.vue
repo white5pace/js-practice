@@ -25,8 +25,15 @@
 </template>
 
 <script>
+import {mapActions, mapGetters} from 'vuex';
+
 export default {
-  inject: ['isLoggedIn', 'login', 'logout', 'cart'],
+  computed: {
+    ...mapGetters(['cart', 'isLoggedIn']),
+  },
+  methods: {
+    ...mapActions(['login', 'logout'])
+  }
 };
 </script>
 
@@ -55,7 +62,7 @@ li {
 
 a {
   text-decoration: none;
-  color: #333;
+  color: #333333;
   font-weight: bold;
   border-bottom: 2px solid transparent;
   padding-bottom: 0.25rem;
