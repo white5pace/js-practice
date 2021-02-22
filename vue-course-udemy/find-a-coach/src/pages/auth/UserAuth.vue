@@ -32,11 +32,16 @@
 <script>
   import BaseButton from '@/components/ui/BaseButton';
   import BaseCard from '@/components/ui/BaseCard';
-  import BaseDialog from '@/components/ui/BaseDialog';
   import BaseSpinner from '@/components/ui/BaseSpinner';
+  import {defineAsyncComponent} from 'vue';
 
   export default {
-    components: {BaseSpinner, BaseDialog, BaseCard, BaseButton},
+    components: {
+      BaseSpinner,
+      BaseDialog: defineAsyncComponent(() => import('@/components/ui/BaseDialog')),
+      BaseCard,
+      BaseButton
+    },
     data() {
       return {
         email: '',

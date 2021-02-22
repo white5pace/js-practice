@@ -47,7 +47,14 @@
   import BaseDialog from '@/components/ui/BaseDialog';
 
   export default {
-    components: {BaseDialog, BaseSpinner, CoachFilter, BaseButton, BaseCard, CoachItem},
+    components: {
+      BaseDialog,
+      BaseSpinner,
+      CoachFilter,
+      BaseButton,
+      BaseCard,
+      CoachItem
+    },
     data() {
       return {
         isLoading: false,
